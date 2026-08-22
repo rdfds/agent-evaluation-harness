@@ -1,8 +1,12 @@
 # Agent Evaluation Demo
 
+[![CI](https://github.com/rdfds/agent-evaluation-demo/actions/workflows/ci.yml/badge.svg)](https://github.com/rdfds/agent-evaluation-demo/actions/workflows/ci.yml)
+
 A compact evaluation harness for a tool-using agent that chooses between retrieval and structured queries. Every run records a trace, compares the route and answer with a deterministic expected result, categorizes failures, and repeats the suite to expose variance.
 
 The data and tools are synthetic. The point is to make evaluation behavior visible, not to claim production agent quality.
+
+> **Public demo:** This compact synthetic demonstration was created and published in August 2026. Its single public commit reflects the deliberately small scope; it is not presented as a production-system history.
 
 ## What it demonstrates
 
