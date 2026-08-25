@@ -1,6 +1,6 @@
 # Agent Evaluation Harness
 
-[![CI](https://github.com/rdfds/agent-evaluation-demo/actions/workflows/ci.yml/badge.svg)](https://github.com/rdfds/agent-evaluation-demo/actions/workflows/ci.yml)
+[![CI](https://github.com/rdfds/agent-evaluation-harness/actions/workflows/ci.yml/badge.svg)](https://github.com/rdfds/agent-evaluation-harness/actions/workflows/ci.yml)
 
 A reproducible evaluation harness for a tool-using agent that chooses between retrieval and structured queries. Every run records a structured trace, compares the selected route and answer with an expected contract, categorizes failures, and repeats the suite to expose variance.
 
