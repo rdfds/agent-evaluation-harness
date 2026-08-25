@@ -1,14 +1,10 @@
-# Agent Evaluation Demo
+# Agent Evaluation Harness
 
 [![CI](https://github.com/rdfds/agent-evaluation-demo/actions/workflows/ci.yml/badge.svg)](https://github.com/rdfds/agent-evaluation-demo/actions/workflows/ci.yml)
 
-A compact evaluation harness for a tool-using agent that chooses between retrieval and structured queries. Every run records a trace, compares the route and answer with a deterministic expected result, categorizes failures, and repeats the suite to expose variance.
+A reproducible evaluation harness for a tool-using agent that chooses between retrieval and structured queries. Every run records a structured trace, compares the selected route and answer with an expected contract, categorizes failures, and repeats the suite to expose variance.
 
-The data and tools are synthetic. The point is to make evaluation behavior visible, not to claim production agent quality.
-
-> **Public demo:** This compact synthetic demonstration was created and published in August 2026. Its single public commit reflects the deliberately small scope; it is not presented as a production-system history.
-
-## What it demonstrates
+## Evaluation contract
 
 - Explicit routing between retrieval and structured-query tools
 - Trace records for route selection, tool invocation, and answer generation
@@ -33,14 +29,14 @@ python -m src.agent_eval
 python -m unittest discover -s tests -v
 ```
 
-The demo prints a JSON report with repeated-run pass rate, route counts, and categorized failures.
+The harness prints a JSON report with repeated-run pass rate, route counts, categorized failures, and one complete trace per case. The committed baseline evaluates 5 cases across 5 repetitions. Four cases pass; one intentionally ambiguous request produces separate route and answer failures, yielding a repeatable `0.8` pass rate and making the failure taxonomy observable in CI.
 
 ## Repository layout
 
-- `src/agent_eval.py` — synthetic tools, agent, trace schema, and evaluator
+- `src/agent_eval.py` — deterministic retrieval/query tools, agent, trace schema, and evaluator
 - `tests/test_agent_eval.py` — routing, trace, and failure-taxonomy tests
 - `.github/workflows/ci.yml` — reproducible test check
 
 ## Evaluation notes
 
-The harness treats a wrong tool choice as a distinct failure from a wrong answer. That distinction matters in production: a good answer from the wrong data path can still be unsafe, difficult to audit, or impossible to reproduce. The next extension would be to plug in real trace storage and a model adapter while keeping the same case and scoring contracts.
+The harness treats a wrong tool choice as a distinct failure from a wrong answer. That distinction matters in production: a good answer from the wrong data path can still be unsafe, difficult to audit, or impossible to reproduce. Keeping cases, traces, routing decisions, and failure categories explicit makes the same contract usable when the deterministic baseline is replaced by a model-backed implementation.

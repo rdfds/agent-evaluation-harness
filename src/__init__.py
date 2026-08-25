@@ -1,1 +1,1 @@
-"""Agent evaluation public demonstration."""
+"""Deterministic agent evaluation harness."""
