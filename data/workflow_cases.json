@@ -1,0 +1,221 @@
+{
+  "cases": [
+    {
+      "actor": "ops_agent",
+      "case_id": "workflow-ready-01",
+      "expected_final_status": "approved",
+      "expected_outcome": "applied",
+      "request_id": "ready-01",
+      "slice_name": "ready",
+      "target_status": "approved"
+    },
+    {
+      "actor": "ops_agent",
+      "case_id": "workflow-ready-02",
+      "expected_final_status": "approved",
+      "expected_outcome": "applied",
+      "request_id": "ready-02",
+      "slice_name": "ready",
+      "target_status": "approved"
+    },
+    {
+      "actor": "ops_agent",
+      "case_id": "workflow-ready-03",
+      "expected_final_status": "approved",
+      "expected_outcome": "applied",
+      "request_id": "ready-03",
+      "slice_name": "ready",
+      "target_status": "approved"
+    },
+    {
+      "actor": "ops_agent",
+      "case_id": "workflow-ready-04",
+      "expected_final_status": "approved",
+      "expected_outcome": "applied",
+      "request_id": "ready-04",
+      "slice_name": "ready",
+      "target_status": "approved"
+    },
+    {
+      "actor": "ops_agent",
+      "case_id": "workflow-ready-05",
+      "expected_final_status": "approved",
+      "expected_outcome": "applied",
+      "request_id": "ready-05",
+      "slice_name": "ready",
+      "target_status": "approved"
+    },
+    {
+      "actor": "ops_agent",
+      "case_id": "workflow-ready-06",
+      "expected_final_status": "approved",
+      "expected_outcome": "applied",
+      "request_id": "ready-06",
+      "slice_name": "ready",
+      "target_status": "approved"
+    },
+    {
+      "actor": "quality_agent",
+      "case_id": "workflow-approval-blocked-01",
+      "expected_final_status": "pending",
+      "expected_outcome": "blocked",
+      "request_id": "approval-blocked-01",
+      "slice_name": "approval_blocked",
+      "target_status": "approved"
+    },
+    {
+      "actor": "quality_agent",
+      "case_id": "workflow-approval-blocked-02",
+      "expected_final_status": "pending",
+      "expected_outcome": "blocked",
+      "request_id": "approval-blocked-02",
+      "slice_name": "approval_blocked",
+      "target_status": "approved"
+    },
+    {
+      "actor": "quality_agent",
+      "case_id": "workflow-approval-blocked-03",
+      "expected_final_status": "pending",
+      "expected_outcome": "blocked",
+      "request_id": "approval-blocked-03",
+      "slice_name": "approval_blocked",
+      "target_status": "approved"
+    },
+    {
+      "actor": "quality_agent",
+      "case_id": "workflow-approval-blocked-04",
+      "expected_final_status": "pending",
+      "expected_outcome": "blocked",
+      "request_id": "approval-blocked-04",
+      "slice_name": "approval_blocked",
+      "target_status": "approved"
+    },
+    {
+      "actor": "read_only_bot",
+      "case_id": "workflow-permission-blocked-01",
+      "expected_final_status": "pending",
+      "expected_outcome": "blocked",
+      "request_id": "permission-blocked-01",
+      "slice_name": "permission_blocked",
+      "target_status": "approved"
+    },
+    {
+      "actor": "read_only_bot",
+      "case_id": "workflow-permission-blocked-02",
+      "expected_final_status": "pending",
+      "expected_outcome": "blocked",
+      "request_id": "permission-blocked-02",
+      "slice_name": "permission_blocked",
+      "target_status": "approved"
+    },
+    {
+      "actor": "read_only_bot",
+      "case_id": "workflow-permission-blocked-03",
+      "expected_final_status": "pending",
+      "expected_outcome": "blocked",
+      "request_id": "permission-blocked-03",
+      "slice_name": "permission_blocked",
+      "target_status": "approved"
+    },
+    {
+      "actor": "read_only_bot",
+      "case_id": "workflow-permission-blocked-04",
+      "expected_final_status": "pending",
+      "expected_outcome": "blocked",
+      "request_id": "permission-blocked-04",
+      "slice_name": "permission_blocked",
+      "target_status": "approved"
+    },
+    {
+      "actor": "ops_agent",
+      "case_id": "workflow-idempotent-01",
+      "expected_final_status": "approved",
+      "expected_outcome": "no_op",
+      "request_id": "idempotent-01",
+      "slice_name": "idempotent",
+      "target_status": "approved"
+    },
+    {
+      "actor": "ops_agent",
+      "case_id": "workflow-idempotent-02",
+      "expected_final_status": "approved",
+      "expected_outcome": "no_op",
+      "request_id": "idempotent-02",
+      "slice_name": "idempotent",
+      "target_status": "approved"
+    },
+    {
+      "actor": "ops_agent",
+      "case_id": "workflow-idempotent-03",
+      "expected_final_status": "approved",
+      "expected_outcome": "no_op",
+      "request_id": "idempotent-03",
+      "slice_name": "idempotent",
+      "target_status": "approved"
+    },
+    {
+      "actor": "ops_agent",
+      "case_id": "workflow-idempotent-04",
+      "expected_final_status": "approved",
+      "expected_outcome": "no_op",
+      "request_id": "idempotent-04",
+      "slice_name": "idempotent",
+      "target_status": "approved"
+    },
+    {
+      "actor": "quality_agent",
+      "case_id": "workflow-policy-v2-01",
+      "expected_final_status": "approved",
+      "expected_outcome": "applied",
+      "request_id": "policy-v2-01",
+      "slice_name": "policy_version",
+      "target_status": "approved"
+    },
+    {
+      "actor": "quality_agent",
+      "case_id": "workflow-policy-v2-02",
+      "expected_final_status": "approved",
+      "expected_outcome": "applied",
+      "request_id": "policy-v2-02",
+      "slice_name": "policy_version",
+      "target_status": "approved"
+    },
+    {
+      "actor": "quality_agent",
+      "case_id": "workflow-policy-v2-03",
+      "expected_final_status": "approved",
+      "expected_outcome": "applied",
+      "request_id": "policy-v2-03",
+      "slice_name": "policy_version",
+      "target_status": "approved"
+    },
+    {
+      "actor": "ops_agent",
+      "case_id": "workflow-revision-01",
+      "expected_final_status": "approved",
+      "expected_outcome": "applied",
+      "request_id": "revision-01",
+      "slice_name": "revision_sensitive",
+      "target_status": "approved"
+    },
+    {
+      "actor": "ops_agent",
+      "case_id": "workflow-revision-02",
+      "expected_final_status": "approved",
+      "expected_outcome": "applied",
+      "request_id": "revision-02",
+      "slice_name": "revision_sensitive",
+      "target_status": "approved"
+    },
+    {
+      "actor": "ops_agent",
+      "case_id": "workflow-revision-03",
+      "expected_final_status": "approved",
+      "expected_outcome": "applied",
+      "request_id": "revision-03",
+      "slice_name": "revision_sensitive",
+      "target_status": "approved"
+    }
+  ],
+  "schema_version": 1
+}

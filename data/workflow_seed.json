@@ -1,0 +1,320 @@
+{
+  "actors": [
+    {
+      "actor": "ops_agent",
+      "can_write": true
+    },
+    {
+      "actor": "quality_agent",
+      "can_write": true
+    },
+    {
+      "actor": "read_only_bot",
+      "can_write": false
+    }
+  ],
+  "approvals": [
+    {
+      "approver_role": "team_lead",
+      "decision": "approved",
+      "request_id": "ready-01"
+    },
+    {
+      "approver_role": "quality_lead",
+      "decision": "approved",
+      "request_id": "ready-02"
+    },
+    {
+      "approver_role": "quality_director",
+      "decision": "approved",
+      "request_id": "ready-03"
+    },
+    {
+      "approver_role": "team_lead",
+      "decision": "approved",
+      "request_id": "ready-04"
+    },
+    {
+      "approver_role": "quality_lead",
+      "decision": "approved",
+      "request_id": "ready-05"
+    },
+    {
+      "approver_role": "quality_director",
+      "decision": "approved",
+      "request_id": "ready-06"
+    },
+    {
+      "approver_role": "quality_director",
+      "decision": "rejected",
+      "request_id": "approval-blocked-02"
+    },
+    {
+      "approver_role": "quality_director",
+      "decision": "rejected",
+      "request_id": "approval-blocked-04"
+    },
+    {
+      "approver_role": "team_lead",
+      "decision": "approved",
+      "request_id": "permission-blocked-01"
+    },
+    {
+      "approver_role": "quality_lead",
+      "decision": "approved",
+      "request_id": "permission-blocked-02"
+    },
+    {
+      "approver_role": "team_lead",
+      "decision": "approved",
+      "request_id": "permission-blocked-03"
+    },
+    {
+      "approver_role": "quality_lead",
+      "decision": "approved",
+      "request_id": "permission-blocked-04"
+    },
+    {
+      "approver_role": "quality_lead",
+      "decision": "approved",
+      "request_id": "policy-v2-01"
+    },
+    {
+      "approver_role": "quality_director",
+      "decision": "approved",
+      "request_id": "policy-v2-01"
+    },
+    {
+      "approver_role": "quality_lead",
+      "decision": "approved",
+      "request_id": "policy-v2-02"
+    },
+    {
+      "approver_role": "quality_director",
+      "decision": "approved",
+      "request_id": "policy-v2-02"
+    },
+    {
+      "approver_role": "quality_lead",
+      "decision": "approved",
+      "request_id": "policy-v2-03"
+    },
+    {
+      "approver_role": "quality_director",
+      "decision": "approved",
+      "request_id": "policy-v2-03"
+    },
+    {
+      "approver_role": "quality_lead",
+      "decision": "approved",
+      "request_id": "revision-01"
+    },
+    {
+      "approver_role": "quality_lead",
+      "decision": "approved",
+      "request_id": "revision-02"
+    },
+    {
+      "approver_role": "quality_lead",
+      "decision": "approved",
+      "request_id": "revision-03"
+    }
+  ],
+  "policies": [
+    {
+      "active": true,
+      "required_role": "team_lead",
+      "risk_level": "low",
+      "version": 1
+    },
+    {
+      "active": true,
+      "required_role": "quality_lead",
+      "risk_level": "medium",
+      "version": 1
+    },
+    {
+      "active": false,
+      "required_role": "quality_lead",
+      "risk_level": "high",
+      "version": 1
+    },
+    {
+      "active": true,
+      "required_role": "quality_director",
+      "risk_level": "high",
+      "version": 2
+    }
+  ],
+  "requests": [
+    {
+      "owner_team": "operations",
+      "request_id": "ready-01",
+      "revision": 3,
+      "risk_level": "low",
+      "status": "pending"
+    },
+    {
+      "owner_team": "operations",
+      "request_id": "ready-02",
+      "revision": 3,
+      "risk_level": "medium",
+      "status": "pending"
+    },
+    {
+      "owner_team": "quality",
+      "request_id": "ready-03",
+      "revision": 3,
+      "risk_level": "high",
+      "status": "pending"
+    },
+    {
+      "owner_team": "operations",
+      "request_id": "ready-04",
+      "revision": 3,
+      "risk_level": "low",
+      "status": "pending"
+    },
+    {
+      "owner_team": "operations",
+      "request_id": "ready-05",
+      "revision": 3,
+      "risk_level": "medium",
+      "status": "pending"
+    },
+    {
+      "owner_team": "quality",
+      "request_id": "ready-06",
+      "revision": 3,
+      "risk_level": "high",
+      "status": "pending"
+    },
+    {
+      "owner_team": "operations",
+      "request_id": "approval-blocked-01",
+      "revision": 3,
+      "risk_level": "medium",
+      "status": "pending"
+    },
+    {
+      "owner_team": "quality",
+      "request_id": "approval-blocked-02",
+      "revision": 3,
+      "risk_level": "high",
+      "status": "pending"
+    },
+    {
+      "owner_team": "operations",
+      "request_id": "approval-blocked-03",
+      "revision": 3,
+      "risk_level": "medium",
+      "status": "pending"
+    },
+    {
+      "owner_team": "quality",
+      "request_id": "approval-blocked-04",
+      "revision": 3,
+      "risk_level": "high",
+      "status": "pending"
+    },
+    {
+      "owner_team": "operations",
+      "request_id": "permission-blocked-01",
+      "revision": 3,
+      "risk_level": "low",
+      "status": "pending"
+    },
+    {
+      "owner_team": "operations",
+      "request_id": "permission-blocked-02",
+      "revision": 3,
+      "risk_level": "medium",
+      "status": "pending"
+    },
+    {
+      "owner_team": "operations",
+      "request_id": "permission-blocked-03",
+      "revision": 3,
+      "risk_level": "low",
+      "status": "pending"
+    },
+    {
+      "owner_team": "operations",
+      "request_id": "permission-blocked-04",
+      "revision": 3,
+      "risk_level": "medium",
+      "status": "pending"
+    },
+    {
+      "owner_team": "operations",
+      "request_id": "idempotent-01",
+      "revision": 3,
+      "risk_level": "low",
+      "status": "approved"
+    },
+    {
+      "owner_team": "operations",
+      "request_id": "idempotent-02",
+      "revision": 3,
+      "risk_level": "low",
+      "status": "approved"
+    },
+    {
+      "owner_team": "operations",
+      "request_id": "idempotent-03",
+      "revision": 3,
+      "risk_level": "low",
+      "status": "approved"
+    },
+    {
+      "owner_team": "operations",
+      "request_id": "idempotent-04",
+      "revision": 3,
+      "risk_level": "low",
+      "status": "approved"
+    },
+    {
+      "owner_team": "quality",
+      "request_id": "policy-v2-01",
+      "revision": 3,
+      "risk_level": "high",
+      "status": "pending"
+    },
+    {
+      "owner_team": "quality",
+      "request_id": "policy-v2-02",
+      "revision": 3,
+      "risk_level": "high",
+      "status": "pending"
+    },
+    {
+      "owner_team": "quality",
+      "request_id": "policy-v2-03",
+      "revision": 3,
+      "risk_level": "high",
+      "status": "pending"
+    },
+    {
+      "owner_team": "operations",
+      "request_id": "revision-01",
+      "revision": 3,
+      "risk_level": "medium",
+      "status": "pending"
+    },
+    {
+      "owner_team": "operations",
+      "request_id": "revision-02",
+      "revision": 3,
+      "risk_level": "medium",
+      "status": "pending"
+    },
+    {
+      "owner_team": "operations",
+      "request_id": "revision-03",
+      "revision": 3,
+      "risk_level": "medium",
+      "status": "pending"
+    }
+  ],
+  "schema_version": 1
+}
