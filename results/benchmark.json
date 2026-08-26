@@ -323,27 +323,30 @@
     "operations": {
       "cost_profile_note": "Reference token accounting for regression comparison; no model API is called.",
       "mean_estimated_cost_usd": 4.32e-06,
-      "p50_latency_ms": 0.046,
-      "p95_latency_ms": 0.0877,
+      "p50_latency_ms": 0.0257,
+      "p95_latency_ms": 0.0427,
       "total_estimated_cost_usd": 0.0034525
     },
     "quality": {
       "abstention_accuracy": 0.0,
       "answer_accuracy": 0.2625,
       "answer_accuracy_95ci": [
-        0.2332,
-        0.2941
+        0.1625,
+        0.3625
       ],
       "evidence_support_rate": 0.3281,
+      "independent_case_units": 80,
+      "interval_method": "case_cluster_bootstrap",
+      "observations": 800,
       "pass_rate": 0.2625,
       "pass_rate_95ci": [
-        0.2332,
-        0.2941
+        0.1625,
+        0.3625
       ],
       "route_accuracy": 0.6,
       "route_accuracy_95ci": [
-        0.5657,
-        0.6334
+        0.4875,
+        0.7
       ],
       "unsupported_answer_rate": 0.2
     },
@@ -460,27 +463,30 @@
     "operations": {
       "cost_profile_note": "Reference token accounting for regression comparison; no model API is called.",
       "mean_estimated_cost_usd": 8.28e-06,
-      "p50_latency_ms": 0.1468,
-      "p95_latency_ms": 0.1814,
+      "p50_latency_ms": 0.1358,
+      "p95_latency_ms": 0.1554,
       "total_estimated_cost_usd": 0.0066225
     },
     "quality": {
       "abstention_accuracy": 1.0,
       "answer_accuracy": 0.975,
       "answer_accuracy_95ci": [
-        0.9617,
-        0.9838
+        0.9375,
+        1.0
       ],
       "evidence_support_rate": 0.9688,
+      "independent_case_units": 80,
+      "interval_method": "case_cluster_bootstrap",
+      "observations": 800,
       "pass_rate": 0.975,
       "pass_rate_95ci": [
-        0.9617,
-        0.9838
+        0.9375,
+        1.0
       ],
       "route_accuracy": 0.975,
       "route_accuracy_95ci": [
-        0.9617,
-        0.9838
+        0.9375,
+        1.0
       ],
       "unsupported_answer_rate": 0.0
     },
@@ -523,7 +529,7 @@
     "unsupported_answer_rate": -0.2
   },
   "dataset": {
-    "candidate_runs": 800,
+    "candidate_observations": 800,
     "cases": 80,
     "difficulty_levels": [
       "adversarial",
@@ -531,6 +537,7 @@
       "paraphrase",
       "standard"
     ],
+    "independent_case_units": 80,
     "repeats": 10,
     "sha256": "9715ed260e620b7a524dc34ef0f77ff685d48a87e6abfe7776c7b058214a5f78",
     "slices": [
@@ -586,5 +593,5 @@
     ],
     "total": 4
   },
-  "schema_version": 1
+  "schema_version": 2
 }

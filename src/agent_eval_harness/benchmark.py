@@ -62,11 +62,12 @@ def build_benchmark(*, repeats: int = 10) -> dict[str, Any]:
             }
         )
     return {
-        "schema_version": 1,
+        "schema_version": 2,
         "dataset": {
             "cases": len(cases),
+            "independent_case_units": len(cases),
             "repeats": repeats,
-            "candidate_runs": len(cases) * repeats,
+            "candidate_observations": len(cases) * repeats,
             "slices": sorted({case.slice_name for case in cases}),
             "difficulty_levels": sorted({case.difficulty for case in cases}),
             "sha256": _sha256([DEFAULT_CASES_PATH, DEFAULT_KNOWLEDGE_PATH]),
@@ -103,8 +104,10 @@ def render_markdown(artifact: dict[str, Any]) -> str:
         "",
         (
             f"The committed fixture contains **{artifact['dataset']['cases']} cases** and the default "
-            f"run executes **{artifact['dataset']['candidate_runs']} candidate evaluations** across "
-            f"{artifact['dataset']['repeats']} repeats."
+            f"run records **{artifact['dataset']['candidate_observations']} candidate observations** across "
+            f"{artifact['dataset']['repeats']} repeats. Confidence intervals resample the "
+            f"{artifact['dataset']['independent_case_units']} case clusters rather than treating repeated "
+            "observations as independent."
         ),
         "",
         "| Metric | Legacy router | Evidence-aware candidate | Delta |",
@@ -128,7 +131,7 @@ def render_markdown(artifact: dict[str, Any]) -> str:
             "",
             "## Reliability and operations",
             "",
-            f"- Candidate pass-rate 95% Wilson interval: `{candidate['quality']['pass_rate_95ci']}`",
+            f"- Candidate pass-rate 95% case-cluster bootstrap interval: `{candidate['quality']['pass_rate_95ci']}`",
             f"- Repeated-run pass-rate standard deviation: `{candidate['reliability']['run_pass_rate_stddev']:.6f}`",
             f"- Observed local p95 harness latency: `{candidate['operations']['p95_latency_ms']:.4f} ms`",
             f"- Reference estimated cost per case: `${candidate['operations']['mean_estimated_cost_usd']:.8f}`",
@@ -169,4 +172,3 @@ def write_artifacts(artifact: dict[str, Any], json_path: Path, markdown_path: Pa
     markdown_path.parent.mkdir(parents=True, exist_ok=True)
     json_path.write_text(json.dumps(artifact, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     markdown_path.write_text(render_markdown(artifact), encoding="utf-8")
-

@@ -13,7 +13,8 @@ class BenchmarkArtifactTests(unittest.TestCase):
 
     def test_artifact_records_comparison_and_mutation_coverage(self):
         self.assertEqual(self.artifact["dataset"]["cases"], 80)
-        self.assertEqual(self.artifact["dataset"]["candidate_runs"], 160)
+        self.assertEqual(self.artifact["dataset"]["independent_case_units"], 80)
+        self.assertEqual(self.artifact["dataset"]["candidate_observations"], 160)
         self.assertGreater(self.artifact["comparison"]["pass_rate"], 0.0)
         self.assertEqual(self.artifact["mutation_testing"]["caught"], 4)
         self.assertEqual(self.artifact["mutation_testing"]["total"], 4)
@@ -29,10 +30,10 @@ class BenchmarkArtifactTests(unittest.TestCase):
     def test_markdown_includes_core_results(self):
         markdown = render_markdown(self.artifact)
         self.assertIn("80 cases", markdown)
+        self.assertIn("case-cluster bootstrap", markdown)
         self.assertIn("Mutation testing", markdown)
         self.assertIn("Unsupported-answer rate", markdown)
 
 
 if __name__ == "__main__":
     unittest.main()
-

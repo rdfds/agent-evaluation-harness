@@ -42,7 +42,7 @@ def main(argv: Sequence[str] | None = None) -> int:
         if mutation_testing["caught"] != mutation_testing["total"]:
             raise SystemExit("Mutation testing did not detect every seeded regression")
         print(
-            f"PASS: {artifact['dataset']['candidate_runs']} candidate runs; "
+            f"PASS: {artifact['dataset']['candidate_observations']} candidate observations; "
             f"{mutation_testing['caught']}/{mutation_testing['total']} seeded regressions detected"
         )
         return 0
@@ -54,4 +54,3 @@ def main(argv: Sequence[str] | None = None) -> int:
         f"unsupported={quality['unsupported_answer_rate']:.2%}"
     )
     return 0
-

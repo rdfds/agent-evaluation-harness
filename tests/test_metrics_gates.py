@@ -49,8 +49,17 @@ class MetricsAndGateTests(unittest.TestCase):
         self.assertGreaterEqual(report["operations"]["p95_latency_ms"], 0.0)
         self.assertGreater(report["operations"]["mean_estimated_cost_usd"], 0.0)
         self.assertEqual(len(report["quality"]["pass_rate_95ci"]), 2)
+        self.assertEqual(report["quality"]["interval_method"], "case_cluster_bootstrap")
+        self.assertEqual(report["quality"]["independent_case_units"], 80)
+
+    def test_deterministic_repeats_do_not_narrow_case_cluster_interval(self):
+        one_repeat = evaluate(self.candidate, self.cases, repeats=1)
+        ten_repeats = evaluate(self.candidate, self.cases, repeats=10)
+        self.assertEqual(
+            one_repeat["quality"]["pass_rate_95ci"],
+            ten_repeats["quality"]["pass_rate_95ci"],
+        )
 
 
 if __name__ == "__main__":
     unittest.main()
-

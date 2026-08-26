@@ -5,8 +5,9 @@ from __future__ import annotations
 from collections import Counter, defaultdict
 from dataclasses import asdict, dataclass
 import math
+import random
 from statistics import fmean, pstdev
-from typing import Any, Iterable
+from typing import Any, Callable, Iterable
 
 from .models import AgentResponse, EvalCase
 from .runtime import Agent
@@ -30,18 +31,28 @@ def _ratio(numerator: int, denominator: int) -> float:
     return round(numerator / denominator, 4) if denominator else 0.0
 
 
-def _wilson_interval(successes: int, total: int, z: float = 1.96) -> list[float]:
-    if not total:
+def _cluster_bootstrap_interval(
+    records_by_case: list[list[ScoredCase]],
+    value: Callable[[ScoredCase], bool],
+    *,
+    samples: int = 4_000,
+    seed: int = 17,
+) -> list[float]:
+    """Bootstrap whole cases so repeated runs are not treated as independent data."""
+
+    if not records_by_case:
         return [0.0, 0.0]
-    proportion = successes / total
-    denominator = 1 + z * z / total
-    center = (proportion + z * z / (2 * total)) / denominator
-    margin = (
-        z
-        * math.sqrt(proportion * (1 - proportion) / total + z * z / (4 * total * total))
-        / denominator
-    )
-    return [round(max(0.0, center - margin), 4), round(min(1.0, center + margin), 4)]
+    randomizer = random.Random(seed)
+    case_count = len(records_by_case)
+    estimates: list[float] = []
+    for _ in range(samples):
+        selected = [records_by_case[randomizer.randrange(case_count)] for _ in range(case_count)]
+        values = [float(value(record)) for case_records in selected for record in case_records]
+        estimates.append(fmean(values))
+    estimates.sort()
+    lower = estimates[int(0.025 * (samples - 1))]
+    upper = estimates[int(0.975 * (samples - 1))]
+    return [round(lower, 4), round(upper, 4)]
 
 
 def _percentile(values: list[float], percentile: float) -> float:
@@ -106,6 +117,10 @@ def evaluate(agent: Agent, cases: Iterable[EvalCase], *, repeats: int = 10) -> d
     for _ in range(repeats):
         run_results.append([score_case(case, agent.answer(case.query)) for case in cases])
     results = [record for run in run_results for record in run]
+    records_by_case = [
+        [run_results[run_index][case_index] for run_index in range(repeats)]
+        for case_index in range(len(cases))
+    ]
     evidence_records = [record for record in results if record.response.route != "abstain" or record.failures]
     expected_evidence_records = [
         record
@@ -162,9 +177,18 @@ def evaluate(agent: Agent, cases: Iterable[EvalCase], *, repeats: int = 10) -> d
             "unsupported_answer_rate": _ratio(
                 sum(record.unsupported_answer for record in results), len(results)
             ),
-            "pass_rate_95ci": _wilson_interval(pass_successes, len(results)),
-            "route_accuracy_95ci": _wilson_interval(route_successes, len(results)),
-            "answer_accuracy_95ci": _wilson_interval(answer_successes, len(results)),
+            "pass_rate_95ci": _cluster_bootstrap_interval(
+                records_by_case, lambda record: record.passed
+            ),
+            "route_accuracy_95ci": _cluster_bootstrap_interval(
+                records_by_case, lambda record: record.route_correct
+            ),
+            "answer_accuracy_95ci": _cluster_bootstrap_interval(
+                records_by_case, lambda record: record.answer_correct
+            ),
+            "interval_method": "case_cluster_bootstrap",
+            "independent_case_units": len(cases),
+            "observations": len(results),
         },
         "reliability": {
             "run_pass_rate_stddev": round(pstdev(run_pass_rates), 6),
@@ -188,4 +212,3 @@ def evaluate(agent: Agent, cases: Iterable[EvalCase], *, repeats: int = 10) -> d
             "expected_evidence_runs": len(expected_evidence_records),
         },
     }
-

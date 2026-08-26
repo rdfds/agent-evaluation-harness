@@ -34,7 +34,7 @@ Cases contain an ID, query, expected route, expected answer, required evidence I
 - **Repeated-run reliability:** minimum, maximum, and standard deviation of per-run pass rate.
 - **Operations:** p50/p95 harness latency and reference token-cost accounting.
 
-Wilson 95% intervals are reported for pass rate, route accuracy, and answer accuracy.
+Case-cluster bootstrap 95% intervals are reported for pass rate, route accuracy, and answer accuracy. Each bootstrap draw resamples whole cases with all of their repeated runs.
 
 ## Results
 
@@ -47,7 +47,7 @@ Wilson 95% intervals are reported for pass rate, route accuracy, and answer accu
 | Abstention accuracy | 0.00% | 100.00% |
 | Unsupported-answer rate | 20.00% | 0.00% |
 
-Candidate pass-rate 95% Wilson interval: **96.17%-98.38%**. Repeated-run pass-rate standard deviation: **0.000000**.
+Candidate pass-rate 95% case-cluster bootstrap interval: **93.75%-100.00%**. Repeated-run pass-rate standard deviation: **0.000000**. The interval treats the 80 cases—not 800 repeated observations—as the independent units.
 
 ## Mutation testing
 
@@ -73,4 +73,3 @@ Observed latency is machine-dependent and excluded from artifact equality. Quali
 - The included agents are deterministic routing policies. A model-backed adapter should additionally capture provider usage, prompt/model identifiers, decoding settings, and repeated-run variance.
 - Reference cost uses configurable token rates and is not a provider invoice.
 - A passing aggregate result does not replace slice review or inspection of retained hard failures.
-

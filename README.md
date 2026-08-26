@@ -4,11 +4,11 @@
 
 A failure-aware evaluation system for tool-using agents. It separates routing, answer, evidence, abstention, latency, cost, and repeated-run reliability so a candidate cannot hide a serious regression behind one aggregate score.
 
-The repository includes an 80-case public fixture, a legacy comparison policy, an evidence-aware candidate, typed traces, Wilson confidence intervals, per-slice metrics, configurable release gates, and mutation tests that prove the gates fail when important behavior breaks.
+The repository includes an 80-case public fixture, a legacy comparison policy, an evidence-aware candidate, typed traces, case-cluster bootstrap intervals, per-slice metrics, configurable release gates, and mutation tests that prove the gates fail when important behavior breaks.
 
 ## Results
 
-The default benchmark executes **800 candidate evaluations** across 10 repeated runs.
+The default benchmark evaluates **80 independent cases** across 10 repeated runs, producing 800 observations. Confidence intervals resample whole case clusters, so repeated executions are not misrepresented as independent evidence.
 
 | Metric | Legacy router | Evidence-aware candidate |
 |---|---:|---:|

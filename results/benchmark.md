@@ -1,6 +1,6 @@
 # Public benchmark results
 
-The committed fixture contains **80 cases** and the default run executes **800 candidate evaluations** across 10 repeats.
+The committed fixture contains **80 cases** and the default run records **800 candidate observations** across 10 repeats. Confidence intervals resample the 80 case clusters rather than treating repeated observations as independent.
 
 | Metric | Legacy router | Evidence-aware candidate | Delta |
 |---|---:|---:|---:|
@@ -13,9 +13,9 @@ The committed fixture contains **80 cases** and the default run executes **800 c
 
 ## Reliability and operations
 
-- Candidate pass-rate 95% Wilson interval: `[0.9617, 0.9838]`
+- Candidate pass-rate 95% case-cluster bootstrap interval: `[0.9375, 1.0]`
 - Repeated-run pass-rate standard deviation: `0.000000`
-- Observed local p95 harness latency: `0.1814 ms`
+- Observed local p95 harness latency: `0.1554 ms`
 - Reference estimated cost per case: `$0.00000828`
 - Candidate release gates: `PASS`
 
