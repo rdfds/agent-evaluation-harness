@@ -42,7 +42,7 @@ def run_episode(
     fault: FaultMode = "none",
 ) -> WorkflowRun:
     with WorkflowEnvironment(fault=fault) as environment:
-        return agent.run(case, environment)
+        return agent.run(case.task(), environment)
 
 
 def _tool_names(run: WorkflowRun) -> list[str]:

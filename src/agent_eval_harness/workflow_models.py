@@ -18,6 +18,14 @@ FaultMode = Literal[
 
 
 @dataclass(frozen=True)
+class WorkflowTask:
+    case_id: str
+    request_id: str
+    actor: str
+    target_status: str
+
+
+@dataclass(frozen=True)
 class WorkflowCase:
     case_id: str
     request_id: str
@@ -40,6 +48,16 @@ class WorkflowCase:
             expected_outcome=outcome,
             expected_final_status=str(payload["expected_final_status"]),
             slice_name=str(payload["slice_name"]),
+        )
+
+    def task(self) -> WorkflowTask:
+        """Expose only execution inputs, keeping evaluator labels hidden."""
+
+        return WorkflowTask(
+            case_id=self.case_id,
+            request_id=self.request_id,
+            actor=self.actor,
+            target_status=self.target_status,
         )
 
 

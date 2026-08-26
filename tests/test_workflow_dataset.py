@@ -45,6 +45,12 @@ class WorkflowDatasetTests(unittest.TestCase):
         self.assertEqual({item["version"] for item in high_risk_versions}, {1, 2})
         self.assertEqual(sum(item["active"] for item in high_risk_versions), 1)
 
+    def test_agent_task_does_not_expose_grading_labels(self):
+        task = load_workflow_cases()[0].task()
+        self.assertFalse(hasattr(task, "expected_outcome"))
+        self.assertFalse(hasattr(task, "expected_final_status"))
+        self.assertFalse(hasattr(task, "slice_name"))
+
 
 if __name__ == "__main__":
     unittest.main()

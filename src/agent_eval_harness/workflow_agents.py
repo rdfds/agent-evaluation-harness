@@ -5,31 +5,31 @@ from __future__ import annotations
 from typing import Any, Protocol
 
 from .workflow_env import WorkflowEnvironment
-from .workflow_models import ToolResult, WorkflowCase, WorkflowRun
+from .workflow_models import ToolResult, WorkflowRun, WorkflowTask
 
 
 class WorkflowAgent(Protocol):
     name: str
 
-    def run(self, case: WorkflowCase, environment: WorkflowEnvironment) -> WorkflowRun: ...
+    def run(self, task: WorkflowTask, environment: WorkflowEnvironment) -> WorkflowRun: ...
 
 
 def _finalize(
     *,
     agent: str,
-    case: WorkflowCase,
+    task: WorkflowTask,
     environment: WorkflowEnvironment,
     outcome: str,
     retries: int,
 ) -> WorkflowRun:
-    state = environment.request_state(case.request_id)
+    state = environment.request_state(task.request_id)
     return WorkflowRun(
         agent=agent,
-        case_id=case.case_id,
+        case_id=task.case_id,
         fault=environment.fault.mode,
         outcome=outcome,  # type: ignore[arg-type]
         final_status=str(state["status"]),
-        mutation_count=environment.mutation_count(case.request_id),
+        mutation_count=environment.mutation_count(task.request_id),
         tool_calls=sum(event["stage"] == "tool_call" for event in environment.trace),
         retries=retries,
         trace=tuple(environment.trace),
@@ -41,12 +41,12 @@ class LegacyWorkflowAgent:
 
     name = "legacy_one_shot_executor"
 
-    def run(self, case: WorkflowCase, environment: WorkflowEnvironment) -> WorkflowRun:
-        request = environment.call("get_request", request_id=case.request_id)
+    def run(self, task: WorkflowTask, environment: WorkflowEnvironment) -> WorkflowRun:
+        request = environment.call("get_request", request_id=task.request_id)
         if not request.ok:
             return _finalize(
                 agent=self.name,
-                case=case,
+                task=task,
                 environment=environment,
                 outcome="failed",
                 retries=0,
@@ -57,27 +57,27 @@ class LegacyWorkflowAgent:
             )
             return _finalize(
                 agent=self.name,
-                case=case,
+                task=task,
                 environment=environment,
                 outcome="failed",
                 retries=0,
             )
-        if request.payload["status"] == case.target_status:
+        if request.payload["status"] == task.target_status:
             environment.trace.append(
                 {"stage": "agent_decision", "decision": "already_at_target"}
             )
             return _finalize(
                 agent=self.name,
-                case=case,
+                task=task,
                 environment=environment,
                 outcome="no_op",
                 retries=0,
             )
         result = environment.call(
             "apply_transition",
-            request_id=case.request_id,
-            actor=case.actor,
-            target_status=case.target_status,
+            request_id=task.request_id,
+            actor=task.actor,
+            target_status=task.target_status,
             expected_revision=int(request.payload["revision"]),
         )
         if result.ok:
@@ -91,7 +91,7 @@ class LegacyWorkflowAgent:
         )
         return _finalize(
             agent=self.name,
-            case=case,
+            task=task,
             environment=environment,
             outcome=outcome,
             retries=0,
@@ -134,16 +134,16 @@ class RecoveryWorkflowAgent:
             result = environment.call(tool_name, **arguments)
         return result, retries
 
-    def run(self, case: WorkflowCase, environment: WorkflowEnvironment) -> WorkflowRun:
+    def run(self, task: WorkflowTask, environment: WorkflowEnvironment) -> WorkflowRun:
         retries = 0
         request_result, used = self._call_with_retry(
-            environment, "get_request", request_id=case.request_id
+            environment, "get_request", request_id=task.request_id
         )
         retries += used
         if not request_result.ok:
             return _finalize(
                 agent=self.name,
-                case=case,
+                task=task,
                 environment=environment,
                 outcome="failed",
                 retries=retries,
@@ -155,18 +155,18 @@ class RecoveryWorkflowAgent:
             )
             return _finalize(
                 agent=self.name,
-                case=case,
+                task=task,
                 environment=environment,
                 outcome="blocked",
                 retries=retries,
             )
-        if request["status"] == case.target_status:
+        if request["status"] == task.target_status:
             environment.trace.append(
                 {"stage": "agent_decision", "decision": "already_at_target"}
             )
             return _finalize(
                 agent=self.name,
-                case=case,
+                task=task,
                 environment=environment,
                 outcome="no_op",
                 retries=retries,
@@ -182,14 +182,14 @@ class RecoveryWorkflowAgent:
             )
             return _finalize(
                 agent=self.name,
-                case=case,
+                task=task,
                 environment=environment,
                 outcome="blocked",
                 retries=retries,
             )
 
         approvals, used = self._call_with_retry(
-            environment, "list_approvals", request_id=case.request_id
+            environment, "list_approvals", request_id=task.request_id
         )
         retries += used
         if approvals.ok and any(
@@ -201,12 +201,12 @@ class RecoveryWorkflowAgent:
                     "decision": "refetch_incomplete_approvals",
                 }
             )
-            approvals = environment.call("list_approvals", request_id=case.request_id)
+            approvals = environment.call("list_approvals", request_id=task.request_id)
             retries += 1
         if not approvals.ok:
             return _finalize(
                 agent=self.name,
-                case=case,
+                task=task,
                 environment=environment,
                 outcome="blocked",
                 retries=retries,
@@ -226,7 +226,7 @@ class RecoveryWorkflowAgent:
             )
             return _finalize(
                 agent=self.name,
-                case=case,
+                task=task,
                 environment=environment,
                 outcome="blocked",
                 retries=retries,
@@ -234,24 +234,24 @@ class RecoveryWorkflowAgent:
 
         transition = environment.call(
             "apply_transition",
-            request_id=case.request_id,
-            actor=case.actor,
-            target_status=case.target_status,
+            request_id=task.request_id,
+            actor=task.actor,
+            target_status=task.target_status,
             expected_revision=request["revision"],
         )
         if transition.error == "revision_conflict":
             environment.trace.append(
                 {"stage": "agent_decision", "decision": "refresh_after_revision_conflict"}
             )
-            refreshed = environment.call("get_request", request_id=case.request_id)
+            refreshed = environment.call("get_request", request_id=task.request_id)
             normalized = self._normalize_request(refreshed.payload) if refreshed.ok else None
             retries += 1
             if normalized is not None:
                 transition = environment.call(
                     "apply_transition",
-                    request_id=case.request_id,
-                    actor=case.actor,
-                    target_status=case.target_status,
+                    request_id=task.request_id,
+                    actor=task.actor,
+                    target_status=task.target_status,
                     expected_revision=normalized["revision"],
                 )
 
@@ -266,7 +266,7 @@ class RecoveryWorkflowAgent:
         )
         return _finalize(
             agent=self.name,
-            case=case,
+            task=task,
             environment=environment,
             outcome=outcome,
             retries=retries,
