@@ -8,6 +8,7 @@ from datetime import datetime, timezone
 import hashlib
 import json
 from pathlib import Path
+import re
 from statistics import fmean
 import threading
 import time
@@ -23,6 +24,7 @@ from .workflow_dataset import (
 from .workflow_env import WorkflowEnvironment
 from .workflow_eval import FAULT_SUITE, RECOVERABLE_FAULTS, score_clean_run, score_fault_run
 from .workflow_models import FaultMode, WorkflowCase
+from .workflow_models import WorkflowRun
 
 
 DEFAULT_MODELS = ("gpt-5.6-luna", "gpt-5.6-terra", "gpt-5.6-sol")
@@ -33,6 +35,7 @@ MODEL_PRICING_PER_MILLION = {
     "gpt-5.6-terra": {"input": 2.00, "cached_input": 0.20, "output": 12.00},
     "gpt-5.6-sol": {"input": 4.00, "cached_input": 0.40, "output": 20.00},
 }
+SECRET_PATTERN = re.compile(r"sk-(?:proj-)?[A-Za-z0-9_-]{16,}")
 
 
 @dataclass(frozen=True)
@@ -426,6 +429,83 @@ def build_live_artifact(
             ),
         },
         "episodes": sorted(records, key=lambda record: record["episode_id"]),
+    }
+
+
+def verify_live_artifact(artifact: dict[str, Any]) -> dict[str, int]:
+    """Recompute recorded scores and summaries without making provider calls."""
+
+    protocol = artifact.get("protocol") or {}
+    models = list(protocol.get("models") or [])
+    prompts = list((protocol.get("prompts") or {}).keys())
+    records = list(artifact.get("episodes") or [])
+    if artifact.get("schema_version") != 1 or not models or not prompts or not records:
+        raise ValueError("Incomplete live artifact")
+    if SECRET_PATTERN.search(json.dumps(artifact)):
+        raise ValueError("Potential API credential found in live artifact")
+
+    specs = build_live_episode_specs(
+        models=models,
+        prompts=prompts,
+        fault_request_ids=protocol.get("fault_request_ids") or DEFAULT_FAULT_REQUEST_IDS,
+    )
+    expected_ids = [spec.episode_id for spec in specs]
+    recorded_ids = [str(record.get("episode_id")) for record in records]
+    if len(recorded_ids) != len(set(recorded_ids)):
+        raise ValueError("Duplicate live episode IDs")
+    if set(recorded_ids) != set(expected_ids):
+        raise ValueError("Live episode matrix does not match the recorded protocol")
+
+    cases_by_id = {case.case_id: case for case in load_workflow_cases()}
+    for record in records:
+        case = cases_by_id.get(str(record.get("case_id")))
+        if case is None:
+            raise ValueError(f"Unknown case in live artifact: {record.get('case_id')}")
+        run_payload = dict(record.get("run") or {})
+        run_payload["trace"] = tuple(run_payload.get("trace") or [])
+        try:
+            run = WorkflowRun(**run_payload)
+        except TypeError as exc:
+            raise ValueError(f"Invalid recorded run for {record['episode_id']}") from exc
+        score = (
+            score_clean_run(run, case)
+            if record.get("fault") == "none"
+            else score_fault_run(run, case)
+        )
+        score_payload = asdict(score)
+        score_payload.pop("run")
+        score_payload["failures"] = list(score.failures)
+        if score_payload != record.get("score"):
+            raise ValueError(f"Recorded score drift for {record['episode_id']}")
+        if record.get("fault") != run.fault:
+            raise ValueError(f"Fault identity drift for {record['episode_id']}")
+        if run.tool_calls != sum(
+            event.get("stage") == "tool_call" for event in run.trace
+        ):
+            raise ValueError(f"Tool-call count drift for {record['episode_id']}")
+        provider = record.get("provider") or {}
+        if provider.get("requested_model") != record.get("requested_model"):
+            raise ValueError(f"Model identity drift for {record['episode_id']}")
+        if provider.get("prompt_variant") != record.get("prompt_variant"):
+            raise ValueError(f"Prompt identity drift for {record['episode_id']}")
+        if provider.get("response_calls") != sum(
+            event.get("stage") == "model_call" for event in run.trace
+        ):
+            raise ValueError(f"Provider-call count drift for {record['episode_id']}")
+
+    rebuilt = build_live_artifact(
+        records,
+        models=models,
+        prompts=prompts,
+        fault_request_ids=protocol.get("fault_request_ids") or DEFAULT_FAULT_REQUEST_IDS,
+    )
+    for key in ("protocol", "configs", "prompt_deltas_explicit_minus_concise", "totals"):
+        if rebuilt[key] != artifact.get(key):
+            raise ValueError(f"Live artifact {key} summary drift")
+    return {
+        "episodes": len(records),
+        "passed": sum(bool(record["score"]["passed"]) for record in records),
+        "failed": sum(not bool(record["score"]["passed"]) for record in records),
     }
 
 

@@ -1,5 +1,8 @@
 from __future__ import annotations
 
+import copy
+import json
+from pathlib import Path
 import unittest
 
 from agent_eval_harness.live_benchmark import (
@@ -7,6 +10,7 @@ from agent_eval_harness.live_benchmark import (
     build_live_artifact,
     build_live_episode_specs,
     render_live_markdown,
+    verify_live_artifact,
 )
 from agent_eval_harness.workflow_eval import FAULT_SUITE
 
@@ -73,6 +77,31 @@ class LiveBenchmarkTests(unittest.TestCase):
         self.assertIn("Live model workflow benchmark", markdown)
         self.assertIn("Prompt ablation", markdown)
         self.assertIn("one run per task/fault pair", markdown)
+
+
+class CommittedLiveArtifactTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        root = Path(__file__).resolve().parents[1]
+        cls.artifact = json.loads(
+            (root / "results/live_model_benchmark.json").read_text(encoding="utf-8")
+        )
+        cls.markdown = (root / "results/live_model_benchmark.md").read_text(
+            encoding="utf-8"
+        )
+
+    def test_committed_artifact_recomputes_without_provider_access(self):
+        summary = verify_live_artifact(self.artifact)
+        self.assertEqual(summary, {"episodes": 234, "passed": 233, "failed": 1})
+        self.assertEqual(render_live_markdown(self.artifact), self.markdown)
+
+    def test_score_tampering_is_detected(self):
+        altered = copy.deepcopy(self.artifact)
+        altered["episodes"][0]["score"]["passed"] = not altered["episodes"][0][
+            "score"
+        ]["passed"]
+        with self.assertRaisesRegex(ValueError, "Recorded score drift"):
+            verify_live_artifact(altered)
 
 
 if __name__ == "__main__":

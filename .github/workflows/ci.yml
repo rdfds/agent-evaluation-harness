@@ -31,5 +31,7 @@ jobs:
         run: python -m agent_eval_harness --check
       - name: Check stateful workflow benchmark
         run: python -m agent_eval_harness.workflow_cli --check
+      - name: Verify recorded live benchmark
+        run: python -m agent_eval_harness.live_cli --check
       - name: Run tests
         run: python -m unittest discover -s tests -v

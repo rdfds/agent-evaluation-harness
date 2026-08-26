@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+import json
 from pathlib import Path
 from typing import Sequence, cast
 
@@ -12,6 +13,8 @@ from .live_benchmark import (
     build_live_artifact,
     build_live_episode_specs,
     execute_live_specs,
+    render_live_markdown,
+    verify_live_artifact,
     write_live_artifacts,
 )
 from .live_client import ResponsesClient, load_api_key
@@ -37,11 +40,31 @@ def _parser() -> argparse.ArgumentParser:
     parser.add_argument("--checkpoint", type=Path, default=DEFAULT_CHECKPOINT)
     parser.add_argument("--output", type=Path, default=DEFAULT_JSON)
     parser.add_argument("--markdown", type=Path, default=DEFAULT_MARKDOWN)
+    parser.add_argument(
+        "--check",
+        action="store_true",
+        help="Verify the committed traces, scores, summaries, and report without an API key.",
+    )
     return parser
 
 
 def main(argv: Sequence[str] | None = None) -> int:
     args = _parser().parse_args(argv)
+    if args.check:
+        if not args.output.exists() or not args.markdown.exists():
+            raise SystemExit("Missing committed live benchmark artifacts")
+        artifact = json.loads(args.output.read_text(encoding="utf-8"))
+        try:
+            summary = verify_live_artifact(artifact)
+        except ValueError as exc:
+            raise SystemExit(str(exc)) from exc
+        if render_live_markdown(artifact) != args.markdown.read_text(encoding="utf-8"):
+            raise SystemExit("Live benchmark Markdown drift detected")
+        print(
+            f"PASS: {summary['episodes']} recorded live episodes; "
+            f"{summary['passed']} passed; {summary['failed']} failed"
+        )
+        return 0
     prompts = cast(list[PromptVariant], args.prompts)
     specs = build_live_episode_specs(models=args.models, prompts=prompts)
     client = ResponsesClient(load_api_key())
