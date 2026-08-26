@@ -28,13 +28,13 @@ DOCUMENTS = [
         "id": "policy-22",
         "title": "Record retention",
         "answer": "Quality investigation records must be retained for seven years after closure.",
-        "aliases": ["record retention", "retention period", "keep investigation records", "seven year archive"],
+        "aliases": ["record retention", "retention period", "keep investigation records", "seven year archive", "investigation files archived"],
     },
     {
         "id": "memo-09",
         "title": "Incident escalation",
         "answer": "High-severity incidents must be escalated to quality leadership within four hours.",
-        "aliases": ["incident escalation", "high severity escalation", "four hour notification", "quality leadership alert"],
+        "aliases": ["incident escalation", "high severity escalation", "four hour notification", "quality leadership alert", "time allowed before escalating"],
     },
     {
         "id": "policy-31",
@@ -58,7 +58,7 @@ DOCUMENTS = [
         "id": "memo-15",
         "title": "Data export approval",
         "answer": "Exports containing regulated records require owner approval and a logged destination review.",
-        "aliases": ["data export approval", "regulated record export", "destination review", "export owner signoff"],
+        "aliases": ["data export approval", "regulated record export", "destination review", "export owner signoff", "regulated records leave the system"],
     },
 ]
 
@@ -238,4 +238,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-
