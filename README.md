@@ -4,7 +4,26 @@
 
 A reproducible testbed for failure-aware evaluation of tool-using agents. It grades terminal database state, required tool trajectories, bounded recovery, safe blocking, strict replay, and counterfactual failure localization—not just the final answer.
 
-The primary benchmark runs a one-shot executor and a recovery-aware executor against a fresh SQLite change-control environment for every episode. Evaluation labels remain outside the agent-visible task contract.
+The same hidden-label contract drives deterministic executors and live Responses API models against a fresh SQLite change-control environment for every episode.
+
+## Live model results
+
+The recorded model comparison runs Luna, Terra, and Sol with concise and explicit recovery prompts across **234 model-backed episodes**. Each configuration sees all 24 clean tasks and 15 controlled fault episodes.
+
+| Model | Prompt | Clean full pass | Fault handling | p95 episode | Est. cost |
+|---|---|---:|---:|---:|---:|
+| `gpt-5.6-luna` | concise | 95.83% | 100.00% | 9.08s | $0.0293 |
+| `gpt-5.6-luna` | explicit | **100.00%** | **100.00%** | 9.97s | $0.0348 |
+| `gpt-5.6-terra` | concise | **100.00%** | **100.00%** | 9.06s | $0.2967 |
+| `gpt-5.6-terra` | explicit | **100.00%** | **100.00%** | 8.31s | $0.3446 |
+| `gpt-5.6-sol` | concise | **100.00%** | **100.00%** | 13.11s | $0.5732 |
+| `gpt-5.6-sol` | explicit | **100.00%** | **100.00%** | 12.79s | $0.6526 |
+
+Across the full run, **233/234 episodes passed**. The only miss reached the correct blocked state but attempted a write after observing a missing approval; the database prevented mutation, while trajectory-aware grading exposed the unsafe attempt. All **90/90 fault episodes passed**.
+
+- [Live model report](results/live_model_benchmark.md)
+- [Machine-readable live traces](results/live_model_benchmark.json)
+- [Live evaluation card](LIVE_EVALUATION_CARD.md)
 
 ## Stateful reliability results
 
@@ -94,8 +113,17 @@ python -m pip install -e .
 agent-workflow-eval
 agent-workflow-eval --check
 agent-eval --check
+agent-live-eval --check
 python -m unittest discover -s tests -v
 ```
+
+Run a new live comparison by setting `OPENAI_API_KEY` in the environment or an ignored `.env.local`, then execute:
+
+```bash
+agent-live-eval
+```
+
+The runner checkpoints each completed episode and resumes interrupted matrices. It never writes the API key into an artifact.
 
 Regenerate both committed fixtures and confirm that their source data has not drifted:
 
@@ -124,7 +152,7 @@ class WorkflowAgent(Protocol):
 
 `WorkflowTask` contains only the request identifier, actor, and requested target state. Expected outcomes, final states, and evaluation slices remain in `WorkflowCase`, which is never passed to the executor.
 
-A model-backed adapter can translate the environment methods into function tools while retaining the same database, perturbations, terminal-state grader, and replay contract. Live runs should additionally record the prompt and model identifiers, sampling configuration, provider token usage, observed latency, and billed cost.
+`ModelWorkflowAgent` translates the same environment methods into strict Responses API function tools. Live runs retain the database, perturbations, and hidden graders while adding model and prompt identities, provider token accounting, observed latency, estimated cost, and resumable execution.
 
 ## Repository map
 
@@ -137,8 +165,9 @@ src/agent_eval_harness/            Environments, agents, scorers, replay, gates,
 tests/                             Dataset, state, fault, replay, and artifact tests
 EVALUATION_CARD.md                 Routing benchmark contract and limitations
 STATEFUL_EVALUATION_CARD.md        Workflow benchmark contract and limitations
+LIVE_EVALUATION_CARD.md            Live model protocol, results, integrity, and limitations
 ```
 
 ## Scope
 
-The committed results validate deterministic orchestration and the evaluation machinery on one compact workflow domain. They do not estimate general language-model capability. The model-neutral protocols are intentionally separated from the fixtures so live or recorded model agents can be evaluated without changing the graders.
+The committed results validate the evaluation machinery and one recorded model comparison in a compact workflow domain. They do not estimate general language-model capability. The deterministic and live agents share the same model-neutral environment and hidden graders so their execution paths remain directly auditable.
