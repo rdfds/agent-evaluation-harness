@@ -14,7 +14,7 @@ class WorkflowAgent(Protocol):
     def run(self, task: WorkflowTask, environment: WorkflowEnvironment) -> WorkflowRun: ...
 
 
-def _finalize(
+def finalize_workflow_run(
     *,
     agent: str,
     task: WorkflowTask,
@@ -44,7 +44,7 @@ class LegacyWorkflowAgent:
     def run(self, task: WorkflowTask, environment: WorkflowEnvironment) -> WorkflowRun:
         request = environment.call("get_request", request_id=task.request_id)
         if not request.ok:
-            return _finalize(
+            return finalize_workflow_run(
                 agent=self.name,
                 task=task,
                 environment=environment,
@@ -55,7 +55,7 @@ class LegacyWorkflowAgent:
             environment.trace.append(
                 {"stage": "agent_decision", "decision": "unrecognized_request_schema"}
             )
-            return _finalize(
+            return finalize_workflow_run(
                 agent=self.name,
                 task=task,
                 environment=environment,
@@ -66,7 +66,7 @@ class LegacyWorkflowAgent:
             environment.trace.append(
                 {"stage": "agent_decision", "decision": "already_at_target"}
             )
-            return _finalize(
+            return finalize_workflow_run(
                 agent=self.name,
                 task=task,
                 environment=environment,
@@ -89,7 +89,7 @@ class LegacyWorkflowAgent:
         environment.trace.append(
             {"stage": "agent_decision", "decision": outcome, "error": result.error}
         )
-        return _finalize(
+        return finalize_workflow_run(
             agent=self.name,
             task=task,
             environment=environment,
@@ -141,7 +141,7 @@ class RecoveryWorkflowAgent:
         )
         retries += used
         if not request_result.ok:
-            return _finalize(
+            return finalize_workflow_run(
                 agent=self.name,
                 task=task,
                 environment=environment,
@@ -153,7 +153,7 @@ class RecoveryWorkflowAgent:
             environment.trace.append(
                 {"stage": "agent_decision", "decision": "unsafe_unknown_schema"}
             )
-            return _finalize(
+            return finalize_workflow_run(
                 agent=self.name,
                 task=task,
                 environment=environment,
@@ -164,7 +164,7 @@ class RecoveryWorkflowAgent:
             environment.trace.append(
                 {"stage": "agent_decision", "decision": "already_at_target"}
             )
-            return _finalize(
+            return finalize_workflow_run(
                 agent=self.name,
                 task=task,
                 environment=environment,
@@ -180,7 +180,7 @@ class RecoveryWorkflowAgent:
             environment.trace.append(
                 {"stage": "agent_decision", "decision": "block_without_policy"}
             )
-            return _finalize(
+            return finalize_workflow_run(
                 agent=self.name,
                 task=task,
                 environment=environment,
@@ -204,7 +204,7 @@ class RecoveryWorkflowAgent:
             approvals = environment.call("list_approvals", request_id=task.request_id)
             retries += 1
         if not approvals.ok:
-            return _finalize(
+            return finalize_workflow_run(
                 agent=self.name,
                 task=task,
                 environment=environment,
@@ -224,7 +224,7 @@ class RecoveryWorkflowAgent:
                     "required_role": required_role,
                 }
             )
-            return _finalize(
+            return finalize_workflow_run(
                 agent=self.name,
                 task=task,
                 environment=environment,
@@ -264,7 +264,7 @@ class RecoveryWorkflowAgent:
         environment.trace.append(
             {"stage": "agent_decision", "decision": outcome, "error": transition.error}
         )
-        return _finalize(
+        return finalize_workflow_run(
             agent=self.name,
             task=task,
             environment=environment,

@@ -5,3 +5,6 @@ __pycache__/
 .venv/
 build/
 dist/
+.env
+.env.local
+.live_eval_checkpoint.jsonl
