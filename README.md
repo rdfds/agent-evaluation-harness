@@ -2,125 +2,143 @@
 
 [![CI](https://github.com/rdfds/agent-evaluation-harness/actions/workflows/ci.yml/badge.svg)](https://github.com/rdfds/agent-evaluation-harness/actions/workflows/ci.yml)
 
-A failure-aware evaluation system for tool-using agents. It separates routing, answer, evidence, abstention, latency, cost, and repeated-run reliability so a candidate cannot hide a serious regression behind one aggregate score.
+A reproducible testbed for failure-aware evaluation of tool-using agents. It grades terminal database state, required tool trajectories, bounded recovery, safe blocking, strict replay, and counterfactual failure localization—not just the final answer.
 
-The repository includes an 80-case public fixture, a legacy comparison policy, an evidence-aware candidate, typed traces, case-cluster bootstrap intervals, per-slice metrics, configurable release gates, and mutation tests that prove the gates fail when important behavior breaks.
+The primary benchmark runs a one-shot executor and a recovery-aware executor against a fresh SQLite change-control environment for every episode. Evaluation labels remain outside the agent-visible task contract.
 
-## Results
+## Stateful reliability results
 
-The default benchmark evaluates **80 independent cases** across 10 repeated runs, producing 800 observations. Confidence intervals resample whole case clusters, so repeated executions are not misrepresented as independent evidence.
+The committed suite contains **24 clean stateful tasks**. Twelve mutation-eligible tasks are also run under five controlled tool faults, producing **60 fault episodes per agent**.
+
+| Metric | One-shot baseline | Recovery-aware candidate |
+|---|---:|---:|
+| Clean terminal-state accuracy | **100.00%** | **100.00%** |
+| Clean trajectory compliance | 16.67% | **100.00%** |
+| Clean full-pass rate | 16.67% | **100.00%** |
+| Recoverable-fault terminal recovery | 50.00% | **100.00%** |
+| Full fault-handling rate | 0.00% | **100.00%** |
+| Permission fault fail-closed rate | **100.00%** | **100.00%** |
+
+The baseline reaches every clean terminal state because the database rejects invalid mutations. It nevertheless skips required policy and approval inspection. Outcome-only grading would call those runs perfect; trajectory-aware grading exposes the shortcut.
+
+Strict replay reproduces all **60/60** candidate fault traces. Counterfactual comparison with a clean replay localizes all **60/60** activated candidate faults to the first divergent tool boundary without reading the injected fault label.
+
+- [Stateful benchmark report](results/workflow_benchmark.md)
+- [Machine-readable workflow artifact](results/workflow_benchmark.json)
+- [Stateful evaluation card](STATEFUL_EVALUATION_CARD.md)
+
+## Evaluation architecture
+
+```mermaid
+flowchart LR
+    A[Hidden grading contract] --> G[State + trajectory grader]
+    B[Agent-visible task] --> C[Workflow agent]
+    C --> D[SQLite tool environment]
+    D --> E[Terminal state]
+    D --> F[Structured trace]
+    H[Timeout / schema / stale / partial / permission faults] --> D
+    E --> G
+    F --> G
+    F --> I[Strict replay]
+    I --> J[Clean counterfactual]
+    J --> K[First divergent tool]
+```
+
+Every workflow episode starts from a fresh database and exposes four tools:
+
+- `get_request`
+- `get_active_policy`
+- `list_approvals`
+- `apply_transition`
+
+The environment independently enforces actor permissions, current policy versions, required approvals, legal state transitions, and optimistic revisions. Successful mutation is therefore necessary but insufficient: the grader also verifies that required checks occurred before the write.
+
+## Controlled faults
+
+| Fault | Tool boundary | Expected behavior |
+|---|---|---|
+| `timeout_once` | Active-policy lookup | Retry once, then continue |
+| `schema_drift` | Request lookup | Normalize renamed state and version fields |
+| `stale_read` | Request lookup | Detect the revision conflict, refresh, and retry once |
+| `partial_response` | Approval lookup | Reject incomplete evidence and refetch |
+| `permission_denied` | Transition write | Fail closed without mutation or retry |
+
+Faults modify the real tool result or error path. They are not applied after the agent has already produced a response.
+
+## Replay and localization
+
+The environment records ordered tool calls, arguments, results, agent decisions, mutations, retry counts, and terminal state. A strict replay reruns the same task and fault and hashes the complete structured episode; any divergence changes the digest.
+
+For localization, the harness reruns the task without the perturbation and compares tool results in order. The first differing boundary is reported as the candidate cause and checked against the injector's hidden ground truth. Fault labels are excluded from the comparison.
+
+## Routing and evidence fixture
+
+The repository also retains the original 80-case routing benchmark covering retrieval, structured queries, abstention, and ambiguous requests. Ten repeats produce 800 observations, but uncertainty resamples the **80 independent case clusters** rather than treating repeated deterministic executions as new evidence.
 
 | Metric | Legacy router | Evidence-aware candidate |
 |---|---:|---:|
 | Pass rate | 26.25% | **97.50%** |
 | Route accuracy | 60.00% | **97.50%** |
-| Answer accuracy | 26.25% | **97.50%** |
 | Evidence support | 32.81% | **96.88%** |
 | Abstention accuracy | 0.00% | **100.00%** |
 | Unsupported-answer rate | 20.00% | **0.00%** |
 
-The candidate passes all seven release gates. Mutation testing detects **4/4 seeded regressions**: route swaps, stale answers, missing evidence, and disabled abstention.
-
-- [Full benchmark report](results/benchmark.md)
-- [Machine-readable artifact](results/benchmark.json)
-- [Evaluation card](EVALUATION_CARD.md)
-
-## What is evaluated
-
-```mermaid
-flowchart LR
-    A[80 held-out cases] --> B[Agent adapter]
-    B --> C[Route decision]
-    C --> D[Retrieval]
-    C --> E[Structured query]
-    C --> F[Abstain]
-    D --> G[Typed response + evidence]
-    E --> G
-    F --> G
-    G --> H[Failure-aware scorer]
-    H --> I[Quality + slice metrics]
-    H --> J[Latency + cost telemetry]
-    I --> K[CI release gates]
-    J --> K
-    L[Seeded faults] --> K
-```
-
-Each response carries:
-
-- selected route and normalized answer
-- evidence identifiers used to support the answer
-- routing and tool trace events
-- confidence, latency, and token/cost accounting
-
-Each evaluation case declares its expected route, answer, required evidence, difficulty, and slice. The scorer records distinct `route_mismatch`, `answer_mismatch`, `missing_evidence`, and `unsupported_answer` failures.
-
-## Dataset
-
-The committed fixture covers:
-
-| Slice | Cases | Purpose |
-|---|---:|---|
-| Retrieval | 32 | Policy, note, memo, and guidance lookup across paraphrases |
-| Structured query | 24 | Counts, averages, filtered summaries, and alternate quantitative phrasing |
-| Abstention | 16 | Missing, private, forward-looking, and instruction-conflict requests |
-| Challenge | 8 | Mixed cues, hard paraphrases, and routing ambiguity |
-
-The two retained hard failures are reported in the artifact and keep the public benchmark from presenting a false perfect score.
+- [Routing benchmark report](results/benchmark.md)
+- [Routing artifact](results/benchmark.json)
+- [Routing evaluation card](EVALUATION_CARD.md)
 
 ## Quickstart
 
 ```bash
 python -m pip install -e .
-python -m agent_eval_harness
-python -m agent_eval_harness --check
+agent-workflow-eval
+agent-workflow-eval --check
+agent-eval --check
 python -m unittest discover -s tests -v
 ```
 
-The first command writes `results/benchmark.json` and `results/benchmark.md`. The `--check` command re-runs the benchmark, compares deterministic fields with the committed artifact, enforces release thresholds, and verifies that every seeded regression is detected. Machine-dependent latency fields are intentionally excluded from golden equality checks.
-
-Regenerate the fixture and confirm that it is committed without drift:
+Regenerate both committed fixtures and confirm that their source data has not drifted:
 
 ```bash
 python scripts/build_fixture.py
+python scripts/build_workflow_fixture.py
 git diff --exit-code -- data
 ```
 
-## Release gates
+Both benchmark checks compare fresh deterministic results with committed JSON artifacts and fail if a metric, trace digest, fixture hash, release gate, or counterfactual result changes unexpectedly.
 
-The default candidate must satisfy all of the following:
+## Adapting another agent
 
-- pass rate, route accuracy, and answer accuracy at or above 95%
-- evidence-support and abstention accuracy at or above 95%
-- unsupported-answer rate at or below 2%
-- repeated-run pass-rate standard deviation at or below 0.001
-- all seeded faults detected by at least one gate
-
-Quality thresholds are intentionally evaluated separately. A route regression cannot be offset by a good answer, and an unsupported answer cannot be hidden by high aggregate accuracy.
-
-## Use with a model-backed agent
-
-Implement the small `Agent` protocol in `runtime.py`:
+Implement the small workflow protocol:
 
 ```python
-class Agent(Protocol):
+class WorkflowAgent(Protocol):
     name: str
 
-    def answer(self, query: str) -> AgentResponse: ...
+    def run(
+        self,
+        task: WorkflowTask,
+        environment: WorkflowEnvironment,
+    ) -> WorkflowRun: ...
 ```
 
-An adapter can call any model or orchestration stack as long as it returns an `AgentResponse` with a route, answer, evidence IDs, trace, usage, and latency. The evaluator and gates do not depend on a provider SDK.
+`WorkflowTask` contains only the request identifier, actor, and requested target state. Expected outcomes, final states, and evaluation slices remain in `WorkflowCase`, which is never passed to the executor.
+
+A model-backed adapter can translate the environment methods into function tools while retaining the same database, perturbations, terminal-state grader, and replay contract. Live runs should additionally record the prompt and model identifiers, sampling configuration, provider token usage, observed latency, and billed cost.
 
 ## Repository map
 
 ```text
-data/                         Committed cases and knowledge fixtures
-results/                      Reproducible JSON and Markdown benchmark artifacts
-scripts/build_fixture.py      Deterministic dataset builder
-src/agent_eval_harness/       Agents, contracts, metrics, gates, faults, and CLI
-tests/                        Dataset, trace, metric, gate, mutation, and artifact tests
-EVALUATION_CARD.md            Scope, methods, limitations, and interpretation
+data/                              Routing and stateful workflow fixtures
+results/                           Reproducible JSON and Markdown artifacts
+scripts/build_fixture.py           Routing fixture builder
+scripts/build_workflow_fixture.py  Stateful task and database builder
+src/agent_eval_harness/            Environments, agents, scorers, replay, gates, and CLIs
+tests/                             Dataset, state, fault, replay, and artifact tests
+EVALUATION_CARD.md                 Routing benchmark contract and limitations
+STATEFUL_EVALUATION_CARD.md        Workflow benchmark contract and limitations
 ```
 
-## Interpretation
+## Scope
 
-The public benchmark validates the harness and the included deterministic routing policies. It is designed so the same contracts can evaluate recorded or live model responses; it does not represent a hosted foundation-model benchmark. Reference cost is computed from configurable token rates, while observed latency is reported separately and allowed to vary by machine.
+The committed results validate deterministic orchestration and the evaluation machinery on one compact workflow domain. They do not estimate general language-model capability. The model-neutral protocols are intentionally separated from the fixtures so live or recorded model agents can be evaluated without changing the graders.
