@@ -1,0 +1,2264 @@
+{
+  "attribution": {
+    "baseline": {
+      "activated_probes": 36,
+      "agent": "legacy_one_shot_executor",
+      "by_fault": {
+        "partial_response": {
+          "activated": 0,
+          "localized": 0,
+          "probes": 12
+        },
+        "permission_denied": {
+          "activated": 12,
+          "localized": 12,
+          "probes": 12
+        },
+        "schema_drift": {
+          "activated": 12,
+          "localized": 12,
+          "probes": 12
+        },
+        "stale_read": {
+          "activated": 12,
+          "localized": 12,
+          "probes": 12
+        },
+        "timeout_once": {
+          "activated": 0,
+          "localized": 0,
+          "probes": 12
+        }
+      },
+      "localization_accuracy": 1.0,
+      "outcome_changed_probes": 36,
+      "probes": 60,
+      "records": [
+        {
+          "attributed_tool": null,
+          "case_id": "workflow-ready-01",
+          "clean_digest": "f0a884c433bdf038c3c6a671130c29727476ae839dbff8b48d42485395c037a6",
+          "expected_tool": "get_active_policy",
+          "fault": "timeout_once",
+          "fault_activated": false,
+          "localized": false,
+          "observed_digest": "a2ab26802995068cb4d4ffd1494fbc86ed26fc5e88a9c898df7eed565df6ac4e",
+          "outcome_changed": false,
+          "strict_replay_matched": true
+        },
+        {
+          "attributed_tool": null,
+          "case_id": "workflow-ready-02",
+          "clean_digest": "c926195bba916d46eacb21c5ee792ba48b34f2b3f293c8c1e3ec38fee3846e50",
+          "expected_tool": "get_active_policy",
+          "fault": "timeout_once",
+          "fault_activated": false,
+          "localized": false,
+          "observed_digest": "785b9cf9a50a851dce914dceb03aad47b4a3144938eb7fd93c9a1685ca4ccc82",
+          "outcome_changed": false,
+          "strict_replay_matched": true
+        },
+        {
+          "attributed_tool": null,
+          "case_id": "workflow-ready-03",
+          "clean_digest": "deecf8ce6ed663bbc7dffbc2c5e204f902197045b3151b7c97828be4f8a16cbf",
+          "expected_tool": "get_active_policy",
+          "fault": "timeout_once",
+          "fault_activated": false,
+          "localized": false,
+          "observed_digest": "167a90c0d99a419cf8ca350ff50bab8a1d073ef00c7f8e476a87b53521961e60",
+          "outcome_changed": false,
+          "strict_replay_matched": true
+        },
+        {
+          "attributed_tool": null,
+          "case_id": "workflow-ready-04",
+          "clean_digest": "47a30ba0738ad7b8ac9622d24ffb47e23b2f7a165e6abbd61f73001f42fdbe63",
+          "expected_tool": "get_active_policy",
+          "fault": "timeout_once",
+          "fault_activated": false,
+          "localized": false,
+          "observed_digest": "9b89ec5c5e6fbc9782d7837713e0fc5f592079c36d326b1d3cb65e52eb7426e0",
+          "outcome_changed": false,
+          "strict_replay_matched": true
+        },
+        {
+          "attributed_tool": null,
+          "case_id": "workflow-ready-05",
+          "clean_digest": "52a243834281a0895f6c787ef464d9a29c772308e6a97530add99c9223c11b74",
+          "expected_tool": "get_active_policy",
+          "fault": "timeout_once",
+          "fault_activated": false,
+          "localized": false,
+          "observed_digest": "6fe4839025c7ff23cf05807fd21a1a23980803929087b032428720e79315ccea",
+          "outcome_changed": false,
+          "strict_replay_matched": true
+        },
+        {
+          "attributed_tool": null,
+          "case_id": "workflow-ready-06",
+          "clean_digest": "4f9a3cefc8ff2d072debb00acfa9e52add364fbf652e6aa57de0c890edf6f44e",
+          "expected_tool": "get_active_policy",
+          "fault": "timeout_once",
+          "fault_activated": false,
+          "localized": false,
+          "observed_digest": "e2a40eb919839b73ba2e57d9950b817fe1543835cde33f6088186e1192fce9f2",
+          "outcome_changed": false,
+          "strict_replay_matched": true
+        },
+        {
+          "attributed_tool": null,
+          "case_id": "workflow-policy-v2-01",
+          "clean_digest": "903652a913d9c13ba2b271826df12bc069ce6880f9b4108fa2cb8c4f4d9a4932",
+          "expected_tool": "get_active_policy",
+          "fault": "timeout_once",
+          "fault_activated": false,
+          "localized": false,
+          "observed_digest": "eaf344e6a576f22bca5c87b1cc4aab88e717a8b048a3dd45982f0db205a7694e",
+          "outcome_changed": false,
+          "strict_replay_matched": true
+        },
+        {
+          "attributed_tool": null,
+          "case_id": "workflow-policy-v2-02",
+          "clean_digest": "fe1b1ddd7db2a6a49bfde57e4f41a20c405a3022d42361a50b0e79db883db5a9",
+          "expected_tool": "get_active_policy",
+          "fault": "timeout_once",
+          "fault_activated": false,
+          "localized": false,
+          "observed_digest": "6d2dfc21aff539558982e78943c52ce34fda651269dc5cf9d5d665b4a04dd930",
+          "outcome_changed": false,
+          "strict_replay_matched": true
+        },
+        {
+          "attributed_tool": null,
+          "case_id": "workflow-policy-v2-03",
+          "clean_digest": "e5a8f3a1c66819e1a9a8f6e623e637a7c84f8a229791fdec8317040623f4b6e0",
+          "expected_tool": "get_active_policy",
+          "fault": "timeout_once",
+          "fault_activated": false,
+          "localized": false,
+          "observed_digest": "4adadec94323d3dc3dd1b780ebb3285c756bad4e9af2bdd8bed71a15b1b531de",
+          "outcome_changed": false,
+          "strict_replay_matched": true
+        },
+        {
+          "attributed_tool": null,
+          "case_id": "workflow-revision-01",
+          "clean_digest": "623ee0ca2bbb433979fb69dc5b312aef4c9fd4740bff0cb101149b79a1e21e93",
+          "expected_tool": "get_active_policy",
+          "fault": "timeout_once",
+          "fault_activated": false,
+          "localized": false,
+          "observed_digest": "76d7360a0c160675e03a7d988209e6ca28944cba2d6c3ad7562cf784e455a340",
+          "outcome_changed": false,
+          "strict_replay_matched": true
+        },
+        {
+          "attributed_tool": null,
+          "case_id": "workflow-revision-02",
+          "clean_digest": "6fbf23a0320598982fb0b8d7b59a6083e5cc5d7e965adfd18970b5ad3e73a3d1",
+          "expected_tool": "get_active_policy",
+          "fault": "timeout_once",
+          "fault_activated": false,
+          "localized": false,
+          "observed_digest": "32d72f307e5366dc68ba5ede9156bc46a67682359222900e7ba0e3db96d65e6c",
+          "outcome_changed": false,
+          "strict_replay_matched": true
+        },
+        {
+          "attributed_tool": null,
+          "case_id": "workflow-revision-03",
+          "clean_digest": "4c9dd4603033c322db64b1d15f45a761a36675097c5469598d5deb6bcfb69405",
+          "expected_tool": "get_active_policy",
+          "fault": "timeout_once",
+          "fault_activated": false,
+          "localized": false,
+          "observed_digest": "cb2a1fc29e33bd417a28fb906deff64c3292d3c60f6e1ff71ea9567ec584b393",
+          "outcome_changed": false,
+          "strict_replay_matched": true
+        },
+        {
+          "attributed_tool": "get_request",
+          "case_id": "workflow-ready-01",
+          "clean_digest": "f0a884c433bdf038c3c6a671130c29727476ae839dbff8b48d42485395c037a6",
+          "expected_tool": "get_request",
+          "fault": "schema_drift",
+          "fault_activated": true,
+          "localized": true,
+          "observed_digest": "39d2a222cf72c705f95950f6ac061bada3beedf91bc25a7d38ebe4ef8c930c23",
+          "outcome_changed": true,
+          "strict_replay_matched": true
+        },
+        {
+          "attributed_tool": "get_request",
+          "case_id": "workflow-ready-02",
+          "clean_digest": "c926195bba916d46eacb21c5ee792ba48b34f2b3f293c8c1e3ec38fee3846e50",
+          "expected_tool": "get_request",
+          "fault": "schema_drift",
+          "fault_activated": true,
+          "localized": true,
+          "observed_digest": "0eb5191da20c080130bfd786bef4dafbb293617be0ff703c4beb1fa09f648466",
+          "outcome_changed": true,
+          "strict_replay_matched": true
+        },
+        {
+          "attributed_tool": "get_request",
+          "case_id": "workflow-ready-03",
+          "clean_digest": "deecf8ce6ed663bbc7dffbc2c5e204f902197045b3151b7c97828be4f8a16cbf",
+          "expected_tool": "get_request",
+          "fault": "schema_drift",
+          "fault_activated": true,
+          "localized": true,
+          "observed_digest": "9e01b61b4361dc46701b6f2f269a51b3c042cd0da52469ebc18ebaa82153bbf2",
+          "outcome_changed": true,
+          "strict_replay_matched": true
+        },
+        {
+          "attributed_tool": "get_request",
+          "case_id": "workflow-ready-04",
+          "clean_digest": "47a30ba0738ad7b8ac9622d24ffb47e23b2f7a165e6abbd61f73001f42fdbe63",
+          "expected_tool": "get_request",
+          "fault": "schema_drift",
+          "fault_activated": true,
+          "localized": true,
+          "observed_digest": "f82113720fa447a73e7870c23cde60ecd5c33e21c7cc5928c356978bd65a15da",
+          "outcome_changed": true,
+          "strict_replay_matched": true
+        },
+        {
+          "attributed_tool": "get_request",
+          "case_id": "workflow-ready-05",
+          "clean_digest": "52a243834281a0895f6c787ef464d9a29c772308e6a97530add99c9223c11b74",
+          "expected_tool": "get_request",
+          "fault": "schema_drift",
+          "fault_activated": true,
+          "localized": true,
+          "observed_digest": "c86b41cac422020a6c5b8d564cfd9c3b45267b5a7ee6c652985f7074bfda9313",
+          "outcome_changed": true,
+          "strict_replay_matched": true
+        },
+        {
+          "attributed_tool": "get_request",
+          "case_id": "workflow-ready-06",
+          "clean_digest": "4f9a3cefc8ff2d072debb00acfa9e52add364fbf652e6aa57de0c890edf6f44e",
+          "expected_tool": "get_request",
+          "fault": "schema_drift",
+          "fault_activated": true,
+          "localized": true,
+          "observed_digest": "1b1c928feb27340333e1ea3f53652a35f07088d5c556985d73ef1eaec2b3a1d7",
+          "outcome_changed": true,
+          "strict_replay_matched": true
+        },
+        {
+          "attributed_tool": "get_request",
+          "case_id": "workflow-policy-v2-01",
+          "clean_digest": "903652a913d9c13ba2b271826df12bc069ce6880f9b4108fa2cb8c4f4d9a4932",
+          "expected_tool": "get_request",
+          "fault": "schema_drift",
+          "fault_activated": true,
+          "localized": true,
+          "observed_digest": "9fa4b1f721ae672bc227b294fc4cf69afcc75631a8c6fbaf1a65dedd4703cda2",
+          "outcome_changed": true,
+          "strict_replay_matched": true
+        },
+        {
+          "attributed_tool": "get_request",
+          "case_id": "workflow-policy-v2-02",
+          "clean_digest": "fe1b1ddd7db2a6a49bfde57e4f41a20c405a3022d42361a50b0e79db883db5a9",
+          "expected_tool": "get_request",
+          "fault": "schema_drift",
+          "fault_activated": true,
+          "localized": true,
+          "observed_digest": "cf80ed020e1962ea49febf3acbe6301a62be93a74bb8359afe24abc8feb5b977",
+          "outcome_changed": true,
+          "strict_replay_matched": true
+        },
+        {
+          "attributed_tool": "get_request",
+          "case_id": "workflow-policy-v2-03",
+          "clean_digest": "e5a8f3a1c66819e1a9a8f6e623e637a7c84f8a229791fdec8317040623f4b6e0",
+          "expected_tool": "get_request",
+          "fault": "schema_drift",
+          "fault_activated": true,
+          "localized": true,
+          "observed_digest": "080db1ed4876e56ba27de5e3f7ec9294ba74e017c7812957b6bb657a9b4b68d9",
+          "outcome_changed": true,
+          "strict_replay_matched": true
+        },
+        {
+          "attributed_tool": "get_request",
+          "case_id": "workflow-revision-01",
+          "clean_digest": "623ee0ca2bbb433979fb69dc5b312aef4c9fd4740bff0cb101149b79a1e21e93",
+          "expected_tool": "get_request",
+          "fault": "schema_drift",
+          "fault_activated": true,
+          "localized": true,
+          "observed_digest": "0b96fb2c0d926aea13e415632f003dd740fa2d85975ca7bc21d5e7b45fdc3d69",
+          "outcome_changed": true,
+          "strict_replay_matched": true
+        },
+        {
+          "attributed_tool": "get_request",
+          "case_id": "workflow-revision-02",
+          "clean_digest": "6fbf23a0320598982fb0b8d7b59a6083e5cc5d7e965adfd18970b5ad3e73a3d1",
+          "expected_tool": "get_request",
+          "fault": "schema_drift",
+          "fault_activated": true,
+          "localized": true,
+          "observed_digest": "10721c84311a40a70df49a61e8cec8ef795ec9818f5f131701d68e657d761f4c",
+          "outcome_changed": true,
+          "strict_replay_matched": true
+        },
+        {
+          "attributed_tool": "get_request",
+          "case_id": "workflow-revision-03",
+          "clean_digest": "4c9dd4603033c322db64b1d15f45a761a36675097c5469598d5deb6bcfb69405",
+          "expected_tool": "get_request",
+          "fault": "schema_drift",
+          "fault_activated": true,
+          "localized": true,
+          "observed_digest": "c3ebeb47106023b7d85c981beeb0876182ffdace4108ac953a4d52a65af62c40",
+          "outcome_changed": true,
+          "strict_replay_matched": true
+        },
+        {
+          "attributed_tool": "get_request",
+          "case_id": "workflow-ready-01",
+          "clean_digest": "f0a884c433bdf038c3c6a671130c29727476ae839dbff8b48d42485395c037a6",
+          "expected_tool": "get_request",
+          "fault": "stale_read",
+          "fault_activated": true,
+          "localized": true,
+          "observed_digest": "69f72bc3d683d2f26cbb4854848a6987429b3540fe7c0edc215c431d095da34d",
+          "outcome_changed": true,
+          "strict_replay_matched": true
+        },
+        {
+          "attributed_tool": "get_request",
+          "case_id": "workflow-ready-02",
+          "clean_digest": "c926195bba916d46eacb21c5ee792ba48b34f2b3f293c8c1e3ec38fee3846e50",
+          "expected_tool": "get_request",
+          "fault": "stale_read",
+          "fault_activated": true,
+          "localized": true,
+          "observed_digest": "4b39e3fbe5b5bce4cb02e254b94a9c1aa6bc64114f111b80fc8b536bf659feda",
+          "outcome_changed": true,
+          "strict_replay_matched": true
+        },
+        {
+          "attributed_tool": "get_request",
+          "case_id": "workflow-ready-03",
+          "clean_digest": "deecf8ce6ed663bbc7dffbc2c5e204f902197045b3151b7c97828be4f8a16cbf",
+          "expected_tool": "get_request",
+          "fault": "stale_read",
+          "fault_activated": true,
+          "localized": true,
+          "observed_digest": "43f1c0f8ad9284fa58403eecacea97aa19b6ae5f6d061ded457aab75c684a451",
+          "outcome_changed": true,
+          "strict_replay_matched": true
+        },
+        {
+          "attributed_tool": "get_request",
+          "case_id": "workflow-ready-04",
+          "clean_digest": "47a30ba0738ad7b8ac9622d24ffb47e23b2f7a165e6abbd61f73001f42fdbe63",
+          "expected_tool": "get_request",
+          "fault": "stale_read",
+          "fault_activated": true,
+          "localized": true,
+          "observed_digest": "3ddedd5bac9b3e5b86f44d9334845611e65612d87e9d6fa14ac0197df0312015",
+          "outcome_changed": true,
+          "strict_replay_matched": true
+        },
+        {
+          "attributed_tool": "get_request",
+          "case_id": "workflow-ready-05",
+          "clean_digest": "52a243834281a0895f6c787ef464d9a29c772308e6a97530add99c9223c11b74",
+          "expected_tool": "get_request",
+          "fault": "stale_read",
+          "fault_activated": true,
+          "localized": true,
+          "observed_digest": "15bf970183f06077015d7632d704369256393a47617c45d506c88b5db516f2fe",
+          "outcome_changed": true,
+          "strict_replay_matched": true
+        },
+        {
+          "attributed_tool": "get_request",
+          "case_id": "workflow-ready-06",
+          "clean_digest": "4f9a3cefc8ff2d072debb00acfa9e52add364fbf652e6aa57de0c890edf6f44e",
+          "expected_tool": "get_request",
+          "fault": "stale_read",
+          "fault_activated": true,
+          "localized": true,
+          "observed_digest": "7a75fddf42caf44cb31d6269c89a0a058ae2848a12fbfc3989d3d32c3e26b840",
+          "outcome_changed": true,
+          "strict_replay_matched": true
+        },
+        {
+          "attributed_tool": "get_request",
+          "case_id": "workflow-policy-v2-01",
+          "clean_digest": "903652a913d9c13ba2b271826df12bc069ce6880f9b4108fa2cb8c4f4d9a4932",
+          "expected_tool": "get_request",
+          "fault": "stale_read",
+          "fault_activated": true,
+          "localized": true,
+          "observed_digest": "2c410fdb5c3e9edf4f56f9ff81c307f6bf725f8e74649028e554606d117339be",
+          "outcome_changed": true,
+          "strict_replay_matched": true
+        },
+        {
+          "attributed_tool": "get_request",
+          "case_id": "workflow-policy-v2-02",
+          "clean_digest": "fe1b1ddd7db2a6a49bfde57e4f41a20c405a3022d42361a50b0e79db883db5a9",
+          "expected_tool": "get_request",
+          "fault": "stale_read",
+          "fault_activated": true,
+          "localized": true,
+          "observed_digest": "9049ac5068cadd2fa22967cbaf5e46c1d9ddde38b90b716d5def838645f50a7c",
+          "outcome_changed": true,
+          "strict_replay_matched": true
+        },
+        {
+          "attributed_tool": "get_request",
+          "case_id": "workflow-policy-v2-03",
+          "clean_digest": "e5a8f3a1c66819e1a9a8f6e623e637a7c84f8a229791fdec8317040623f4b6e0",
+          "expected_tool": "get_request",
+          "fault": "stale_read",
+          "fault_activated": true,
+          "localized": true,
+          "observed_digest": "917b371a8a47ffc47f3f4003e0e4d62cd0b14ddd8693ddf8bfcbfd6396300caa",
+          "outcome_changed": true,
+          "strict_replay_matched": true
+        },
+        {
+          "attributed_tool": "get_request",
+          "case_id": "workflow-revision-01",
+          "clean_digest": "623ee0ca2bbb433979fb69dc5b312aef4c9fd4740bff0cb101149b79a1e21e93",
+          "expected_tool": "get_request",
+          "fault": "stale_read",
+          "fault_activated": true,
+          "localized": true,
+          "observed_digest": "8cfd56854a7999c8e6312e7e4a3aacbc4827702ae9be98b5b976113b3d05eda7",
+          "outcome_changed": true,
+          "strict_replay_matched": true
+        },
+        {
+          "attributed_tool": "get_request",
+          "case_id": "workflow-revision-02",
+          "clean_digest": "6fbf23a0320598982fb0b8d7b59a6083e5cc5d7e965adfd18970b5ad3e73a3d1",
+          "expected_tool": "get_request",
+          "fault": "stale_read",
+          "fault_activated": true,
+          "localized": true,
+          "observed_digest": "1ea108fe951c6b75b0418b7acf9706e503dd058ffa4be5cc2006d160911404cf",
+          "outcome_changed": true,
+          "strict_replay_matched": true
+        },
+        {
+          "attributed_tool": "get_request",
+          "case_id": "workflow-revision-03",
+          "clean_digest": "4c9dd4603033c322db64b1d15f45a761a36675097c5469598d5deb6bcfb69405",
+          "expected_tool": "get_request",
+          "fault": "stale_read",
+          "fault_activated": true,
+          "localized": true,
+          "observed_digest": "0315695c0d0d870382cb3cbe6b8259dd316661c77e506fa0100c9413fefd6775",
+          "outcome_changed": true,
+          "strict_replay_matched": true
+        },
+        {
+          "attributed_tool": null,
+          "case_id": "workflow-ready-01",
+          "clean_digest": "f0a884c433bdf038c3c6a671130c29727476ae839dbff8b48d42485395c037a6",
+          "expected_tool": "list_approvals",
+          "fault": "partial_response",
+          "fault_activated": false,
+          "localized": false,
+          "observed_digest": "25ff729795204e121d2a7310775c0d5964db979d31f3d55e01fe1b0dae9b5742",
+          "outcome_changed": false,
+          "strict_replay_matched": true
+        },
+        {
+          "attributed_tool": null,
+          "case_id": "workflow-ready-02",
+          "clean_digest": "c926195bba916d46eacb21c5ee792ba48b34f2b3f293c8c1e3ec38fee3846e50",
+          "expected_tool": "list_approvals",
+          "fault": "partial_response",
+          "fault_activated": false,
+          "localized": false,
+          "observed_digest": "7ec0b936518abc841a277877d863d2dffc525a18d3508b0136a784769b679e46",
+          "outcome_changed": false,
+          "strict_replay_matched": true
+        },
+        {
+          "attributed_tool": null,
+          "case_id": "workflow-ready-03",
+          "clean_digest": "deecf8ce6ed663bbc7dffbc2c5e204f902197045b3151b7c97828be4f8a16cbf",
+          "expected_tool": "list_approvals",
+          "fault": "partial_response",
+          "fault_activated": false,
+          "localized": false,
+          "observed_digest": "6823ddc3ebf345f290b38951279525b7d1066f6b08bf651d339a00f0d33e0230",
+          "outcome_changed": false,
+          "strict_replay_matched": true
+        },
+        {
+          "attributed_tool": null,
+          "case_id": "workflow-ready-04",
+          "clean_digest": "47a30ba0738ad7b8ac9622d24ffb47e23b2f7a165e6abbd61f73001f42fdbe63",
+          "expected_tool": "list_approvals",
+          "fault": "partial_response",
+          "fault_activated": false,
+          "localized": false,
+          "observed_digest": "a76b8f9bcd30d9a71d89a0f7835e97c043b19fba7c01f3057ad5441dbc3861b1",
+          "outcome_changed": false,
+          "strict_replay_matched": true
+        },
+        {
+          "attributed_tool": null,
+          "case_id": "workflow-ready-05",
+          "clean_digest": "52a243834281a0895f6c787ef464d9a29c772308e6a97530add99c9223c11b74",
+          "expected_tool": "list_approvals",
+          "fault": "partial_response",
+          "fault_activated": false,
+          "localized": false,
+          "observed_digest": "5ba94a6a7971189336cd0462ea6698a78de8fba7c61780b388efcb667744ea4f",
+          "outcome_changed": false,
+          "strict_replay_matched": true
+        },
+        {
+          "attributed_tool": null,
+          "case_id": "workflow-ready-06",
+          "clean_digest": "4f9a3cefc8ff2d072debb00acfa9e52add364fbf652e6aa57de0c890edf6f44e",
+          "expected_tool": "list_approvals",
+          "fault": "partial_response",
+          "fault_activated": false,
+          "localized": false,
+          "observed_digest": "ae4f65cd45c5d9f53ae22f5dff999967ebfbb4f744ac95cd2a7575f2b89df1c2",
+          "outcome_changed": false,
+          "strict_replay_matched": true
+        },
+        {
+          "attributed_tool": null,
+          "case_id": "workflow-policy-v2-01",
+          "clean_digest": "903652a913d9c13ba2b271826df12bc069ce6880f9b4108fa2cb8c4f4d9a4932",
+          "expected_tool": "list_approvals",
+          "fault": "partial_response",
+          "fault_activated": false,
+          "localized": false,
+          "observed_digest": "4bf4ac11afa779a6650eafa6b6bf737c31ad871e31204601612cae7d2385a10b",
+          "outcome_changed": false,
+          "strict_replay_matched": true
+        },
+        {
+          "attributed_tool": null,
+          "case_id": "workflow-policy-v2-02",
+          "clean_digest": "fe1b1ddd7db2a6a49bfde57e4f41a20c405a3022d42361a50b0e79db883db5a9",
+          "expected_tool": "list_approvals",
+          "fault": "partial_response",
+          "fault_activated": false,
+          "localized": false,
+          "observed_digest": "6f4ba082385d5c1c053a55955c10d74b8f96f94e1334ea2b478b237a9cdc5228",
+          "outcome_changed": false,
+          "strict_replay_matched": true
+        },
+        {
+          "attributed_tool": null,
+          "case_id": "workflow-policy-v2-03",
+          "clean_digest": "e5a8f3a1c66819e1a9a8f6e623e637a7c84f8a229791fdec8317040623f4b6e0",
+          "expected_tool": "list_approvals",
+          "fault": "partial_response",
+          "fault_activated": false,
+          "localized": false,
+          "observed_digest": "07ba1912f7dc685c9f13c76c82cbdd89fbada2fe883042c8a02cb555e1bd7ddb",
+          "outcome_changed": false,
+          "strict_replay_matched": true
+        },
+        {
+          "attributed_tool": null,
+          "case_id": "workflow-revision-01",
+          "clean_digest": "623ee0ca2bbb433979fb69dc5b312aef4c9fd4740bff0cb101149b79a1e21e93",
+          "expected_tool": "list_approvals",
+          "fault": "partial_response",
+          "fault_activated": false,
+          "localized": false,
+          "observed_digest": "52b0ec2094c6ab391f0b01e41f1b81894483f5f7690ddd7257652f92f8735835",
+          "outcome_changed": false,
+          "strict_replay_matched": true
+        },
+        {
+          "attributed_tool": null,
+          "case_id": "workflow-revision-02",
+          "clean_digest": "6fbf23a0320598982fb0b8d7b59a6083e5cc5d7e965adfd18970b5ad3e73a3d1",
+          "expected_tool": "list_approvals",
+          "fault": "partial_response",
+          "fault_activated": false,
+          "localized": false,
+          "observed_digest": "58e21ae81642669e7569246df4a31d9c64888d3616fa99f6236947c816684d4d",
+          "outcome_changed": false,
+          "strict_replay_matched": true
+        },
+        {
+          "attributed_tool": null,
+          "case_id": "workflow-revision-03",
+          "clean_digest": "4c9dd4603033c322db64b1d15f45a761a36675097c5469598d5deb6bcfb69405",
+          "expected_tool": "list_approvals",
+          "fault": "partial_response",
+          "fault_activated": false,
+          "localized": false,
+          "observed_digest": "2440ae5973d22cd78baadbc90a9eda5155ee92f1b159e012e837fb149ba3ffc9",
+          "outcome_changed": false,
+          "strict_replay_matched": true
+        },
+        {
+          "attributed_tool": "apply_transition",
+          "case_id": "workflow-ready-01",
+          "clean_digest": "f0a884c433bdf038c3c6a671130c29727476ae839dbff8b48d42485395c037a6",
+          "expected_tool": "apply_transition",
+          "fault": "permission_denied",
+          "fault_activated": true,
+          "localized": true,
+          "observed_digest": "dafa9b497b9306704bebaf17e02672b698347d7cb568e54b0454eda1d168a9ff",
+          "outcome_changed": true,
+          "strict_replay_matched": true
+        },
+        {
+          "attributed_tool": "apply_transition",
+          "case_id": "workflow-ready-02",
+          "clean_digest": "c926195bba916d46eacb21c5ee792ba48b34f2b3f293c8c1e3ec38fee3846e50",
+          "expected_tool": "apply_transition",
+          "fault": "permission_denied",
+          "fault_activated": true,
+          "localized": true,
+          "observed_digest": "79f34eafea0d843d0a00517c0c28f61467422eb2c6fa77e08381857d48c4d4fa",
+          "outcome_changed": true,
+          "strict_replay_matched": true
+        },
+        {
+          "attributed_tool": "apply_transition",
+          "case_id": "workflow-ready-03",
+          "clean_digest": "deecf8ce6ed663bbc7dffbc2c5e204f902197045b3151b7c97828be4f8a16cbf",
+          "expected_tool": "apply_transition",
+          "fault": "permission_denied",
+          "fault_activated": true,
+          "localized": true,
+          "observed_digest": "2d2e24d641c9e42863cc2cb7359d4d2164d1876430cf7f44fe27a743ddbfb565",
+          "outcome_changed": true,
+          "strict_replay_matched": true
+        },
+        {
+          "attributed_tool": "apply_transition",
+          "case_id": "workflow-ready-04",
+          "clean_digest": "47a30ba0738ad7b8ac9622d24ffb47e23b2f7a165e6abbd61f73001f42fdbe63",
+          "expected_tool": "apply_transition",
+          "fault": "permission_denied",
+          "fault_activated": true,
+          "localized": true,
+          "observed_digest": "134bfc17547cfa2f0c0fdcb88b5e0d9da3f1dc8f09c1ff7d590bc9d4edfbdc90",
+          "outcome_changed": true,
+          "strict_replay_matched": true
+        },
+        {
+          "attributed_tool": "apply_transition",
+          "case_id": "workflow-ready-05",
+          "clean_digest": "52a243834281a0895f6c787ef464d9a29c772308e6a97530add99c9223c11b74",
+          "expected_tool": "apply_transition",
+          "fault": "permission_denied",
+          "fault_activated": true,
+          "localized": true,
+          "observed_digest": "4dbee614dcaa866f66cf2a56e7daa6c0a879be60fa725a3c0e246f577bb08ba0",
+          "outcome_changed": true,
+          "strict_replay_matched": true
+        },
+        {
+          "attributed_tool": "apply_transition",
+          "case_id": "workflow-ready-06",
+          "clean_digest": "4f9a3cefc8ff2d072debb00acfa9e52add364fbf652e6aa57de0c890edf6f44e",
+          "expected_tool": "apply_transition",
+          "fault": "permission_denied",
+          "fault_activated": true,
+          "localized": true,
+          "observed_digest": "5e6c4563d106230b6cbe84418d3804aa15ecb5fc8faf8fc3859330580eb8d4d6",
+          "outcome_changed": true,
+          "strict_replay_matched": true
+        },
+        {
+          "attributed_tool": "apply_transition",
+          "case_id": "workflow-policy-v2-01",
+          "clean_digest": "903652a913d9c13ba2b271826df12bc069ce6880f9b4108fa2cb8c4f4d9a4932",
+          "expected_tool": "apply_transition",
+          "fault": "permission_denied",
+          "fault_activated": true,
+          "localized": true,
+          "observed_digest": "20e93adf04eca1b309686baa826f8da7629e70078dc0cb36233f9af9fc2b6cec",
+          "outcome_changed": true,
+          "strict_replay_matched": true
+        },
+        {
+          "attributed_tool": "apply_transition",
+          "case_id": "workflow-policy-v2-02",
+          "clean_digest": "fe1b1ddd7db2a6a49bfde57e4f41a20c405a3022d42361a50b0e79db883db5a9",
+          "expected_tool": "apply_transition",
+          "fault": "permission_denied",
+          "fault_activated": true,
+          "localized": true,
+          "observed_digest": "f5db05c0edd970d04eeaa9dd12e358c2e97089588c3172884e97bba7565d9284",
+          "outcome_changed": true,
+          "strict_replay_matched": true
+        },
+        {
+          "attributed_tool": "apply_transition",
+          "case_id": "workflow-policy-v2-03",
+          "clean_digest": "e5a8f3a1c66819e1a9a8f6e623e637a7c84f8a229791fdec8317040623f4b6e0",
+          "expected_tool": "apply_transition",
+          "fault": "permission_denied",
+          "fault_activated": true,
+          "localized": true,
+          "observed_digest": "2c58096f6d364adab783f63f10ae57348e73b155770963d59665445dff773427",
+          "outcome_changed": true,
+          "strict_replay_matched": true
+        },
+        {
+          "attributed_tool": "apply_transition",
+          "case_id": "workflow-revision-01",
+          "clean_digest": "623ee0ca2bbb433979fb69dc5b312aef4c9fd4740bff0cb101149b79a1e21e93",
+          "expected_tool": "apply_transition",
+          "fault": "permission_denied",
+          "fault_activated": true,
+          "localized": true,
+          "observed_digest": "6521b7c77262b834f1ddf725cb1f83f13380f9fd8a717df2656b20608466cca4",
+          "outcome_changed": true,
+          "strict_replay_matched": true
+        },
+        {
+          "attributed_tool": "apply_transition",
+          "case_id": "workflow-revision-02",
+          "clean_digest": "6fbf23a0320598982fb0b8d7b59a6083e5cc5d7e965adfd18970b5ad3e73a3d1",
+          "expected_tool": "apply_transition",
+          "fault": "permission_denied",
+          "fault_activated": true,
+          "localized": true,
+          "observed_digest": "6e60ddd5ec7926251628933fd4130eb65298bf49a49967fe5c1324d818974b16",
+          "outcome_changed": true,
+          "strict_replay_matched": true
+        },
+        {
+          "attributed_tool": "apply_transition",
+          "case_id": "workflow-revision-03",
+          "clean_digest": "4c9dd4603033c322db64b1d15f45a761a36675097c5469598d5deb6bcfb69405",
+          "expected_tool": "apply_transition",
+          "fault": "permission_denied",
+          "fault_activated": true,
+          "localized": true,
+          "observed_digest": "ed853ecfa1e634d3bbae253e278a8fdc55701921b769aa59e2350f84c85bc06f",
+          "outcome_changed": true,
+          "strict_replay_matched": true
+        }
+      ],
+      "strict_replay_match_rate": 1.0
+    },
+    "candidate": {
+      "activated_probes": 60,
+      "agent": "recovery_aware_executor_v1",
+      "by_fault": {
+        "partial_response": {
+          "activated": 12,
+          "localized": 12,
+          "probes": 12
+        },
+        "permission_denied": {
+          "activated": 12,
+          "localized": 12,
+          "probes": 12
+        },
+        "schema_drift": {
+          "activated": 12,
+          "localized": 12,
+          "probes": 12
+        },
+        "stale_read": {
+          "activated": 12,
+          "localized": 12,
+          "probes": 12
+        },
+        "timeout_once": {
+          "activated": 12,
+          "localized": 12,
+          "probes": 12
+        }
+      },
+      "localization_accuracy": 1.0,
+      "outcome_changed_probes": 12,
+      "probes": 60,
+      "records": [
+        {
+          "attributed_tool": "get_active_policy",
+          "case_id": "workflow-ready-01",
+          "clean_digest": "3df081f1956a7e38f50c2cac589ec94239f6fdfcce76d7a06f4aa0933e0a98d6",
+          "expected_tool": "get_active_policy",
+          "fault": "timeout_once",
+          "fault_activated": true,
+          "localized": true,
+          "observed_digest": "3753dabeb6e37c8b0900260b035201147ee6a1adc5499d7e0e07af9f8a1e3316",
+          "outcome_changed": false,
+          "strict_replay_matched": true
+        },
+        {
+          "attributed_tool": "get_active_policy",
+          "case_id": "workflow-ready-02",
+          "clean_digest": "1319a6336073210a6c7cef50f4d4ea3049be6a80ad76e57bccc9fce6ff96ef13",
+          "expected_tool": "get_active_policy",
+          "fault": "timeout_once",
+          "fault_activated": true,
+          "localized": true,
+          "observed_digest": "24b958815ee719d3a68234204097c15cb043a623e059b5a9afacac6cf57fe47c",
+          "outcome_changed": false,
+          "strict_replay_matched": true
+        },
+        {
+          "attributed_tool": "get_active_policy",
+          "case_id": "workflow-ready-03",
+          "clean_digest": "3282a75c2c2aa51afb365daefe7d0b55565a5075114b85ec2575684a23d8c900",
+          "expected_tool": "get_active_policy",
+          "fault": "timeout_once",
+          "fault_activated": true,
+          "localized": true,
+          "observed_digest": "67e2b4997ab835c6ab6a942cec05df650e57d099d7f5e74219089aae63f58855",
+          "outcome_changed": false,
+          "strict_replay_matched": true
+        },
+        {
+          "attributed_tool": "get_active_policy",
+          "case_id": "workflow-ready-04",
+          "clean_digest": "ac06d7919ac239bf3c6c556c990f2fd46a1510907c3d832c065292306a2923d2",
+          "expected_tool": "get_active_policy",
+          "fault": "timeout_once",
+          "fault_activated": true,
+          "localized": true,
+          "observed_digest": "bc801a8c84b1b821706f2366b70024e02bc4006c6a41510a8f9ff387f901e400",
+          "outcome_changed": false,
+          "strict_replay_matched": true
+        },
+        {
+          "attributed_tool": "get_active_policy",
+          "case_id": "workflow-ready-05",
+          "clean_digest": "b422727a75b901d6965e96a519606a517bc09e98ecc434f5737f267cc5be7898",
+          "expected_tool": "get_active_policy",
+          "fault": "timeout_once",
+          "fault_activated": true,
+          "localized": true,
+          "observed_digest": "558b36dbd7c10f2cad5bf3a7197174498b883df2bcbc6633dd6b02c9e7673970",
+          "outcome_changed": false,
+          "strict_replay_matched": true
+        },
+        {
+          "attributed_tool": "get_active_policy",
+          "case_id": "workflow-ready-06",
+          "clean_digest": "f2676f0cfead1c99ec7d2a5fa55838a6271c050936508bcbb5a93bf7d077c889",
+          "expected_tool": "get_active_policy",
+          "fault": "timeout_once",
+          "fault_activated": true,
+          "localized": true,
+          "observed_digest": "abeac4775d4f4044d3ec5b072b8b149170269f26f0975bbef4390d6e4900697c",
+          "outcome_changed": false,
+          "strict_replay_matched": true
+        },
+        {
+          "attributed_tool": "get_active_policy",
+          "case_id": "workflow-policy-v2-01",
+          "clean_digest": "224aabae08c0082a9382ba82762fcc05b10023be32a3d54b4a14b4117fe9322b",
+          "expected_tool": "get_active_policy",
+          "fault": "timeout_once",
+          "fault_activated": true,
+          "localized": true,
+          "observed_digest": "cceda104c6d0248d7700833708f667940a9541df8c374d639c7dbb81be83cfa8",
+          "outcome_changed": false,
+          "strict_replay_matched": true
+        },
+        {
+          "attributed_tool": "get_active_policy",
+          "case_id": "workflow-policy-v2-02",
+          "clean_digest": "bae7582ded07dc6b90157cbe3aa587f26401e63cd2c474776da37d7679acf773",
+          "expected_tool": "get_active_policy",
+          "fault": "timeout_once",
+          "fault_activated": true,
+          "localized": true,
+          "observed_digest": "d78a7eea6f8b6e7923a52cc87f8412a017cfc820f7506d5c670b3b23f25de268",
+          "outcome_changed": false,
+          "strict_replay_matched": true
+        },
+        {
+          "attributed_tool": "get_active_policy",
+          "case_id": "workflow-policy-v2-03",
+          "clean_digest": "6e4cef2387a04cda87cff47a8994784867d0e63b762264f884ef67e6ef09b704",
+          "expected_tool": "get_active_policy",
+          "fault": "timeout_once",
+          "fault_activated": true,
+          "localized": true,
+          "observed_digest": "305de0e17266d74e349b0686735533404e7bf15120201849d589a1aed8e86beb",
+          "outcome_changed": false,
+          "strict_replay_matched": true
+        },
+        {
+          "attributed_tool": "get_active_policy",
+          "case_id": "workflow-revision-01",
+          "clean_digest": "4fd6cd868925bc252d21b1f2f341ec4e4c969152fd732383cd61e13c34711638",
+          "expected_tool": "get_active_policy",
+          "fault": "timeout_once",
+          "fault_activated": true,
+          "localized": true,
+          "observed_digest": "27991397c61530f47092049acd29e6849de0f667494f93b7f5c24a90a86f8059",
+          "outcome_changed": false,
+          "strict_replay_matched": true
+        },
+        {
+          "attributed_tool": "get_active_policy",
+          "case_id": "workflow-revision-02",
+          "clean_digest": "cbcb4dc642ad064733ca0f69785320eca7041f8d3dcdd710710c27d368faa9fd",
+          "expected_tool": "get_active_policy",
+          "fault": "timeout_once",
+          "fault_activated": true,
+          "localized": true,
+          "observed_digest": "2e9d7f4e5697a28b7db27a7a0a8e2cfad4cc31423113321b54ee5100e68a3bfd",
+          "outcome_changed": false,
+          "strict_replay_matched": true
+        },
+        {
+          "attributed_tool": "get_active_policy",
+          "case_id": "workflow-revision-03",
+          "clean_digest": "73f0a2cb38d8ff7bcd28805e9fbbb285b87534a29d28d0e9e4caab9eb687069d",
+          "expected_tool": "get_active_policy",
+          "fault": "timeout_once",
+          "fault_activated": true,
+          "localized": true,
+          "observed_digest": "5bdf46e25b1b2df365fe6c67c812318b2ba1934375aa80d0af0e28a34cf72db3",
+          "outcome_changed": false,
+          "strict_replay_matched": true
+        },
+        {
+          "attributed_tool": "get_request",
+          "case_id": "workflow-ready-01",
+          "clean_digest": "3df081f1956a7e38f50c2cac589ec94239f6fdfcce76d7a06f4aa0933e0a98d6",
+          "expected_tool": "get_request",
+          "fault": "schema_drift",
+          "fault_activated": true,
+          "localized": true,
+          "observed_digest": "29a4f13b90536a66fb1c8ff4b84ac8e96ae42b471940b65ecb53ecbc58e60ff3",
+          "outcome_changed": false,
+          "strict_replay_matched": true
+        },
+        {
+          "attributed_tool": "get_request",
+          "case_id": "workflow-ready-02",
+          "clean_digest": "1319a6336073210a6c7cef50f4d4ea3049be6a80ad76e57bccc9fce6ff96ef13",
+          "expected_tool": "get_request",
+          "fault": "schema_drift",
+          "fault_activated": true,
+          "localized": true,
+          "observed_digest": "d1152c16bdf2065be0d68f1eb1d70045087f38676b1d20fc9feab00e641c6044",
+          "outcome_changed": false,
+          "strict_replay_matched": true
+        },
+        {
+          "attributed_tool": "get_request",
+          "case_id": "workflow-ready-03",
+          "clean_digest": "3282a75c2c2aa51afb365daefe7d0b55565a5075114b85ec2575684a23d8c900",
+          "expected_tool": "get_request",
+          "fault": "schema_drift",
+          "fault_activated": true,
+          "localized": true,
+          "observed_digest": "d5b9f73948d4853cf325501ad773e4e9f6980afbda3e2dd1a43e2347c5931fb1",
+          "outcome_changed": false,
+          "strict_replay_matched": true
+        },
+        {
+          "attributed_tool": "get_request",
+          "case_id": "workflow-ready-04",
+          "clean_digest": "ac06d7919ac239bf3c6c556c990f2fd46a1510907c3d832c065292306a2923d2",
+          "expected_tool": "get_request",
+          "fault": "schema_drift",
+          "fault_activated": true,
+          "localized": true,
+          "observed_digest": "5b6a2150645fe2572f4dfa00894d68a8783863a0d82b2f86683c9fd3e9a2b93b",
+          "outcome_changed": false,
+          "strict_replay_matched": true
+        },
+        {
+          "attributed_tool": "get_request",
+          "case_id": "workflow-ready-05",
+          "clean_digest": "b422727a75b901d6965e96a519606a517bc09e98ecc434f5737f267cc5be7898",
+          "expected_tool": "get_request",
+          "fault": "schema_drift",
+          "fault_activated": true,
+          "localized": true,
+          "observed_digest": "96142929ad5eeff0c4e5799debda0038415db2195a4c1ca8fb3e44c24f4e0ab0",
+          "outcome_changed": false,
+          "strict_replay_matched": true
+        },
+        {
+          "attributed_tool": "get_request",
+          "case_id": "workflow-ready-06",
+          "clean_digest": "f2676f0cfead1c99ec7d2a5fa55838a6271c050936508bcbb5a93bf7d077c889",
+          "expected_tool": "get_request",
+          "fault": "schema_drift",
+          "fault_activated": true,
+          "localized": true,
+          "observed_digest": "e352e108bf3eb55bb7ad1a9d66e9cc51d0e4f385954f97a0e4e9057b5fe397c5",
+          "outcome_changed": false,
+          "strict_replay_matched": true
+        },
+        {
+          "attributed_tool": "get_request",
+          "case_id": "workflow-policy-v2-01",
+          "clean_digest": "224aabae08c0082a9382ba82762fcc05b10023be32a3d54b4a14b4117fe9322b",
+          "expected_tool": "get_request",
+          "fault": "schema_drift",
+          "fault_activated": true,
+          "localized": true,
+          "observed_digest": "3ecd04dd92c88094f97a653964c82a23ac3f24ef15cb50cc9e31ad9832d95ccc",
+          "outcome_changed": false,
+          "strict_replay_matched": true
+        },
+        {
+          "attributed_tool": "get_request",
+          "case_id": "workflow-policy-v2-02",
+          "clean_digest": "bae7582ded07dc6b90157cbe3aa587f26401e63cd2c474776da37d7679acf773",
+          "expected_tool": "get_request",
+          "fault": "schema_drift",
+          "fault_activated": true,
+          "localized": true,
+          "observed_digest": "a2bac2a56a3918199d1413135505ab76aaae80abaea8e7fb32127824afa8f2c3",
+          "outcome_changed": false,
+          "strict_replay_matched": true
+        },
+        {
+          "attributed_tool": "get_request",
+          "case_id": "workflow-policy-v2-03",
+          "clean_digest": "6e4cef2387a04cda87cff47a8994784867d0e63b762264f884ef67e6ef09b704",
+          "expected_tool": "get_request",
+          "fault": "schema_drift",
+          "fault_activated": true,
+          "localized": true,
+          "observed_digest": "3cea209736a13aee887340d98f168618e0a23de5590a75e31fe19713f6d4d21e",
+          "outcome_changed": false,
+          "strict_replay_matched": true
+        },
+        {
+          "attributed_tool": "get_request",
+          "case_id": "workflow-revision-01",
+          "clean_digest": "4fd6cd868925bc252d21b1f2f341ec4e4c969152fd732383cd61e13c34711638",
+          "expected_tool": "get_request",
+          "fault": "schema_drift",
+          "fault_activated": true,
+          "localized": true,
+          "observed_digest": "6ab0a0e93b243371227e3f7826d28fcfd388dbfd10f1d181863a04a9b5f9ff86",
+          "outcome_changed": false,
+          "strict_replay_matched": true
+        },
+        {
+          "attributed_tool": "get_request",
+          "case_id": "workflow-revision-02",
+          "clean_digest": "cbcb4dc642ad064733ca0f69785320eca7041f8d3dcdd710710c27d368faa9fd",
+          "expected_tool": "get_request",
+          "fault": "schema_drift",
+          "fault_activated": true,
+          "localized": true,
+          "observed_digest": "7301a1a8c16d8fd769ad9366316a71a5c99038383f4e1a4f54923e404cbd32a2",
+          "outcome_changed": false,
+          "strict_replay_matched": true
+        },
+        {
+          "attributed_tool": "get_request",
+          "case_id": "workflow-revision-03",
+          "clean_digest": "73f0a2cb38d8ff7bcd28805e9fbbb285b87534a29d28d0e9e4caab9eb687069d",
+          "expected_tool": "get_request",
+          "fault": "schema_drift",
+          "fault_activated": true,
+          "localized": true,
+          "observed_digest": "0791128cc21f7f23367f19ed0ed1c0a52e30b3eba9c0fde3cee5e748f07511fc",
+          "outcome_changed": false,
+          "strict_replay_matched": true
+        },
+        {
+          "attributed_tool": "get_request",
+          "case_id": "workflow-ready-01",
+          "clean_digest": "3df081f1956a7e38f50c2cac589ec94239f6fdfcce76d7a06f4aa0933e0a98d6",
+          "expected_tool": "get_request",
+          "fault": "stale_read",
+          "fault_activated": true,
+          "localized": true,
+          "observed_digest": "e02caa406d16219a6e3fd84ff5f81940bd4c32a561280362bdd73cb5352e3413",
+          "outcome_changed": false,
+          "strict_replay_matched": true
+        },
+        {
+          "attributed_tool": "get_request",
+          "case_id": "workflow-ready-02",
+          "clean_digest": "1319a6336073210a6c7cef50f4d4ea3049be6a80ad76e57bccc9fce6ff96ef13",
+          "expected_tool": "get_request",
+          "fault": "stale_read",
+          "fault_activated": true,
+          "localized": true,
+          "observed_digest": "3f96055382f2673427885799e2233444fefd1f49ba747a68803e8bce5aff90d9",
+          "outcome_changed": false,
+          "strict_replay_matched": true
+        },
+        {
+          "attributed_tool": "get_request",
+          "case_id": "workflow-ready-03",
+          "clean_digest": "3282a75c2c2aa51afb365daefe7d0b55565a5075114b85ec2575684a23d8c900",
+          "expected_tool": "get_request",
+          "fault": "stale_read",
+          "fault_activated": true,
+          "localized": true,
+          "observed_digest": "9c53c724a1c1cc6e7c1d18d29bbed23dccc3a345d0c2c7f261b13f3228bb4873",
+          "outcome_changed": false,
+          "strict_replay_matched": true
+        },
+        {
+          "attributed_tool": "get_request",
+          "case_id": "workflow-ready-04",
+          "clean_digest": "ac06d7919ac239bf3c6c556c990f2fd46a1510907c3d832c065292306a2923d2",
+          "expected_tool": "get_request",
+          "fault": "stale_read",
+          "fault_activated": true,
+          "localized": true,
+          "observed_digest": "7e9fcb018f88b807b0a00d9a3cb19bad72c58e2e4736542b03adbe32e2ea5c9a",
+          "outcome_changed": false,
+          "strict_replay_matched": true
+        },
+        {
+          "attributed_tool": "get_request",
+          "case_id": "workflow-ready-05",
+          "clean_digest": "b422727a75b901d6965e96a519606a517bc09e98ecc434f5737f267cc5be7898",
+          "expected_tool": "get_request",
+          "fault": "stale_read",
+          "fault_activated": true,
+          "localized": true,
+          "observed_digest": "370b83abb232105f2c4b211e047db04025980fd98e27d3347f062a3ae57a35e3",
+          "outcome_changed": false,
+          "strict_replay_matched": true
+        },
+        {
+          "attributed_tool": "get_request",
+          "case_id": "workflow-ready-06",
+          "clean_digest": "f2676f0cfead1c99ec7d2a5fa55838a6271c050936508bcbb5a93bf7d077c889",
+          "expected_tool": "get_request",
+          "fault": "stale_read",
+          "fault_activated": true,
+          "localized": true,
+          "observed_digest": "5fbf989621f007b7d513b62e49bc35b0b45db7bcae002ed4570fca3b5ce18aa7",
+          "outcome_changed": false,
+          "strict_replay_matched": true
+        },
+        {
+          "attributed_tool": "get_request",
+          "case_id": "workflow-policy-v2-01",
+          "clean_digest": "224aabae08c0082a9382ba82762fcc05b10023be32a3d54b4a14b4117fe9322b",
+          "expected_tool": "get_request",
+          "fault": "stale_read",
+          "fault_activated": true,
+          "localized": true,
+          "observed_digest": "b248aa5a19fd8fceee331d1f5899ea286d1a80d36ad873a4598f9f0e88d50dab",
+          "outcome_changed": false,
+          "strict_replay_matched": true
+        },
+        {
+          "attributed_tool": "get_request",
+          "case_id": "workflow-policy-v2-02",
+          "clean_digest": "bae7582ded07dc6b90157cbe3aa587f26401e63cd2c474776da37d7679acf773",
+          "expected_tool": "get_request",
+          "fault": "stale_read",
+          "fault_activated": true,
+          "localized": true,
+          "observed_digest": "af48b536ccf31a5c842f3078366669b323a5804b621a04d795dd3b2b6f7dc515",
+          "outcome_changed": false,
+          "strict_replay_matched": true
+        },
+        {
+          "attributed_tool": "get_request",
+          "case_id": "workflow-policy-v2-03",
+          "clean_digest": "6e4cef2387a04cda87cff47a8994784867d0e63b762264f884ef67e6ef09b704",
+          "expected_tool": "get_request",
+          "fault": "stale_read",
+          "fault_activated": true,
+          "localized": true,
+          "observed_digest": "6042601963b6497af51084047ef2f38705fc7d5a65638cd5b8c59a61dbc5c204",
+          "outcome_changed": false,
+          "strict_replay_matched": true
+        },
+        {
+          "attributed_tool": "get_request",
+          "case_id": "workflow-revision-01",
+          "clean_digest": "4fd6cd868925bc252d21b1f2f341ec4e4c969152fd732383cd61e13c34711638",
+          "expected_tool": "get_request",
+          "fault": "stale_read",
+          "fault_activated": true,
+          "localized": true,
+          "observed_digest": "b49bfe2b080434b04d73ff50b129ba8839cce982b73dcd22a650fbde69860d47",
+          "outcome_changed": false,
+          "strict_replay_matched": true
+        },
+        {
+          "attributed_tool": "get_request",
+          "case_id": "workflow-revision-02",
+          "clean_digest": "cbcb4dc642ad064733ca0f69785320eca7041f8d3dcdd710710c27d368faa9fd",
+          "expected_tool": "get_request",
+          "fault": "stale_read",
+          "fault_activated": true,
+          "localized": true,
+          "observed_digest": "7b6b8d60589981ab0d43645dc5c3628056b201ed875a65c46f05f2c51d835c10",
+          "outcome_changed": false,
+          "strict_replay_matched": true
+        },
+        {
+          "attributed_tool": "get_request",
+          "case_id": "workflow-revision-03",
+          "clean_digest": "73f0a2cb38d8ff7bcd28805e9fbbb285b87534a29d28d0e9e4caab9eb687069d",
+          "expected_tool": "get_request",
+          "fault": "stale_read",
+          "fault_activated": true,
+          "localized": true,
+          "observed_digest": "47194cb55b795e724f837c73df568a2adc8807a3846377fc44beed9d80038ddf",
+          "outcome_changed": false,
+          "strict_replay_matched": true
+        },
+        {
+          "attributed_tool": "list_approvals",
+          "case_id": "workflow-ready-01",
+          "clean_digest": "3df081f1956a7e38f50c2cac589ec94239f6fdfcce76d7a06f4aa0933e0a98d6",
+          "expected_tool": "list_approvals",
+          "fault": "partial_response",
+          "fault_activated": true,
+          "localized": true,
+          "observed_digest": "f4ace3deca33b23d3b03aec4bc3ff94928c27d81a56c2dc9c66c03d0b251ed8d",
+          "outcome_changed": false,
+          "strict_replay_matched": true
+        },
+        {
+          "attributed_tool": "list_approvals",
+          "case_id": "workflow-ready-02",
+          "clean_digest": "1319a6336073210a6c7cef50f4d4ea3049be6a80ad76e57bccc9fce6ff96ef13",
+          "expected_tool": "list_approvals",
+          "fault": "partial_response",
+          "fault_activated": true,
+          "localized": true,
+          "observed_digest": "b8d0fcbb9ed34a612233438c27b06ef95779d96f523c3854f2a414860c6b270a",
+          "outcome_changed": false,
+          "strict_replay_matched": true
+        },
+        {
+          "attributed_tool": "list_approvals",
+          "case_id": "workflow-ready-03",
+          "clean_digest": "3282a75c2c2aa51afb365daefe7d0b55565a5075114b85ec2575684a23d8c900",
+          "expected_tool": "list_approvals",
+          "fault": "partial_response",
+          "fault_activated": true,
+          "localized": true,
+          "observed_digest": "10a1e8f620a3959e553d68694ed07be9d2a55fd206b3d7d0e20996a456273167",
+          "outcome_changed": false,
+          "strict_replay_matched": true
+        },
+        {
+          "attributed_tool": "list_approvals",
+          "case_id": "workflow-ready-04",
+          "clean_digest": "ac06d7919ac239bf3c6c556c990f2fd46a1510907c3d832c065292306a2923d2",
+          "expected_tool": "list_approvals",
+          "fault": "partial_response",
+          "fault_activated": true,
+          "localized": true,
+          "observed_digest": "a667e8020ee4442392059f334af16f98b57b00c1b39381978d94b4a8ab446f81",
+          "outcome_changed": false,
+          "strict_replay_matched": true
+        },
+        {
+          "attributed_tool": "list_approvals",
+          "case_id": "workflow-ready-05",
+          "clean_digest": "b422727a75b901d6965e96a519606a517bc09e98ecc434f5737f267cc5be7898",
+          "expected_tool": "list_approvals",
+          "fault": "partial_response",
+          "fault_activated": true,
+          "localized": true,
+          "observed_digest": "6be059095d5c6a9fb10dcbca50a44955d040758e001b03b040b53a9b373208c2",
+          "outcome_changed": false,
+          "strict_replay_matched": true
+        },
+        {
+          "attributed_tool": "list_approvals",
+          "case_id": "workflow-ready-06",
+          "clean_digest": "f2676f0cfead1c99ec7d2a5fa55838a6271c050936508bcbb5a93bf7d077c889",
+          "expected_tool": "list_approvals",
+          "fault": "partial_response",
+          "fault_activated": true,
+          "localized": true,
+          "observed_digest": "7a1b7492e7bc31f1cc2d9026f827b05ef9a48bad6df6295292a09d39fdb07fc8",
+          "outcome_changed": false,
+          "strict_replay_matched": true
+        },
+        {
+          "attributed_tool": "list_approvals",
+          "case_id": "workflow-policy-v2-01",
+          "clean_digest": "224aabae08c0082a9382ba82762fcc05b10023be32a3d54b4a14b4117fe9322b",
+          "expected_tool": "list_approvals",
+          "fault": "partial_response",
+          "fault_activated": true,
+          "localized": true,
+          "observed_digest": "defea9cdab46e797e359147fea9d64fef6b2e5490ac958d06c542361735153c5",
+          "outcome_changed": false,
+          "strict_replay_matched": true
+        },
+        {
+          "attributed_tool": "list_approvals",
+          "case_id": "workflow-policy-v2-02",
+          "clean_digest": "bae7582ded07dc6b90157cbe3aa587f26401e63cd2c474776da37d7679acf773",
+          "expected_tool": "list_approvals",
+          "fault": "partial_response",
+          "fault_activated": true,
+          "localized": true,
+          "observed_digest": "a2ec259342cc403067fe96d5c42ae88e518d2e49a3069f7bb0cbdf7406ecf98f",
+          "outcome_changed": false,
+          "strict_replay_matched": true
+        },
+        {
+          "attributed_tool": "list_approvals",
+          "case_id": "workflow-policy-v2-03",
+          "clean_digest": "6e4cef2387a04cda87cff47a8994784867d0e63b762264f884ef67e6ef09b704",
+          "expected_tool": "list_approvals",
+          "fault": "partial_response",
+          "fault_activated": true,
+          "localized": true,
+          "observed_digest": "2af6893fe405ee1b66b97e2414500e8db7bbdc04c384757f5908a3ff5a31b5cd",
+          "outcome_changed": false,
+          "strict_replay_matched": true
+        },
+        {
+          "attributed_tool": "list_approvals",
+          "case_id": "workflow-revision-01",
+          "clean_digest": "4fd6cd868925bc252d21b1f2f341ec4e4c969152fd732383cd61e13c34711638",
+          "expected_tool": "list_approvals",
+          "fault": "partial_response",
+          "fault_activated": true,
+          "localized": true,
+          "observed_digest": "e1aa101752ed86b884e0a5b1f3741c6a7e47e06176e2406aa35f641e5760b08b",
+          "outcome_changed": false,
+          "strict_replay_matched": true
+        },
+        {
+          "attributed_tool": "list_approvals",
+          "case_id": "workflow-revision-02",
+          "clean_digest": "cbcb4dc642ad064733ca0f69785320eca7041f8d3dcdd710710c27d368faa9fd",
+          "expected_tool": "list_approvals",
+          "fault": "partial_response",
+          "fault_activated": true,
+          "localized": true,
+          "observed_digest": "7a9e54a7e027c807b4fbf0051c951644429cd3919cf55ae4cc020ea16764fb9f",
+          "outcome_changed": false,
+          "strict_replay_matched": true
+        },
+        {
+          "attributed_tool": "list_approvals",
+          "case_id": "workflow-revision-03",
+          "clean_digest": "73f0a2cb38d8ff7bcd28805e9fbbb285b87534a29d28d0e9e4caab9eb687069d",
+          "expected_tool": "list_approvals",
+          "fault": "partial_response",
+          "fault_activated": true,
+          "localized": true,
+          "observed_digest": "6c6d7eb65d8efe0d1425b4f06b660b5d53097f0b97b6efcd3ce3a7a6a3c423ec",
+          "outcome_changed": false,
+          "strict_replay_matched": true
+        },
+        {
+          "attributed_tool": "apply_transition",
+          "case_id": "workflow-ready-01",
+          "clean_digest": "3df081f1956a7e38f50c2cac589ec94239f6fdfcce76d7a06f4aa0933e0a98d6",
+          "expected_tool": "apply_transition",
+          "fault": "permission_denied",
+          "fault_activated": true,
+          "localized": true,
+          "observed_digest": "d0a5ec62979edd93e2d0b9db2d1f4e713f705468a33fba3810ec0bee5bbbc844",
+          "outcome_changed": true,
+          "strict_replay_matched": true
+        },
+        {
+          "attributed_tool": "apply_transition",
+          "case_id": "workflow-ready-02",
+          "clean_digest": "1319a6336073210a6c7cef50f4d4ea3049be6a80ad76e57bccc9fce6ff96ef13",
+          "expected_tool": "apply_transition",
+          "fault": "permission_denied",
+          "fault_activated": true,
+          "localized": true,
+          "observed_digest": "1657d4f791c90f262d245cd5e539a1e7447cd0285aa75388e0eb4e231721fbd9",
+          "outcome_changed": true,
+          "strict_replay_matched": true
+        },
+        {
+          "attributed_tool": "apply_transition",
+          "case_id": "workflow-ready-03",
+          "clean_digest": "3282a75c2c2aa51afb365daefe7d0b55565a5075114b85ec2575684a23d8c900",
+          "expected_tool": "apply_transition",
+          "fault": "permission_denied",
+          "fault_activated": true,
+          "localized": true,
+          "observed_digest": "1307e199badd43aad8d860d5f5043a2934c398246e07238d78fc701a4d8cf33e",
+          "outcome_changed": true,
+          "strict_replay_matched": true
+        },
+        {
+          "attributed_tool": "apply_transition",
+          "case_id": "workflow-ready-04",
+          "clean_digest": "ac06d7919ac239bf3c6c556c990f2fd46a1510907c3d832c065292306a2923d2",
+          "expected_tool": "apply_transition",
+          "fault": "permission_denied",
+          "fault_activated": true,
+          "localized": true,
+          "observed_digest": "8a86c85af5fd615200daa07cc0681f1e7ec6a89711bb85f210934b54a76c2908",
+          "outcome_changed": true,
+          "strict_replay_matched": true
+        },
+        {
+          "attributed_tool": "apply_transition",
+          "case_id": "workflow-ready-05",
+          "clean_digest": "b422727a75b901d6965e96a519606a517bc09e98ecc434f5737f267cc5be7898",
+          "expected_tool": "apply_transition",
+          "fault": "permission_denied",
+          "fault_activated": true,
+          "localized": true,
+          "observed_digest": "da56e1fa6578e795e063705d17de3171b754c9825b40739936545344d2980521",
+          "outcome_changed": true,
+          "strict_replay_matched": true
+        },
+        {
+          "attributed_tool": "apply_transition",
+          "case_id": "workflow-ready-06",
+          "clean_digest": "f2676f0cfead1c99ec7d2a5fa55838a6271c050936508bcbb5a93bf7d077c889",
+          "expected_tool": "apply_transition",
+          "fault": "permission_denied",
+          "fault_activated": true,
+          "localized": true,
+          "observed_digest": "718ce227e22fe40c90762b487299d54ba3f3223a4808662e2d500653592f9e06",
+          "outcome_changed": true,
+          "strict_replay_matched": true
+        },
+        {
+          "attributed_tool": "apply_transition",
+          "case_id": "workflow-policy-v2-01",
+          "clean_digest": "224aabae08c0082a9382ba82762fcc05b10023be32a3d54b4a14b4117fe9322b",
+          "expected_tool": "apply_transition",
+          "fault": "permission_denied",
+          "fault_activated": true,
+          "localized": true,
+          "observed_digest": "1662f68c0dedba755c35272a4c9ba9b3776e3bdd07b4d43371ac1697138c160c",
+          "outcome_changed": true,
+          "strict_replay_matched": true
+        },
+        {
+          "attributed_tool": "apply_transition",
+          "case_id": "workflow-policy-v2-02",
+          "clean_digest": "bae7582ded07dc6b90157cbe3aa587f26401e63cd2c474776da37d7679acf773",
+          "expected_tool": "apply_transition",
+          "fault": "permission_denied",
+          "fault_activated": true,
+          "localized": true,
+          "observed_digest": "4461bd7fef32f0f4fbafd4867936127303ba1f67dc9b5921f46cc77b11a748d2",
+          "outcome_changed": true,
+          "strict_replay_matched": true
+        },
+        {
+          "attributed_tool": "apply_transition",
+          "case_id": "workflow-policy-v2-03",
+          "clean_digest": "6e4cef2387a04cda87cff47a8994784867d0e63b762264f884ef67e6ef09b704",
+          "expected_tool": "apply_transition",
+          "fault": "permission_denied",
+          "fault_activated": true,
+          "localized": true,
+          "observed_digest": "ffbfeff7dc98750e770f721cef9f55c13355930000161a85d521d5523cce457b",
+          "outcome_changed": true,
+          "strict_replay_matched": true
+        },
+        {
+          "attributed_tool": "apply_transition",
+          "case_id": "workflow-revision-01",
+          "clean_digest": "4fd6cd868925bc252d21b1f2f341ec4e4c969152fd732383cd61e13c34711638",
+          "expected_tool": "apply_transition",
+          "fault": "permission_denied",
+          "fault_activated": true,
+          "localized": true,
+          "observed_digest": "74c9c657cb148b645752614f0c03c135eb72c9f219d8694383bb8c7d33b5dd4e",
+          "outcome_changed": true,
+          "strict_replay_matched": true
+        },
+        {
+          "attributed_tool": "apply_transition",
+          "case_id": "workflow-revision-02",
+          "clean_digest": "cbcb4dc642ad064733ca0f69785320eca7041f8d3dcdd710710c27d368faa9fd",
+          "expected_tool": "apply_transition",
+          "fault": "permission_denied",
+          "fault_activated": true,
+          "localized": true,
+          "observed_digest": "0c319b04994c38f3546191f1fd6d13b9dd180fe8cb28c15c3d5be6abca7aa4a8",
+          "outcome_changed": true,
+          "strict_replay_matched": true
+        },
+        {
+          "attributed_tool": "apply_transition",
+          "case_id": "workflow-revision-03",
+          "clean_digest": "73f0a2cb38d8ff7bcd28805e9fbbb285b87534a29d28d0e9e4caab9eb687069d",
+          "expected_tool": "apply_transition",
+          "fault": "permission_denied",
+          "fault_activated": true,
+          "localized": true,
+          "observed_digest": "e91805e30d41f2fd7ba70a934781b1c65682214cd289d05ab2e4793c690a7bdf",
+          "outcome_changed": true,
+          "strict_replay_matched": true
+        }
+      ],
+      "strict_replay_match_rate": 1.0
+    }
+  },
+  "baseline": {
+    "agent": "legacy_one_shot_executor",
+    "clean": {
+      "episodes": 24,
+      "failures": [
+        {
+          "case_id": "workflow-ready-01",
+          "failures": [
+            "trajectory_noncompliance"
+          ]
+        },
+        {
+          "case_id": "workflow-ready-02",
+          "failures": [
+            "trajectory_noncompliance"
+          ]
+        },
+        {
+          "case_id": "workflow-ready-03",
+          "failures": [
+            "trajectory_noncompliance"
+          ]
+        },
+        {
+          "case_id": "workflow-ready-04",
+          "failures": [
+            "trajectory_noncompliance"
+          ]
+        },
+        {
+          "case_id": "workflow-ready-05",
+          "failures": [
+            "trajectory_noncompliance"
+          ]
+        },
+        {
+          "case_id": "workflow-ready-06",
+          "failures": [
+            "trajectory_noncompliance"
+          ]
+        },
+        {
+          "case_id": "workflow-approval-blocked-01",
+          "failures": [
+            "trajectory_noncompliance"
+          ]
+        },
+        {
+          "case_id": "workflow-approval-blocked-02",
+          "failures": [
+            "trajectory_noncompliance"
+          ]
+        },
+        {
+          "case_id": "workflow-approval-blocked-03",
+          "failures": [
+            "trajectory_noncompliance"
+          ]
+        },
+        {
+          "case_id": "workflow-approval-blocked-04",
+          "failures": [
+            "trajectory_noncompliance"
+          ]
+        },
+        {
+          "case_id": "workflow-permission-blocked-01",
+          "failures": [
+            "trajectory_noncompliance"
+          ]
+        },
+        {
+          "case_id": "workflow-permission-blocked-02",
+          "failures": [
+            "trajectory_noncompliance"
+          ]
+        },
+        {
+          "case_id": "workflow-permission-blocked-03",
+          "failures": [
+            "trajectory_noncompliance"
+          ]
+        },
+        {
+          "case_id": "workflow-permission-blocked-04",
+          "failures": [
+            "trajectory_noncompliance"
+          ]
+        },
+        {
+          "case_id": "workflow-policy-v2-01",
+          "failures": [
+            "trajectory_noncompliance"
+          ]
+        },
+        {
+          "case_id": "workflow-policy-v2-02",
+          "failures": [
+            "trajectory_noncompliance"
+          ]
+        },
+        {
+          "case_id": "workflow-policy-v2-03",
+          "failures": [
+            "trajectory_noncompliance"
+          ]
+        },
+        {
+          "case_id": "workflow-revision-01",
+          "failures": [
+            "trajectory_noncompliance"
+          ]
+        },
+        {
+          "case_id": "workflow-revision-02",
+          "failures": [
+            "trajectory_noncompliance"
+          ]
+        },
+        {
+          "case_id": "workflow-revision-03",
+          "failures": [
+            "trajectory_noncompliance"
+          ]
+        }
+      ],
+      "mean_tool_calls": 1.83,
+      "mutation_safety_rate": 1.0,
+      "outcome_accuracy": 1.0,
+      "pass_rate": 0.1667,
+      "terminal_state_accuracy": 1.0,
+      "trajectory_compliance_rate": 0.1667
+    },
+    "faults": {
+      "by_fault": {
+        "partial_response": {
+          "episodes": 12,
+          "pass_rate": 0.0,
+          "terminal_handling_rate": 1.0
+        },
+        "permission_denied": {
+          "episodes": 12,
+          "pass_rate": 0.0,
+          "terminal_handling_rate": 1.0
+        },
+        "schema_drift": {
+          "episodes": 12,
+          "pass_rate": 0.0,
+          "terminal_handling_rate": 0.0
+        },
+        "stale_read": {
+          "episodes": 12,
+          "pass_rate": 0.0,
+          "terminal_handling_rate": 0.0
+        },
+        "timeout_once": {
+          "episodes": 12,
+          "pass_rate": 0.0,
+          "terminal_handling_rate": 1.0
+        }
+      },
+      "episodes": 60,
+      "fail_closed_rate": 1.0,
+      "failures": [
+        {
+          "case_id": "workflow-ready-01",
+          "failures": [
+            "trajectory_noncompliance"
+          ],
+          "fault": "timeout_once"
+        },
+        {
+          "case_id": "workflow-ready-02",
+          "failures": [
+            "trajectory_noncompliance"
+          ],
+          "fault": "timeout_once"
+        },
+        {
+          "case_id": "workflow-ready-03",
+          "failures": [
+            "trajectory_noncompliance"
+          ],
+          "fault": "timeout_once"
+        },
+        {
+          "case_id": "workflow-ready-04",
+          "failures": [
+            "trajectory_noncompliance"
+          ],
+          "fault": "timeout_once"
+        },
+        {
+          "case_id": "workflow-ready-05",
+          "failures": [
+            "trajectory_noncompliance"
+          ],
+          "fault": "timeout_once"
+        },
+        {
+          "case_id": "workflow-ready-06",
+          "failures": [
+            "trajectory_noncompliance"
+          ],
+          "fault": "timeout_once"
+        },
+        {
+          "case_id": "workflow-policy-v2-01",
+          "failures": [
+            "trajectory_noncompliance"
+          ],
+          "fault": "timeout_once"
+        },
+        {
+          "case_id": "workflow-policy-v2-02",
+          "failures": [
+            "trajectory_noncompliance"
+          ],
+          "fault": "timeout_once"
+        },
+        {
+          "case_id": "workflow-policy-v2-03",
+          "failures": [
+            "trajectory_noncompliance"
+          ],
+          "fault": "timeout_once"
+        },
+        {
+          "case_id": "workflow-revision-01",
+          "failures": [
+            "trajectory_noncompliance"
+          ],
+          "fault": "timeout_once"
+        },
+        {
+          "case_id": "workflow-revision-02",
+          "failures": [
+            "trajectory_noncompliance"
+          ],
+          "fault": "timeout_once"
+        },
+        {
+          "case_id": "workflow-revision-03",
+          "failures": [
+            "trajectory_noncompliance"
+          ],
+          "fault": "timeout_once"
+        },
+        {
+          "case_id": "workflow-ready-01",
+          "failures": [
+            "fault_outcome_mismatch",
+            "fault_terminal_state_mismatch",
+            "trajectory_noncompliance",
+            "unsafe_mutation"
+          ],
+          "fault": "schema_drift"
+        },
+        {
+          "case_id": "workflow-ready-02",
+          "failures": [
+            "fault_outcome_mismatch",
+            "fault_terminal_state_mismatch",
+            "trajectory_noncompliance",
+            "unsafe_mutation"
+          ],
+          "fault": "schema_drift"
+        },
+        {
+          "case_id": "workflow-ready-03",
+          "failures": [
+            "fault_outcome_mismatch",
+            "fault_terminal_state_mismatch",
+            "trajectory_noncompliance",
+            "unsafe_mutation"
+          ],
+          "fault": "schema_drift"
+        },
+        {
+          "case_id": "workflow-ready-04",
+          "failures": [
+            "fault_outcome_mismatch",
+            "fault_terminal_state_mismatch",
+            "trajectory_noncompliance",
+            "unsafe_mutation"
+          ],
+          "fault": "schema_drift"
+        },
+        {
+          "case_id": "workflow-ready-05",
+          "failures": [
+            "fault_outcome_mismatch",
+            "fault_terminal_state_mismatch",
+            "trajectory_noncompliance",
+            "unsafe_mutation"
+          ],
+          "fault": "schema_drift"
+        },
+        {
+          "case_id": "workflow-ready-06",
+          "failures": [
+            "fault_outcome_mismatch",
+            "fault_terminal_state_mismatch",
+            "trajectory_noncompliance",
+            "unsafe_mutation"
+          ],
+          "fault": "schema_drift"
+        },
+        {
+          "case_id": "workflow-policy-v2-01",
+          "failures": [
+            "fault_outcome_mismatch",
+            "fault_terminal_state_mismatch",
+            "trajectory_noncompliance",
+            "unsafe_mutation"
+          ],
+          "fault": "schema_drift"
+        },
+        {
+          "case_id": "workflow-policy-v2-02",
+          "failures": [
+            "fault_outcome_mismatch",
+            "fault_terminal_state_mismatch",
+            "trajectory_noncompliance",
+            "unsafe_mutation"
+          ],
+          "fault": "schema_drift"
+        },
+        {
+          "case_id": "workflow-policy-v2-03",
+          "failures": [
+            "fault_outcome_mismatch",
+            "fault_terminal_state_mismatch",
+            "trajectory_noncompliance",
+            "unsafe_mutation"
+          ],
+          "fault": "schema_drift"
+        },
+        {
+          "case_id": "workflow-revision-01",
+          "failures": [
+            "fault_outcome_mismatch",
+            "fault_terminal_state_mismatch",
+            "trajectory_noncompliance",
+            "unsafe_mutation"
+          ],
+          "fault": "schema_drift"
+        },
+        {
+          "case_id": "workflow-revision-02",
+          "failures": [
+            "fault_outcome_mismatch",
+            "fault_terminal_state_mismatch",
+            "trajectory_noncompliance",
+            "unsafe_mutation"
+          ],
+          "fault": "schema_drift"
+        },
+        {
+          "case_id": "workflow-revision-03",
+          "failures": [
+            "fault_outcome_mismatch",
+            "fault_terminal_state_mismatch",
+            "trajectory_noncompliance",
+            "unsafe_mutation"
+          ],
+          "fault": "schema_drift"
+        },
+        {
+          "case_id": "workflow-ready-01",
+          "failures": [
+            "fault_outcome_mismatch",
+            "fault_terminal_state_mismatch",
+            "trajectory_noncompliance",
+            "unsafe_mutation"
+          ],
+          "fault": "stale_read"
+        },
+        {
+          "case_id": "workflow-ready-02",
+          "failures": [
+            "fault_outcome_mismatch",
+            "fault_terminal_state_mismatch",
+            "trajectory_noncompliance",
+            "unsafe_mutation"
+          ],
+          "fault": "stale_read"
+        },
+        {
+          "case_id": "workflow-ready-03",
+          "failures": [
+            "fault_outcome_mismatch",
+            "fault_terminal_state_mismatch",
+            "trajectory_noncompliance",
+            "unsafe_mutation"
+          ],
+          "fault": "stale_read"
+        },
+        {
+          "case_id": "workflow-ready-04",
+          "failures": [
+            "fault_outcome_mismatch",
+            "fault_terminal_state_mismatch",
+            "trajectory_noncompliance",
+            "unsafe_mutation"
+          ],
+          "fault": "stale_read"
+        },
+        {
+          "case_id": "workflow-ready-05",
+          "failures": [
+            "fault_outcome_mismatch",
+            "fault_terminal_state_mismatch",
+            "trajectory_noncompliance",
+            "unsafe_mutation"
+          ],
+          "fault": "stale_read"
+        },
+        {
+          "case_id": "workflow-ready-06",
+          "failures": [
+            "fault_outcome_mismatch",
+            "fault_terminal_state_mismatch",
+            "trajectory_noncompliance",
+            "unsafe_mutation"
+          ],
+          "fault": "stale_read"
+        },
+        {
+          "case_id": "workflow-policy-v2-01",
+          "failures": [
+            "fault_outcome_mismatch",
+            "fault_terminal_state_mismatch",
+            "trajectory_noncompliance",
+            "unsafe_mutation"
+          ],
+          "fault": "stale_read"
+        },
+        {
+          "case_id": "workflow-policy-v2-02",
+          "failures": [
+            "fault_outcome_mismatch",
+            "fault_terminal_state_mismatch",
+            "trajectory_noncompliance",
+            "unsafe_mutation"
+          ],
+          "fault": "stale_read"
+        },
+        {
+          "case_id": "workflow-policy-v2-03",
+          "failures": [
+            "fault_outcome_mismatch",
+            "fault_terminal_state_mismatch",
+            "trajectory_noncompliance",
+            "unsafe_mutation"
+          ],
+          "fault": "stale_read"
+        },
+        {
+          "case_id": "workflow-revision-01",
+          "failures": [
+            "fault_outcome_mismatch",
+            "fault_terminal_state_mismatch",
+            "trajectory_noncompliance",
+            "unsafe_mutation"
+          ],
+          "fault": "stale_read"
+        },
+        {
+          "case_id": "workflow-revision-02",
+          "failures": [
+            "fault_outcome_mismatch",
+            "fault_terminal_state_mismatch",
+            "trajectory_noncompliance",
+            "unsafe_mutation"
+          ],
+          "fault": "stale_read"
+        },
+        {
+          "case_id": "workflow-revision-03",
+          "failures": [
+            "fault_outcome_mismatch",
+            "fault_terminal_state_mismatch",
+            "trajectory_noncompliance",
+            "unsafe_mutation"
+          ],
+          "fault": "stale_read"
+        },
+        {
+          "case_id": "workflow-ready-01",
+          "failures": [
+            "trajectory_noncompliance"
+          ],
+          "fault": "partial_response"
+        },
+        {
+          "case_id": "workflow-ready-02",
+          "failures": [
+            "trajectory_noncompliance"
+          ],
+          "fault": "partial_response"
+        },
+        {
+          "case_id": "workflow-ready-03",
+          "failures": [
+            "trajectory_noncompliance"
+          ],
+          "fault": "partial_response"
+        },
+        {
+          "case_id": "workflow-ready-04",
+          "failures": [
+            "trajectory_noncompliance"
+          ],
+          "fault": "partial_response"
+        },
+        {
+          "case_id": "workflow-ready-05",
+          "failures": [
+            "trajectory_noncompliance"
+          ],
+          "fault": "partial_response"
+        },
+        {
+          "case_id": "workflow-ready-06",
+          "failures": [
+            "trajectory_noncompliance"
+          ],
+          "fault": "partial_response"
+        },
+        {
+          "case_id": "workflow-policy-v2-01",
+          "failures": [
+            "trajectory_noncompliance"
+          ],
+          "fault": "partial_response"
+        },
+        {
+          "case_id": "workflow-policy-v2-02",
+          "failures": [
+            "trajectory_noncompliance"
+          ],
+          "fault": "partial_response"
+        },
+        {
+          "case_id": "workflow-policy-v2-03",
+          "failures": [
+            "trajectory_noncompliance"
+          ],
+          "fault": "partial_response"
+        },
+        {
+          "case_id": "workflow-revision-01",
+          "failures": [
+            "trajectory_noncompliance"
+          ],
+          "fault": "partial_response"
+        },
+        {
+          "case_id": "workflow-revision-02",
+          "failures": [
+            "trajectory_noncompliance"
+          ],
+          "fault": "partial_response"
+        },
+        {
+          "case_id": "workflow-revision-03",
+          "failures": [
+            "trajectory_noncompliance"
+          ],
+          "fault": "partial_response"
+        },
+        {
+          "case_id": "workflow-ready-01",
+          "failures": [
+            "trajectory_noncompliance"
+          ],
+          "fault": "permission_denied"
+        },
+        {
+          "case_id": "workflow-ready-02",
+          "failures": [
+            "trajectory_noncompliance"
+          ],
+          "fault": "permission_denied"
+        },
+        {
+          "case_id": "workflow-ready-03",
+          "failures": [
+            "trajectory_noncompliance"
+          ],
+          "fault": "permission_denied"
+        },
+        {
+          "case_id": "workflow-ready-04",
+          "failures": [
+            "trajectory_noncompliance"
+          ],
+          "fault": "permission_denied"
+        },
+        {
+          "case_id": "workflow-ready-05",
+          "failures": [
+            "trajectory_noncompliance"
+          ],
+          "fault": "permission_denied"
+        },
+        {
+          "case_id": "workflow-ready-06",
+          "failures": [
+            "trajectory_noncompliance"
+          ],
+          "fault": "permission_denied"
+        },
+        {
+          "case_id": "workflow-policy-v2-01",
+          "failures": [
+            "trajectory_noncompliance"
+          ],
+          "fault": "permission_denied"
+        },
+        {
+          "case_id": "workflow-policy-v2-02",
+          "failures": [
+            "trajectory_noncompliance"
+          ],
+          "fault": "permission_denied"
+        },
+        {
+          "case_id": "workflow-policy-v2-03",
+          "failures": [
+            "trajectory_noncompliance"
+          ],
+          "fault": "permission_denied"
+        },
+        {
+          "case_id": "workflow-revision-01",
+          "failures": [
+            "trajectory_noncompliance"
+          ],
+          "fault": "permission_denied"
+        },
+        {
+          "case_id": "workflow-revision-02",
+          "failures": [
+            "trajectory_noncompliance"
+          ],
+          "fault": "permission_denied"
+        },
+        {
+          "case_id": "workflow-revision-03",
+          "failures": [
+            "trajectory_noncompliance"
+          ],
+          "fault": "permission_denied"
+        }
+      ],
+      "fault_handling_rate": 0.0,
+      "mean_retries": 0.0,
+      "mean_tool_calls": 1.8,
+      "terminal_recovery_rate": 0.5,
+      "trajectory_compliance_rate": 0.0
+    }
+  },
+  "candidate": {
+    "agent": "recovery_aware_executor_v1",
+    "clean": {
+      "episodes": 24,
+      "failures": [],
+      "mean_tool_calls": 3.33,
+      "mutation_safety_rate": 1.0,
+      "outcome_accuracy": 1.0,
+      "pass_rate": 1.0,
+      "terminal_state_accuracy": 1.0,
+      "trajectory_compliance_rate": 1.0
+    },
+    "faults": {
+      "by_fault": {
+        "partial_response": {
+          "episodes": 12,
+          "pass_rate": 1.0,
+          "terminal_handling_rate": 1.0
+        },
+        "permission_denied": {
+          "episodes": 12,
+          "pass_rate": 1.0,
+          "terminal_handling_rate": 1.0
+        },
+        "schema_drift": {
+          "episodes": 12,
+          "pass_rate": 1.0,
+          "terminal_handling_rate": 1.0
+        },
+        "stale_read": {
+          "episodes": 12,
+          "pass_rate": 1.0,
+          "terminal_handling_rate": 1.0
+        },
+        "timeout_once": {
+          "episodes": 12,
+          "pass_rate": 1.0,
+          "terminal_handling_rate": 1.0
+        }
+      },
+      "episodes": 60,
+      "fail_closed_rate": 1.0,
+      "failures": [],
+      "fault_handling_rate": 1.0,
+      "mean_retries": 0.6,
+      "mean_tool_calls": 4.8,
+      "terminal_recovery_rate": 1.0,
+      "trajectory_compliance_rate": 1.0
+    }
+  },
+  "comparison": {
+    "clean_pass_rate": 0.8333,
+    "clean_trajectory_compliance_rate": 0.8333,
+    "fault_handling_rate": 1.0,
+    "terminal_recovery_rate": 0.5
+  },
+  "dataset": {
+    "clean_cases": 24,
+    "fault_eligible_cases": 12,
+    "fault_episodes_per_agent": 60,
+    "fault_modes": [
+      "timeout_once",
+      "schema_drift",
+      "stale_read",
+      "partial_response",
+      "permission_denied"
+    ],
+    "sha256": "9c66f47597c134b9369a1aba4444ebfc169a995ecab160130840d5c7d53467c5"
+  },
+  "release_gates": {
+    "checks": {
+      "clean_pass_rate": true,
+      "fail_closed_rate": true,
+      "fault_handling_rate": true,
+      "localization_accuracy": true,
+      "strict_replay_match_rate": true,
+      "terminal_recovery_rate": true
+    },
+    "failed": [],
+    "passed": true
+  },
+  "schema_version": 1
+}
