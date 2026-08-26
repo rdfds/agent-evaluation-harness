@@ -1,0 +1,167 @@
+{
+  "documents": [
+    {
+      "aliases": [
+        "badge sharing",
+        "shared access badge",
+        "lend an access badge",
+        "physical access credential"
+      ],
+      "answer": "Badge sharing is prohibited; access credentials must remain assigned to one employee.",
+      "id": "policy-17",
+      "title": "Badge sharing and physical access"
+    },
+    {
+      "aliases": [
+        "supplier audit delay",
+        "vendor audit postponed",
+        "corrective action packet",
+        "supplier review moved"
+      ],
+      "answer": "The supplier audit moved by two weeks because the corrective-action packet was incomplete.",
+      "id": "note-04",
+      "title": "Supplier audit delay"
+    },
+    {
+      "aliases": [
+        "record retention",
+        "retention period",
+        "keep investigation records",
+        "seven year archive"
+      ],
+      "answer": "Quality investigation records must be retained for seven years after closure.",
+      "id": "policy-22",
+      "title": "Record retention"
+    },
+    {
+      "aliases": [
+        "incident escalation",
+        "high severity escalation",
+        "four hour notification",
+        "quality leadership alert"
+      ],
+      "answer": "High-severity incidents must be escalated to quality leadership within four hours.",
+      "id": "memo-09",
+      "title": "Incident escalation"
+    },
+    {
+      "aliases": [
+        "remote access",
+        "managed device requirement",
+        "multifactor authentication",
+        "offsite login"
+      ],
+      "answer": "Remote access requires a managed device, multifactor authentication, and an approved business purpose.",
+      "id": "policy-31",
+      "title": "Remote access"
+    },
+    {
+      "aliases": [
+        "training expiration",
+        "expired training",
+        "lapsed course",
+        "training access suspension"
+      ],
+      "answer": "Expired training suspends system access until the required module is completed and recorded.",
+      "id": "note-11",
+      "title": "Training expiration"
+    },
+    {
+      "aliases": [
+        "vendor due diligence",
+        "critical vendor review",
+        "supplier onboarding checks",
+        "third party assessment"
+      ],
+      "answer": "Critical vendors require security, privacy, financial, and quality review before onboarding.",
+      "id": "policy-44",
+      "title": "Vendor due diligence"
+    },
+    {
+      "aliases": [
+        "data export approval",
+        "regulated record export",
+        "destination review",
+        "export owner signoff"
+      ],
+      "answer": "Exports containing regulated records require owner approval and a logged destination review.",
+      "id": "memo-15",
+      "title": "Data export approval"
+    }
+  ],
+  "out_of_scope_terms": [
+    "weather",
+    "share price",
+    "medical diagnosis",
+    "guaranteed revenue"
+  ],
+  "schema_version": 1,
+  "structured_intents": [
+    {
+      "aliases": [
+        "open findings quality team",
+        "quality backlog",
+        "quality findings still open",
+        "unresolved quality findings"
+      ],
+      "answer": "7",
+      "evidence_id": "records:findings-v1",
+      "intent": "quality_open_findings"
+    },
+    {
+      "aliases": [
+        "average closure time q2",
+        "mean q2 closure duration",
+        "q2 findings close",
+        "q2 resolution time"
+      ],
+      "answer": "4.5 days",
+      "evidence_id": "records:findings-v1",
+      "intent": "q2_average_closure"
+    },
+    {
+      "aliases": [
+        "accounts with onboarding gaps",
+        "onboarding gap accounts",
+        "incomplete onboarding accounts",
+        "account onboarding exceptions"
+      ],
+      "answer": "3",
+      "evidence_id": "records:accounts-v1",
+      "intent": "onboarding_gap_accounts"
+    },
+    {
+      "aliases": [
+        "overdue supplier reviews",
+        "late vendor reviews",
+        "supplier assessments past due",
+        "vendor review backlog"
+      ],
+      "answer": "5",
+      "evidence_id": "records:suppliers-v1",
+      "intent": "overdue_supplier_reviews"
+    },
+    {
+      "aliases": [
+        "average finance risk score",
+        "mean risk for finance",
+        "finance team risk average",
+        "finance risk score"
+      ],
+      "answer": "72.0",
+      "evidence_id": "records:risk-v1",
+      "intent": "finance_average_risk"
+    },
+    {
+      "aliases": [
+        "closed high severity incidents",
+        "resolved critical incidents",
+        "high severity cases closed",
+        "completed high severity incidents"
+      ],
+      "answer": "4",
+      "evidence_id": "records:incidents-v1",
+      "intent": "closed_high_severity_incidents"
+    }
+  ]
+}
