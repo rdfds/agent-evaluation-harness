@@ -1,0 +1,590 @@
+{
+  "baseline": {
+    "agent": "legacy_keyword_router",
+    "by_slice": {
+      "abstention": {
+        "answer_accuracy": 0.0,
+        "pass_rate": 0.0,
+        "route_accuracy": 0.0,
+        "runs": 160
+      },
+      "challenge": {
+        "answer_accuracy": 0.25,
+        "pass_rate": 0.25,
+        "route_accuracy": 0.625,
+        "runs": 80
+      },
+      "retrieval": {
+        "answer_accuracy": 0.25,
+        "pass_rate": 0.25,
+        "route_accuracy": 1.0,
+        "runs": 320
+      },
+      "structured_query": {
+        "answer_accuracy": 0.4583,
+        "pass_rate": 0.4583,
+        "route_accuracy": 0.4583,
+        "runs": 240
+      }
+    },
+    "cases": 80,
+    "diagnostics": {
+      "expected_evidence_runs": 640,
+      "non_abstain_or_failed_runs": 800
+    },
+    "failure_counts": {
+      "answer_mismatch": 590,
+      "missing_evidence": 430,
+      "route_mismatch": 320,
+      "unsupported_answer": 160
+    },
+    "failure_examples": [
+      {
+        "answer": "NO_MATCH",
+        "case_id": "retrieval-01-2",
+        "evidence_ids": [],
+        "failures": [
+          "answer_mismatch",
+          "missing_evidence"
+        ],
+        "route": "retrieval",
+        "slice": "retrieval",
+        "trace": [
+          {
+            "detail": {
+              "policy": "legacy_keyword_router",
+              "route": "retrieval"
+            },
+            "stage": "route"
+          },
+          {
+            "detail": {
+              "confidence": 0.5,
+              "evidence_ids": [],
+              "route": "retrieval"
+            },
+            "stage": "tool"
+          }
+        ]
+      },
+      {
+        "answer": "NO_MATCH",
+        "case_id": "retrieval-01-3",
+        "evidence_ids": [],
+        "failures": [
+          "answer_mismatch",
+          "missing_evidence"
+        ],
+        "route": "retrieval",
+        "slice": "retrieval",
+        "trace": [
+          {
+            "detail": {
+              "policy": "legacy_keyword_router",
+              "route": "retrieval"
+            },
+            "stage": "route"
+          },
+          {
+            "detail": {
+              "confidence": 0.5,
+              "evidence_ids": [],
+              "route": "retrieval"
+            },
+            "stage": "tool"
+          }
+        ]
+      },
+      {
+        "answer": "NO_MATCH",
+        "case_id": "retrieval-01-4",
+        "evidence_ids": [],
+        "failures": [
+          "answer_mismatch",
+          "missing_evidence"
+        ],
+        "route": "retrieval",
+        "slice": "retrieval",
+        "trace": [
+          {
+            "detail": {
+              "policy": "legacy_keyword_router",
+              "route": "retrieval"
+            },
+            "stage": "route"
+          },
+          {
+            "detail": {
+              "confidence": 0.5,
+              "evidence_ids": [],
+              "route": "retrieval"
+            },
+            "stage": "tool"
+          }
+        ]
+      },
+      {
+        "answer": "NO_MATCH",
+        "case_id": "retrieval-02-2",
+        "evidence_ids": [],
+        "failures": [
+          "answer_mismatch",
+          "missing_evidence"
+        ],
+        "route": "retrieval",
+        "slice": "retrieval",
+        "trace": [
+          {
+            "detail": {
+              "policy": "legacy_keyword_router",
+              "route": "retrieval"
+            },
+            "stage": "route"
+          },
+          {
+            "detail": {
+              "confidence": 0.3333333333333333,
+              "evidence_ids": [],
+              "route": "retrieval"
+            },
+            "stage": "tool"
+          }
+        ]
+      },
+      {
+        "answer": "NO_MATCH",
+        "case_id": "retrieval-02-3",
+        "evidence_ids": [],
+        "failures": [
+          "answer_mismatch",
+          "missing_evidence"
+        ],
+        "route": "retrieval",
+        "slice": "retrieval",
+        "trace": [
+          {
+            "detail": {
+              "policy": "legacy_keyword_router",
+              "route": "retrieval"
+            },
+            "stage": "route"
+          },
+          {
+            "detail": {
+              "confidence": 0.0,
+              "evidence_ids": [],
+              "route": "retrieval"
+            },
+            "stage": "tool"
+          }
+        ]
+      },
+      {
+        "answer": "NO_MATCH",
+        "case_id": "retrieval-02-4",
+        "evidence_ids": [],
+        "failures": [
+          "answer_mismatch",
+          "missing_evidence"
+        ],
+        "route": "retrieval",
+        "slice": "retrieval",
+        "trace": [
+          {
+            "detail": {
+              "policy": "legacy_keyword_router",
+              "route": "retrieval"
+            },
+            "stage": "route"
+          },
+          {
+            "detail": {
+              "confidence": 0.3333333333333333,
+              "evidence_ids": [],
+              "route": "retrieval"
+            },
+            "stage": "tool"
+          }
+        ]
+      },
+      {
+        "answer": "NO_MATCH",
+        "case_id": "retrieval-03-2",
+        "evidence_ids": [],
+        "failures": [
+          "answer_mismatch",
+          "missing_evidence"
+        ],
+        "route": "retrieval",
+        "slice": "retrieval",
+        "trace": [
+          {
+            "detail": {
+              "policy": "legacy_keyword_router",
+              "route": "retrieval"
+            },
+            "stage": "route"
+          },
+          {
+            "detail": {
+              "confidence": 0.5,
+              "evidence_ids": [],
+              "route": "retrieval"
+            },
+            "stage": "tool"
+          }
+        ]
+      },
+      {
+        "answer": "NO_MATCH",
+        "case_id": "retrieval-03-3",
+        "evidence_ids": [],
+        "failures": [
+          "answer_mismatch",
+          "missing_evidence"
+        ],
+        "route": "retrieval",
+        "slice": "retrieval",
+        "trace": [
+          {
+            "detail": {
+              "policy": "legacy_keyword_router",
+              "route": "retrieval"
+            },
+            "stage": "route"
+          },
+          {
+            "detail": {
+              "confidence": 0.0,
+              "evidence_ids": [],
+              "route": "retrieval"
+            },
+            "stage": "tool"
+          }
+        ]
+      },
+      {
+        "answer": "NO_MATCH",
+        "case_id": "retrieval-03-4",
+        "evidence_ids": [],
+        "failures": [
+          "answer_mismatch",
+          "missing_evidence"
+        ],
+        "route": "retrieval",
+        "slice": "retrieval",
+        "trace": [
+          {
+            "detail": {
+              "policy": "legacy_keyword_router",
+              "route": "retrieval"
+            },
+            "stage": "route"
+          },
+          {
+            "detail": {
+              "confidence": 0.0,
+              "evidence_ids": [],
+              "route": "retrieval"
+            },
+            "stage": "tool"
+          }
+        ]
+      },
+      {
+        "answer": "NO_MATCH",
+        "case_id": "retrieval-04-2",
+        "evidence_ids": [],
+        "failures": [
+          "answer_mismatch",
+          "missing_evidence"
+        ],
+        "route": "retrieval",
+        "slice": "retrieval",
+        "trace": [
+          {
+            "detail": {
+              "policy": "legacy_keyword_router",
+              "route": "retrieval"
+            },
+            "stage": "route"
+          },
+          {
+            "detail": {
+              "confidence": 0.5,
+              "evidence_ids": [],
+              "route": "retrieval"
+            },
+            "stage": "tool"
+          }
+        ]
+      }
+    ],
+    "operations": {
+      "cost_profile_note": "Reference token accounting for regression comparison; no model API is called.",
+      "mean_estimated_cost_usd": 4.32e-06,
+      "p50_latency_ms": 0.046,
+      "p95_latency_ms": 0.0877,
+      "total_estimated_cost_usd": 0.0034525
+    },
+    "quality": {
+      "abstention_accuracy": 0.0,
+      "answer_accuracy": 0.2625,
+      "answer_accuracy_95ci": [
+        0.2332,
+        0.2941
+      ],
+      "evidence_support_rate": 0.3281,
+      "pass_rate": 0.2625,
+      "pass_rate_95ci": [
+        0.2332,
+        0.2941
+      ],
+      "route_accuracy": 0.6,
+      "route_accuracy_95ci": [
+        0.5657,
+        0.6334
+      ],
+      "unsupported_answer_rate": 0.2
+    },
+    "reliability": {
+      "max_run_pass_rate": 0.2625,
+      "min_run_pass_rate": 0.2625,
+      "run_pass_rate_stddev": 0.0
+    },
+    "repeats": 10,
+    "runs": 800
+  },
+  "candidate": {
+    "agent": "evidence_aware_router_v2",
+    "by_slice": {
+      "abstention": {
+        "answer_accuracy": 1.0,
+        "pass_rate": 1.0,
+        "route_accuracy": 1.0,
+        "runs": 160
+      },
+      "challenge": {
+        "answer_accuracy": 0.75,
+        "pass_rate": 0.75,
+        "route_accuracy": 0.75,
+        "runs": 80
+      },
+      "retrieval": {
+        "answer_accuracy": 1.0,
+        "pass_rate": 1.0,
+        "route_accuracy": 1.0,
+        "runs": 320
+      },
+      "structured_query": {
+        "answer_accuracy": 1.0,
+        "pass_rate": 1.0,
+        "route_accuracy": 1.0,
+        "runs": 240
+      }
+    },
+    "cases": 80,
+    "diagnostics": {
+      "expected_evidence_runs": 640,
+      "non_abstain_or_failed_runs": 640
+    },
+    "failure_counts": {
+      "answer_mismatch": 20,
+      "missing_evidence": 20,
+      "route_mismatch": 20
+    },
+    "failure_examples": [
+      {
+        "answer": "INSUFFICIENT_EVIDENCE",
+        "case_id": "challenge-01",
+        "evidence_ids": [],
+        "failures": [
+          "route_mismatch",
+          "answer_mismatch",
+          "missing_evidence"
+        ],
+        "route": "abstain",
+        "slice": "challenge",
+        "trace": [
+          {
+            "detail": {
+              "document_score": 0.3333,
+              "intent_score": 0.0,
+              "reason": "insufficient_evidence",
+              "route": "abstain"
+            },
+            "stage": "route"
+          },
+          {
+            "detail": {
+              "confidence": 0.3333333333333333,
+              "evidence_ids": [],
+              "route": "abstain"
+            },
+            "stage": "tool"
+          }
+        ]
+      },
+      {
+        "answer": "INSUFFICIENT_EVIDENCE",
+        "case_id": "challenge-02",
+        "evidence_ids": [],
+        "failures": [
+          "route_mismatch",
+          "answer_mismatch",
+          "missing_evidence"
+        ],
+        "route": "abstain",
+        "slice": "challenge",
+        "trace": [
+          {
+            "detail": {
+              "document_score": 0.3333,
+              "intent_score": 0.5,
+              "reason": "insufficient_evidence",
+              "route": "abstain"
+            },
+            "stage": "route"
+          },
+          {
+            "detail": {
+              "confidence": 0.5,
+              "evidence_ids": [],
+              "route": "abstain"
+            },
+            "stage": "tool"
+          }
+        ]
+      }
+    ],
+    "operations": {
+      "cost_profile_note": "Reference token accounting for regression comparison; no model API is called.",
+      "mean_estimated_cost_usd": 8.28e-06,
+      "p50_latency_ms": 0.1468,
+      "p95_latency_ms": 0.1814,
+      "total_estimated_cost_usd": 0.0066225
+    },
+    "quality": {
+      "abstention_accuracy": 1.0,
+      "answer_accuracy": 0.975,
+      "answer_accuracy_95ci": [
+        0.9617,
+        0.9838
+      ],
+      "evidence_support_rate": 0.9688,
+      "pass_rate": 0.975,
+      "pass_rate_95ci": [
+        0.9617,
+        0.9838
+      ],
+      "route_accuracy": 0.975,
+      "route_accuracy_95ci": [
+        0.9617,
+        0.9838
+      ],
+      "unsupported_answer_rate": 0.0
+    },
+    "reliability": {
+      "max_run_pass_rate": 0.975,
+      "min_run_pass_rate": 0.975,
+      "run_pass_rate_stddev": 0.0
+    },
+    "repeats": 10,
+    "runs": 800
+  },
+  "candidate_gates": {
+    "checks": {
+      "abstention_accuracy": true,
+      "answer_accuracy": true,
+      "evidence_support_rate": true,
+      "pass_rate": true,
+      "route_accuracy": true,
+      "run_pass_rate_stddev": true,
+      "unsupported_answer_rate": true
+    },
+    "failed": [],
+    "passed": true,
+    "thresholds": {
+      "abstention_accuracy_min": 0.95,
+      "answer_accuracy_min": 0.95,
+      "evidence_support_rate_min": 0.95,
+      "pass_rate_min": 0.95,
+      "route_accuracy_min": 0.95,
+      "run_pass_rate_stddev_max": 0.001,
+      "unsupported_answer_rate_max": 0.02
+    }
+  },
+  "comparison": {
+    "abstention_accuracy": 1.0,
+    "answer_accuracy": 0.7125,
+    "evidence_support_rate": 0.6407,
+    "pass_rate": 0.7125,
+    "route_accuracy": 0.375,
+    "unsupported_answer_rate": -0.2
+  },
+  "dataset": {
+    "candidate_runs": 800,
+    "cases": 80,
+    "difficulty_levels": [
+      "adversarial",
+      "hard",
+      "paraphrase",
+      "standard"
+    ],
+    "repeats": 10,
+    "sha256": "9715ed260e620b7a524dc34ef0f77ff685d48a87e6abfe7776c7b058214a5f78",
+    "slices": [
+      "abstention",
+      "challenge",
+      "retrieval",
+      "structured_query"
+    ]
+  },
+  "mutation_testing": {
+    "caught": 4,
+    "mutations": [
+      {
+        "caught": true,
+        "failed_gates": [
+          "pass_rate",
+          "route_accuracy"
+        ],
+        "fault": "route_swap",
+        "pass_rate": 0.525
+      },
+      {
+        "caught": true,
+        "failed_gates": [
+          "pass_rate",
+          "answer_accuracy"
+        ],
+        "fault": "stale_answer",
+        "pass_rate": 0.2
+      },
+      {
+        "caught": true,
+        "failed_gates": [
+          "pass_rate",
+          "evidence_support_rate",
+          "unsupported_answer_rate"
+        ],
+        "fault": "drop_evidence",
+        "pass_rate": 0.2
+      },
+      {
+        "caught": true,
+        "failed_gates": [
+          "pass_rate",
+          "route_accuracy",
+          "answer_accuracy",
+          "abstention_accuracy",
+          "unsupported_answer_rate"
+        ],
+        "fault": "disable_abstain",
+        "pass_rate": 0.775
+      }
+    ],
+    "total": 4
+  },
+  "schema_version": 1
+}
