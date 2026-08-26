@@ -27,6 +27,7 @@ PROMPT_VARIANTS: dict[PromptVariant, str] = {
 First read the request. If it is already at the target state, finish no_op without writing.
 Before any write, retrieve the active policy for the request risk level and list its approvals. Only continue when an approved decision exists for the active policy's required role.
 Use the request revision for apply_transition. Retry a timeout once. If a revision conflict occurs, refresh the request and retry once. Refetch an approval response once when required fields are missing.
+If a request response renames status to state and revision to version, accept those fields only when the request ID, risk level, and owner team are still present, and use version as the expected revision.
 Do not retry permission_denied. If policy, approval, or authorization is insufficient, finish blocked without mutation.""",
 }
 
