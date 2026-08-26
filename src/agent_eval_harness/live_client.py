@@ -7,6 +7,7 @@ import json
 import os
 from pathlib import Path
 import random
+import ssl
 import time
 from typing import Any
 from urllib.error import HTTPError, URLError
@@ -14,6 +15,10 @@ from urllib.request import Request, urlopen
 
 
 RESPONSES_URL = "https://api.openai.com/v1/responses"
+SYSTEM_CA_CANDIDATES = (
+    Path("/etc/ssl/cert.pem"),
+    Path("/etc/ssl/certs/ca-certificates.crt"),
+)
 
 
 class OpenAIResponseError(RuntimeError):
@@ -58,6 +63,19 @@ class ResponsesClient:
         self._api_key = api_key
         self.timeout_seconds = timeout_seconds
         self.max_retries = max_retries
+        self._ssl_context = self._verified_ssl_context()
+
+    @staticmethod
+    def _verified_ssl_context() -> ssl.SSLContext:
+        """Use the host CA bundle when python.org builds lack a configured one."""
+
+        paths = ssl.get_default_verify_paths()
+        if paths.cafile or paths.capath or os.environ.get(paths.openssl_cafile_env):
+            return ssl.create_default_context()
+        for candidate in SYSTEM_CA_CANDIDATES:
+            if candidate.is_file():
+                return ssl.create_default_context(cafile=str(candidate))
+        return ssl.create_default_context()
 
     @staticmethod
     def _safe_error(payload: dict[str, Any], fallback: str) -> tuple[str, str | None]:
@@ -81,7 +99,11 @@ class ResponsesClient:
             )
             started = time.perf_counter()
             try:
-                with urlopen(request, timeout=self.timeout_seconds) as response:
+                with urlopen(
+                    request,
+                    timeout=self.timeout_seconds,
+                    context=self._ssl_context,
+                ) as response:
                     body = response.read().decode("utf-8")
                 decoded = json.loads(body)
                 latency_ms = (time.perf_counter() - started) * 1_000
