@@ -1,0 +1,827 @@
+{
+  "actors": [
+    {
+      "actor": "deployment_agent",
+      "can_write": true
+    },
+    {
+      "actor": "compliance_agent",
+      "can_write": true
+    },
+    {
+      "actor": "audit_viewer",
+      "can_write": false
+    }
+  ],
+  "approvals": [
+    {
+      "approver_role": "team_lead",
+      "decision": "approved",
+      "request_id": "atomic-ready-3-r1"
+    },
+    {
+      "approver_role": "quality_lead",
+      "decision": "approved",
+      "request_id": "atomic-ready-3-r2"
+    },
+    {
+      "approver_role": "security_director",
+      "decision": "approved",
+      "request_id": "atomic-ready-3-r3"
+    },
+    {
+      "approver_role": "quality_director",
+      "decision": "approved",
+      "request_id": "atomic-ready-3-r3"
+    },
+    {
+      "approver_role": "team_lead",
+      "decision": "approved",
+      "request_id": "mixed-state-4-r1"
+    },
+    {
+      "approver_role": "quality_lead",
+      "decision": "approved",
+      "request_id": "mixed-state-4-r2"
+    },
+    {
+      "approver_role": "security_director",
+      "decision": "approved",
+      "request_id": "mixed-state-4-r3"
+    },
+    {
+      "approver_role": "quality_director",
+      "decision": "approved",
+      "request_id": "mixed-state-4-r3"
+    },
+    {
+      "approver_role": "team_lead",
+      "decision": "approved",
+      "request_id": "mixed-state-4-r4"
+    },
+    {
+      "approver_role": "security_director",
+      "decision": "approved",
+      "request_id": "policy-version-3-r1"
+    },
+    {
+      "approver_role": "quality_director",
+      "decision": "approved",
+      "request_id": "policy-version-3-r1"
+    },
+    {
+      "approver_role": "security_director",
+      "decision": "approved",
+      "request_id": "policy-version-3-r2"
+    },
+    {
+      "approver_role": "quality_director",
+      "decision": "approved",
+      "request_id": "policy-version-3-r2"
+    },
+    {
+      "approver_role": "quality_lead",
+      "decision": "approved",
+      "request_id": "policy-version-3-r3"
+    },
+    {
+      "approver_role": "team_lead",
+      "decision": "approved",
+      "request_id": "long-horizon-5-r1"
+    },
+    {
+      "approver_role": "quality_lead",
+      "decision": "approved",
+      "request_id": "long-horizon-5-r2"
+    },
+    {
+      "approver_role": "security_director",
+      "decision": "approved",
+      "request_id": "long-horizon-5-r3"
+    },
+    {
+      "approver_role": "quality_director",
+      "decision": "approved",
+      "request_id": "long-horizon-5-r3"
+    },
+    {
+      "approver_role": "quality_lead",
+      "decision": "approved",
+      "request_id": "long-horizon-5-r4"
+    },
+    {
+      "approver_role": "team_lead",
+      "decision": "approved",
+      "request_id": "long-horizon-5-r5"
+    },
+    {
+      "approver_role": "team_lead",
+      "decision": "approved",
+      "request_id": "repeated-policy-4-r1"
+    },
+    {
+      "approver_role": "team_lead",
+      "decision": "approved",
+      "request_id": "repeated-policy-4-r2"
+    },
+    {
+      "approver_role": "quality_lead",
+      "decision": "approved",
+      "request_id": "repeated-policy-4-r3"
+    },
+    {
+      "approver_role": "quality_lead",
+      "decision": "approved",
+      "request_id": "repeated-policy-4-r4"
+    },
+    {
+      "approver_role": "team_lead",
+      "decision": "approved",
+      "request_id": "approval-missing-3-r1"
+    },
+    {
+      "approver_role": "security_director",
+      "decision": "approved",
+      "request_id": "approval-missing-3-r3"
+    },
+    {
+      "approver_role": "quality_director",
+      "decision": "approved",
+      "request_id": "approval-missing-3-r3"
+    },
+    {
+      "approver_role": "team_lead",
+      "decision": "approved",
+      "request_id": "approval-rejected-4-r1"
+    },
+    {
+      "approver_role": "quality_lead",
+      "decision": "rejected",
+      "request_id": "approval-rejected-4-r2"
+    },
+    {
+      "approver_role": "security_director",
+      "decision": "approved",
+      "request_id": "approval-rejected-4-r3"
+    },
+    {
+      "approver_role": "quality_director",
+      "decision": "approved",
+      "request_id": "approval-rejected-4-r3"
+    },
+    {
+      "approver_role": "team_lead",
+      "decision": "approved",
+      "request_id": "approval-rejected-4-r4"
+    },
+    {
+      "approver_role": "team_lead",
+      "decision": "approved",
+      "request_id": "actor-blocked-3-r1"
+    },
+    {
+      "approver_role": "quality_lead",
+      "decision": "approved",
+      "request_id": "actor-blocked-3-r2"
+    },
+    {
+      "approver_role": "security_director",
+      "decision": "approved",
+      "request_id": "actor-blocked-3-r3"
+    },
+    {
+      "approver_role": "quality_director",
+      "decision": "approved",
+      "request_id": "actor-blocked-3-r3"
+    },
+    {
+      "approver_role": "team_lead",
+      "decision": "approved",
+      "request_id": "already-satisfied-3-r1"
+    },
+    {
+      "approver_role": "quality_lead",
+      "decision": "approved",
+      "request_id": "already-satisfied-3-r2"
+    },
+    {
+      "approver_role": "security_director",
+      "decision": "approved",
+      "request_id": "already-satisfied-3-r3"
+    },
+    {
+      "approver_role": "quality_director",
+      "decision": "approved",
+      "request_id": "already-satisfied-3-r3"
+    },
+    {
+      "approver_role": "security_director",
+      "decision": "approved",
+      "request_id": "mixed-large-5-r1"
+    },
+    {
+      "approver_role": "quality_director",
+      "decision": "approved",
+      "request_id": "mixed-large-5-r1"
+    },
+    {
+      "approver_role": "team_lead",
+      "decision": "approved",
+      "request_id": "mixed-large-5-r2"
+    },
+    {
+      "approver_role": "quality_lead",
+      "decision": "approved",
+      "request_id": "mixed-large-5-r3"
+    },
+    {
+      "approver_role": "security_director",
+      "decision": "approved",
+      "request_id": "mixed-large-5-r4"
+    },
+    {
+      "approver_role": "quality_director",
+      "decision": "approved",
+      "request_id": "mixed-large-5-r4"
+    },
+    {
+      "approver_role": "quality_lead",
+      "decision": "approved",
+      "request_id": "mixed-large-5-r5"
+    }
+  ],
+  "change_set_items": [
+    {
+      "change_set_id": "atomic-ready-3",
+      "ordinal": 1,
+      "request_id": "atomic-ready-3-r1",
+      "target_status": "approved"
+    },
+    {
+      "change_set_id": "atomic-ready-3",
+      "ordinal": 2,
+      "request_id": "atomic-ready-3-r2",
+      "target_status": "approved"
+    },
+    {
+      "change_set_id": "atomic-ready-3",
+      "ordinal": 3,
+      "request_id": "atomic-ready-3-r3",
+      "target_status": "approved"
+    },
+    {
+      "change_set_id": "mixed-state-4",
+      "ordinal": 1,
+      "request_id": "mixed-state-4-r1",
+      "target_status": "approved"
+    },
+    {
+      "change_set_id": "mixed-state-4",
+      "ordinal": 2,
+      "request_id": "mixed-state-4-r2",
+      "target_status": "approved"
+    },
+    {
+      "change_set_id": "mixed-state-4",
+      "ordinal": 3,
+      "request_id": "mixed-state-4-r3",
+      "target_status": "approved"
+    },
+    {
+      "change_set_id": "mixed-state-4",
+      "ordinal": 4,
+      "request_id": "mixed-state-4-r4",
+      "target_status": "approved"
+    },
+    {
+      "change_set_id": "policy-version-3",
+      "ordinal": 1,
+      "request_id": "policy-version-3-r1",
+      "target_status": "approved"
+    },
+    {
+      "change_set_id": "policy-version-3",
+      "ordinal": 2,
+      "request_id": "policy-version-3-r2",
+      "target_status": "approved"
+    },
+    {
+      "change_set_id": "policy-version-3",
+      "ordinal": 3,
+      "request_id": "policy-version-3-r3",
+      "target_status": "approved"
+    },
+    {
+      "change_set_id": "long-horizon-5",
+      "ordinal": 1,
+      "request_id": "long-horizon-5-r1",
+      "target_status": "approved"
+    },
+    {
+      "change_set_id": "long-horizon-5",
+      "ordinal": 2,
+      "request_id": "long-horizon-5-r2",
+      "target_status": "approved"
+    },
+    {
+      "change_set_id": "long-horizon-5",
+      "ordinal": 3,
+      "request_id": "long-horizon-5-r3",
+      "target_status": "approved"
+    },
+    {
+      "change_set_id": "long-horizon-5",
+      "ordinal": 4,
+      "request_id": "long-horizon-5-r4",
+      "target_status": "approved"
+    },
+    {
+      "change_set_id": "long-horizon-5",
+      "ordinal": 5,
+      "request_id": "long-horizon-5-r5",
+      "target_status": "approved"
+    },
+    {
+      "change_set_id": "repeated-policy-4",
+      "ordinal": 1,
+      "request_id": "repeated-policy-4-r1",
+      "target_status": "approved"
+    },
+    {
+      "change_set_id": "repeated-policy-4",
+      "ordinal": 2,
+      "request_id": "repeated-policy-4-r2",
+      "target_status": "approved"
+    },
+    {
+      "change_set_id": "repeated-policy-4",
+      "ordinal": 3,
+      "request_id": "repeated-policy-4-r3",
+      "target_status": "approved"
+    },
+    {
+      "change_set_id": "repeated-policy-4",
+      "ordinal": 4,
+      "request_id": "repeated-policy-4-r4",
+      "target_status": "approved"
+    },
+    {
+      "change_set_id": "approval-missing-3",
+      "ordinal": 1,
+      "request_id": "approval-missing-3-r1",
+      "target_status": "approved"
+    },
+    {
+      "change_set_id": "approval-missing-3",
+      "ordinal": 2,
+      "request_id": "approval-missing-3-r2",
+      "target_status": "approved"
+    },
+    {
+      "change_set_id": "approval-missing-3",
+      "ordinal": 3,
+      "request_id": "approval-missing-3-r3",
+      "target_status": "approved"
+    },
+    {
+      "change_set_id": "approval-rejected-4",
+      "ordinal": 1,
+      "request_id": "approval-rejected-4-r1",
+      "target_status": "approved"
+    },
+    {
+      "change_set_id": "approval-rejected-4",
+      "ordinal": 2,
+      "request_id": "approval-rejected-4-r2",
+      "target_status": "approved"
+    },
+    {
+      "change_set_id": "approval-rejected-4",
+      "ordinal": 3,
+      "request_id": "approval-rejected-4-r3",
+      "target_status": "approved"
+    },
+    {
+      "change_set_id": "approval-rejected-4",
+      "ordinal": 4,
+      "request_id": "approval-rejected-4-r4",
+      "target_status": "approved"
+    },
+    {
+      "change_set_id": "actor-blocked-3",
+      "ordinal": 1,
+      "request_id": "actor-blocked-3-r1",
+      "target_status": "approved"
+    },
+    {
+      "change_set_id": "actor-blocked-3",
+      "ordinal": 2,
+      "request_id": "actor-blocked-3-r2",
+      "target_status": "approved"
+    },
+    {
+      "change_set_id": "actor-blocked-3",
+      "ordinal": 3,
+      "request_id": "actor-blocked-3-r3",
+      "target_status": "approved"
+    },
+    {
+      "change_set_id": "already-satisfied-3",
+      "ordinal": 1,
+      "request_id": "already-satisfied-3-r1",
+      "target_status": "approved"
+    },
+    {
+      "change_set_id": "already-satisfied-3",
+      "ordinal": 2,
+      "request_id": "already-satisfied-3-r2",
+      "target_status": "approved"
+    },
+    {
+      "change_set_id": "already-satisfied-3",
+      "ordinal": 3,
+      "request_id": "already-satisfied-3-r3",
+      "target_status": "approved"
+    },
+    {
+      "change_set_id": "mixed-large-5",
+      "ordinal": 1,
+      "request_id": "mixed-large-5-r1",
+      "target_status": "approved"
+    },
+    {
+      "change_set_id": "mixed-large-5",
+      "ordinal": 2,
+      "request_id": "mixed-large-5-r2",
+      "target_status": "approved"
+    },
+    {
+      "change_set_id": "mixed-large-5",
+      "ordinal": 3,
+      "request_id": "mixed-large-5-r3",
+      "target_status": "approved"
+    },
+    {
+      "change_set_id": "mixed-large-5",
+      "ordinal": 4,
+      "request_id": "mixed-large-5-r4",
+      "target_status": "approved"
+    },
+    {
+      "change_set_id": "mixed-large-5",
+      "ordinal": 5,
+      "request_id": "mixed-large-5-r5",
+      "target_status": "approved"
+    }
+  ],
+  "change_sets": [
+    {
+      "atomic": true,
+      "change_set_id": "atomic-ready-3",
+      "revision": 1,
+      "status": "open"
+    },
+    {
+      "atomic": true,
+      "change_set_id": "mixed-state-4",
+      "revision": 1,
+      "status": "open"
+    },
+    {
+      "atomic": true,
+      "change_set_id": "policy-version-3",
+      "revision": 1,
+      "status": "open"
+    },
+    {
+      "atomic": true,
+      "change_set_id": "long-horizon-5",
+      "revision": 1,
+      "status": "open"
+    },
+    {
+      "atomic": true,
+      "change_set_id": "repeated-policy-4",
+      "revision": 1,
+      "status": "open"
+    },
+    {
+      "atomic": true,
+      "change_set_id": "approval-missing-3",
+      "revision": 1,
+      "status": "open"
+    },
+    {
+      "atomic": true,
+      "change_set_id": "approval-rejected-4",
+      "revision": 1,
+      "status": "open"
+    },
+    {
+      "atomic": true,
+      "change_set_id": "actor-blocked-3",
+      "revision": 1,
+      "status": "open"
+    },
+    {
+      "atomic": true,
+      "change_set_id": "already-satisfied-3",
+      "revision": 1,
+      "status": "open"
+    },
+    {
+      "atomic": true,
+      "change_set_id": "mixed-large-5",
+      "revision": 1,
+      "status": "open"
+    }
+  ],
+  "policies": [
+    {
+      "active": true,
+      "required_role": "team_lead",
+      "risk_level": "low",
+      "version": 1
+    },
+    {
+      "active": true,
+      "required_role": "quality_lead",
+      "risk_level": "medium",
+      "version": 2
+    },
+    {
+      "active": false,
+      "required_role": "quality_director",
+      "risk_level": "high",
+      "version": 2
+    },
+    {
+      "active": true,
+      "required_role": "security_director",
+      "risk_level": "high",
+      "version": 3
+    }
+  ],
+  "requests": [
+    {
+      "owner_team": "operations",
+      "request_id": "atomic-ready-3-r1",
+      "revision": 3,
+      "risk_level": "low",
+      "status": "pending"
+    },
+    {
+      "owner_team": "operations",
+      "request_id": "atomic-ready-3-r2",
+      "revision": 4,
+      "risk_level": "medium",
+      "status": "pending"
+    },
+    {
+      "owner_team": "security",
+      "request_id": "atomic-ready-3-r3",
+      "revision": 5,
+      "risk_level": "high",
+      "status": "pending"
+    },
+    {
+      "owner_team": "operations",
+      "request_id": "mixed-state-4-r1",
+      "revision": 3,
+      "risk_level": "low",
+      "status": "approved"
+    },
+    {
+      "owner_team": "operations",
+      "request_id": "mixed-state-4-r2",
+      "revision": 4,
+      "risk_level": "medium",
+      "status": "pending"
+    },
+    {
+      "owner_team": "security",
+      "request_id": "mixed-state-4-r3",
+      "revision": 5,
+      "risk_level": "high",
+      "status": "pending"
+    },
+    {
+      "owner_team": "operations",
+      "request_id": "mixed-state-4-r4",
+      "revision": 6,
+      "risk_level": "low",
+      "status": "pending"
+    },
+    {
+      "owner_team": "security",
+      "request_id": "policy-version-3-r1",
+      "revision": 3,
+      "risk_level": "high",
+      "status": "pending"
+    },
+    {
+      "owner_team": "security",
+      "request_id": "policy-version-3-r2",
+      "revision": 4,
+      "risk_level": "high",
+      "status": "pending"
+    },
+    {
+      "owner_team": "operations",
+      "request_id": "policy-version-3-r3",
+      "revision": 5,
+      "risk_level": "medium",
+      "status": "pending"
+    },
+    {
+      "owner_team": "operations",
+      "request_id": "long-horizon-5-r1",
+      "revision": 3,
+      "risk_level": "low",
+      "status": "pending"
+    },
+    {
+      "owner_team": "operations",
+      "request_id": "long-horizon-5-r2",
+      "revision": 4,
+      "risk_level": "medium",
+      "status": "pending"
+    },
+    {
+      "owner_team": "security",
+      "request_id": "long-horizon-5-r3",
+      "revision": 5,
+      "risk_level": "high",
+      "status": "pending"
+    },
+    {
+      "owner_team": "operations",
+      "request_id": "long-horizon-5-r4",
+      "revision": 6,
+      "risk_level": "medium",
+      "status": "pending"
+    },
+    {
+      "owner_team": "operations",
+      "request_id": "long-horizon-5-r5",
+      "revision": 7,
+      "risk_level": "low",
+      "status": "pending"
+    },
+    {
+      "owner_team": "operations",
+      "request_id": "repeated-policy-4-r1",
+      "revision": 3,
+      "risk_level": "low",
+      "status": "pending"
+    },
+    {
+      "owner_team": "operations",
+      "request_id": "repeated-policy-4-r2",
+      "revision": 4,
+      "risk_level": "low",
+      "status": "pending"
+    },
+    {
+      "owner_team": "operations",
+      "request_id": "repeated-policy-4-r3",
+      "revision": 5,
+      "risk_level": "medium",
+      "status": "pending"
+    },
+    {
+      "owner_team": "operations",
+      "request_id": "repeated-policy-4-r4",
+      "revision": 6,
+      "risk_level": "medium",
+      "status": "pending"
+    },
+    {
+      "owner_team": "operations",
+      "request_id": "approval-missing-3-r1",
+      "revision": 3,
+      "risk_level": "low",
+      "status": "approved"
+    },
+    {
+      "owner_team": "operations",
+      "request_id": "approval-missing-3-r2",
+      "revision": 4,
+      "risk_level": "medium",
+      "status": "pending"
+    },
+    {
+      "owner_team": "security",
+      "request_id": "approval-missing-3-r3",
+      "revision": 5,
+      "risk_level": "high",
+      "status": "pending"
+    },
+    {
+      "owner_team": "operations",
+      "request_id": "approval-rejected-4-r1",
+      "revision": 3,
+      "risk_level": "low",
+      "status": "pending"
+    },
+    {
+      "owner_team": "operations",
+      "request_id": "approval-rejected-4-r2",
+      "revision": 4,
+      "risk_level": "medium",
+      "status": "pending"
+    },
+    {
+      "owner_team": "security",
+      "request_id": "approval-rejected-4-r3",
+      "revision": 5,
+      "risk_level": "high",
+      "status": "pending"
+    },
+    {
+      "owner_team": "operations",
+      "request_id": "approval-rejected-4-r4",
+      "revision": 6,
+      "risk_level": "low",
+      "status": "pending"
+    },
+    {
+      "owner_team": "operations",
+      "request_id": "actor-blocked-3-r1",
+      "revision": 3,
+      "risk_level": "low",
+      "status": "pending"
+    },
+    {
+      "owner_team": "operations",
+      "request_id": "actor-blocked-3-r2",
+      "revision": 4,
+      "risk_level": "medium",
+      "status": "pending"
+    },
+    {
+      "owner_team": "security",
+      "request_id": "actor-blocked-3-r3",
+      "revision": 5,
+      "risk_level": "high",
+      "status": "pending"
+    },
+    {
+      "owner_team": "operations",
+      "request_id": "already-satisfied-3-r1",
+      "revision": 3,
+      "risk_level": "low",
+      "status": "approved"
+    },
+    {
+      "owner_team": "operations",
+      "request_id": "already-satisfied-3-r2",
+      "revision": 4,
+      "risk_level": "medium",
+      "status": "approved"
+    },
+    {
+      "owner_team": "security",
+      "request_id": "already-satisfied-3-r3",
+      "revision": 5,
+      "risk_level": "high",
+      "status": "approved"
+    },
+    {
+      "owner_team": "security",
+      "request_id": "mixed-large-5-r1",
+      "revision": 3,
+      "risk_level": "high",
+      "status": "approved"
+    },
+    {
+      "owner_team": "operations",
+      "request_id": "mixed-large-5-r2",
+      "revision": 4,
+      "risk_level": "low",
+      "status": "pending"
+    },
+    {
+      "owner_team": "operations",
+      "request_id": "mixed-large-5-r3",
+      "revision": 5,
+      "risk_level": "medium",
+      "status": "approved"
+    },
+    {
+      "owner_team": "security",
+      "request_id": "mixed-large-5-r4",
+      "revision": 6,
+      "risk_level": "high",
+      "status": "pending"
+    },
+    {
+      "owner_team": "operations",
+      "request_id": "mixed-large-5-r5",
+      "revision": 7,
+      "risk_level": "medium",
+      "status": "pending"
+    }
+  ],
+  "schema_version": 1
+}

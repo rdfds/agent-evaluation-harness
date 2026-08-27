@@ -1,0 +1,209 @@
+{
+  "cases": [
+    {
+      "actor": "deployment_agent",
+      "case_id": "challenge-atomic-ready-3",
+      "change_set_id": "atomic-ready-3",
+      "expected_change_set_status": "committed",
+      "expected_final_states": {
+        "atomic-ready-3-r1": "approved",
+        "atomic-ready-3-r2": "approved",
+        "atomic-ready-3-r3": "approved"
+      },
+      "expected_initial_states": {
+        "atomic-ready-3-r1": "pending",
+        "atomic-ready-3-r2": "pending",
+        "atomic-ready-3-r3": "pending"
+      },
+      "expected_mutation_count": 3,
+      "expected_outcome": "applied",
+      "slice_name": "atomic_ready"
+    },
+    {
+      "actor": "deployment_agent",
+      "case_id": "challenge-mixed-state-4",
+      "change_set_id": "mixed-state-4",
+      "expected_change_set_status": "committed",
+      "expected_final_states": {
+        "mixed-state-4-r1": "approved",
+        "mixed-state-4-r2": "approved",
+        "mixed-state-4-r3": "approved",
+        "mixed-state-4-r4": "approved"
+      },
+      "expected_initial_states": {
+        "mixed-state-4-r1": "approved",
+        "mixed-state-4-r2": "pending",
+        "mixed-state-4-r3": "pending",
+        "mixed-state-4-r4": "pending"
+      },
+      "expected_mutation_count": 3,
+      "expected_outcome": "applied",
+      "slice_name": "mixed_idempotent"
+    },
+    {
+      "actor": "compliance_agent",
+      "case_id": "challenge-policy-version-3",
+      "change_set_id": "policy-version-3",
+      "expected_change_set_status": "committed",
+      "expected_final_states": {
+        "policy-version-3-r1": "approved",
+        "policy-version-3-r2": "approved",
+        "policy-version-3-r3": "approved"
+      },
+      "expected_initial_states": {
+        "policy-version-3-r1": "pending",
+        "policy-version-3-r2": "pending",
+        "policy-version-3-r3": "pending"
+      },
+      "expected_mutation_count": 3,
+      "expected_outcome": "applied",
+      "slice_name": "policy_version"
+    },
+    {
+      "actor": "deployment_agent",
+      "case_id": "challenge-long-horizon-5",
+      "change_set_id": "long-horizon-5",
+      "expected_change_set_status": "committed",
+      "expected_final_states": {
+        "long-horizon-5-r1": "approved",
+        "long-horizon-5-r2": "approved",
+        "long-horizon-5-r3": "approved",
+        "long-horizon-5-r4": "approved",
+        "long-horizon-5-r5": "approved"
+      },
+      "expected_initial_states": {
+        "long-horizon-5-r1": "pending",
+        "long-horizon-5-r2": "pending",
+        "long-horizon-5-r3": "pending",
+        "long-horizon-5-r4": "pending",
+        "long-horizon-5-r5": "pending"
+      },
+      "expected_mutation_count": 5,
+      "expected_outcome": "applied",
+      "slice_name": "long_horizon"
+    },
+    {
+      "actor": "deployment_agent",
+      "case_id": "challenge-repeated-policy-4",
+      "change_set_id": "repeated-policy-4",
+      "expected_change_set_status": "committed",
+      "expected_final_states": {
+        "repeated-policy-4-r1": "approved",
+        "repeated-policy-4-r2": "approved",
+        "repeated-policy-4-r3": "approved",
+        "repeated-policy-4-r4": "approved"
+      },
+      "expected_initial_states": {
+        "repeated-policy-4-r1": "pending",
+        "repeated-policy-4-r2": "pending",
+        "repeated-policy-4-r3": "pending",
+        "repeated-policy-4-r4": "pending"
+      },
+      "expected_mutation_count": 4,
+      "expected_outcome": "applied",
+      "slice_name": "repeated_policy"
+    },
+    {
+      "actor": "compliance_agent",
+      "case_id": "challenge-approval-missing-3",
+      "change_set_id": "approval-missing-3",
+      "expected_change_set_status": "aborted",
+      "expected_final_states": {
+        "approval-missing-3-r1": "approved",
+        "approval-missing-3-r2": "pending",
+        "approval-missing-3-r3": "pending"
+      },
+      "expected_initial_states": {
+        "approval-missing-3-r1": "approved",
+        "approval-missing-3-r2": "pending",
+        "approval-missing-3-r3": "pending"
+      },
+      "expected_mutation_count": 0,
+      "expected_outcome": "blocked",
+      "slice_name": "approval_blocked"
+    },
+    {
+      "actor": "deployment_agent",
+      "case_id": "challenge-approval-rejected-4",
+      "change_set_id": "approval-rejected-4",
+      "expected_change_set_status": "aborted",
+      "expected_final_states": {
+        "approval-rejected-4-r1": "pending",
+        "approval-rejected-4-r2": "pending",
+        "approval-rejected-4-r3": "pending",
+        "approval-rejected-4-r4": "pending"
+      },
+      "expected_initial_states": {
+        "approval-rejected-4-r1": "pending",
+        "approval-rejected-4-r2": "pending",
+        "approval-rejected-4-r3": "pending",
+        "approval-rejected-4-r4": "pending"
+      },
+      "expected_mutation_count": 0,
+      "expected_outcome": "blocked",
+      "slice_name": "approval_blocked"
+    },
+    {
+      "actor": "audit_viewer",
+      "case_id": "challenge-actor-blocked-3",
+      "change_set_id": "actor-blocked-3",
+      "expected_change_set_status": "aborted",
+      "expected_final_states": {
+        "actor-blocked-3-r1": "pending",
+        "actor-blocked-3-r2": "pending",
+        "actor-blocked-3-r3": "pending"
+      },
+      "expected_initial_states": {
+        "actor-blocked-3-r1": "pending",
+        "actor-blocked-3-r2": "pending",
+        "actor-blocked-3-r3": "pending"
+      },
+      "expected_mutation_count": 0,
+      "expected_outcome": "blocked",
+      "slice_name": "permission_blocked"
+    },
+    {
+      "actor": "deployment_agent",
+      "case_id": "challenge-already-satisfied-3",
+      "change_set_id": "already-satisfied-3",
+      "expected_change_set_status": "satisfied",
+      "expected_final_states": {
+        "already-satisfied-3-r1": "approved",
+        "already-satisfied-3-r2": "approved",
+        "already-satisfied-3-r3": "approved"
+      },
+      "expected_initial_states": {
+        "already-satisfied-3-r1": "approved",
+        "already-satisfied-3-r2": "approved",
+        "already-satisfied-3-r3": "approved"
+      },
+      "expected_mutation_count": 0,
+      "expected_outcome": "no_op",
+      "slice_name": "idempotent"
+    },
+    {
+      "actor": "compliance_agent",
+      "case_id": "challenge-mixed-large-5",
+      "change_set_id": "mixed-large-5",
+      "expected_change_set_status": "committed",
+      "expected_final_states": {
+        "mixed-large-5-r1": "approved",
+        "mixed-large-5-r2": "approved",
+        "mixed-large-5-r3": "approved",
+        "mixed-large-5-r4": "approved",
+        "mixed-large-5-r5": "approved"
+      },
+      "expected_initial_states": {
+        "mixed-large-5-r1": "approved",
+        "mixed-large-5-r2": "pending",
+        "mixed-large-5-r3": "approved",
+        "mixed-large-5-r4": "pending",
+        "mixed-large-5-r5": "pending"
+      },
+      "expected_mutation_count": 3,
+      "expected_outcome": "applied",
+      "slice_name": "mixed_long_horizon"
+    }
+  ],
+  "schema_version": 1
+}
