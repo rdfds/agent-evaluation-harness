@@ -19,6 +19,7 @@ classifiers = [
 agent-eval = "agent_eval_harness.cli:main"
 agent-workflow-eval = "agent_eval_harness.workflow_cli:main"
 agent-live-eval = "agent_eval_harness.live_cli:main"
+agent-challenge-eval = "agent_eval_harness.challenge_cli:main"
 
 [tool.setuptools]
 package-dir = {"" = "src"}

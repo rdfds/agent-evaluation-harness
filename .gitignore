@@ -8,3 +8,4 @@ dist/
 .env
 .env.local
 .live_eval_checkpoint.jsonl
+.challenge_eval_checkpoint.jsonl
