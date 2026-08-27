@@ -1,5 +1,7 @@
 # Live Model Evaluation Card
 
+This card describes the historical v0.4 single-request run. The harder repeated, multi-request v0.5 protocol is documented in [CHALLENGE_EVALUATION_CARD.md](CHALLENGE_EVALUATION_CARD.md).
+
 ## Objective
 
 This evaluation measures whether hosted tool-using models can complete the same stateful change-control tasks as the deterministic benchmark while obeying required inspection order, maintaining database invariants, recovering from controlled tool failures, and failing closed at an authorization boundary.

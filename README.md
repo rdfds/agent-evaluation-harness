@@ -2,13 +2,42 @@
 
 [![CI](https://github.com/rdfds/agent-evaluation-harness/actions/workflows/ci.yml/badge.svg)](https://github.com/rdfds/agent-evaluation-harness/actions/workflows/ci.yml)
 
-A reproducible testbed for failure-aware evaluation of tool-using agents. It grades terminal database state, required tool trajectories, bounded recovery, safe blocking, strict replay, and counterfactual failure localization—not just the final answer.
+A reproducible testbed for failure-aware evaluation of tool-using agents. It grades terminal database state, required tool trajectories, atomicity, repeated-trial reliability, bounded recovery, and fault activation—not just the final answer.
 
 The same hidden-label contract drives deterministic executors and live Responses API models against a fresh SQLite change-control environment for every episode.
 
-## Live model results
+## Repeated atomic-workflow challenge (v0.5)
 
-The recorded model comparison runs Luna, Terra, and Sol with concise and explicit recovery prompts across **234 model-backed episodes**. Each configuration sees all 24 clean tasks and 15 controlled fault episodes.
+The current benchmark runs Luna, Terra, and Sol through **360 model-backed episodes**: two prompt contracts, ten clean multi-request change sets, five two-component fault plans, and three trials per task/fault cell. Workflows span two to five requests and require preflight, staging, review, atomic commit, and post-commit verification where needed.
+
+| Model | Prompt | Clean pass | Clean all-three | Fault pass | Fault all-three | Overall pass |
+|---|---|---:|---:|---:|---:|---:|
+| `gpt-5.6-luna` | minimal | **100.0%** | **100.0%** | **73.3%** | **60.0%** | **86.7%** |
+| `gpt-5.6-luna` | principled | 96.7% | 90.0% | 66.7% | 50.0% | 81.7% |
+| `gpt-5.6-terra` | minimal | 93.3% | 90.0% | 63.3% | 60.0% | 78.3% |
+| `gpt-5.6-terra` | principled | 90.0% | 90.0% | 60.0% | 60.0% | 75.0% |
+| `gpt-5.6-sol` | minimal | **100.0%** | **100.0%** | 70.0% | **60.0%** | 85.0% |
+| `gpt-5.6-sol` | principled | 96.7% | 90.0% | 63.3% | **60.0%** | 80.0% |
+
+Across the full run, **292/360 episodes passed** the complete state-and-trajectory contract. Every episode preserved atomicity and activated every scheduled fault component.
+
+| Composed fault plan | Full passes |
+|---|---:|
+| Transient policy + approval failures | **36/36** |
+| Schema evolution + incomplete evidence | 0/36 |
+| Stale read + commit-time conflict | 12/36 |
+| Approval failure + ambiguous commit | 35/36 |
+| Schema evolution + authorization denial | **36/36** |
+
+The benchmark is no longer saturated. Evidence drift is a consistent failure surface, concurrency recovery is unstable, and the longer principled prompt underperformed the minimal contract for all three models. Of 68 failures, 32 reached the correct terminal state but violated the required execution trajectory.
+
+- [Repeated challenge report](results/challenge_model_benchmark.md)
+- [Machine-readable challenge traces](results/challenge_model_benchmark.json)
+- [Challenge evaluation card](CHALLENGE_EVALUATION_CARD.md)
+
+## Single-request live model results (v0.4)
+
+The historical v0.4 comparison runs Luna, Terra, and Sol with concise and explicit recovery prompts across **234 model-backed episodes**. Each configuration sees all 24 clean tasks and 15 controlled single faults.
 
 | Model | Prompt | Clean full pass | Fault handling | p95 episode | Est. cost |
 |---|---|---:|---:|---:|---:|
@@ -110,6 +139,7 @@ The repository also retains the original 80-case routing benchmark covering retr
 
 ```bash
 python -m pip install -e .
+agent-challenge-eval --check
 agent-workflow-eval
 agent-workflow-eval --check
 agent-eval --check
@@ -120,20 +150,22 @@ python -m unittest discover -s tests -v
 Run a new live comparison by setting `OPENAI_API_KEY` in the environment or an ignored `.env.local`, then execute:
 
 ```bash
+agent-challenge-eval
 agent-live-eval
 ```
 
 The runner checkpoints each completed episode and resumes interrupted matrices. It never writes the API key into an artifact.
 
-Regenerate both committed fixtures and confirm that their source data has not drifted:
+Regenerate all committed fixtures and confirm that their source data has not drifted:
 
 ```bash
 python scripts/build_fixture.py
 python scripts/build_workflow_fixture.py
+python scripts/build_challenge_fixture.py
 git diff --exit-code -- data
 ```
 
-Both benchmark checks compare fresh deterministic results with committed JSON artifacts and fail if a metric, trace digest, fixture hash, release gate, or counterfactual result changes unexpectedly.
+The offline checks reconstruct committed episodes and fail if a score, aggregate, trace digest, prompt hash, fixture hash, release gate, fault activation, or counterfactual result changes unexpectedly.
 
 ## Adapting another agent
 
@@ -161,13 +193,15 @@ data/                              Routing and stateful workflow fixtures
 results/                           Reproducible JSON and Markdown artifacts
 scripts/build_fixture.py           Routing fixture builder
 scripts/build_workflow_fixture.py  Stateful task and database builder
+scripts/build_challenge_fixture.py Atomic multi-request challenge builder
 src/agent_eval_harness/            Environments, agents, scorers, replay, gates, and CLIs
 tests/                             Dataset, state, fault, replay, and artifact tests
 EVALUATION_CARD.md                 Routing benchmark contract and limitations
 STATEFUL_EVALUATION_CARD.md        Workflow benchmark contract and limitations
 LIVE_EVALUATION_CARD.md            Live model protocol, results, integrity, and limitations
+CHALLENGE_EVALUATION_CARD.md       Repeated atomic-workflow protocol and limitations
 ```
 
 ## Scope
 
-The committed results validate the evaluation machinery and one recorded model comparison in a compact workflow domain. They do not estimate general language-model capability. The deterministic and live agents share the same model-neutral environment and hidden graders so their execution paths remain directly auditable.
+The committed results validate the evaluation machinery and recorded model comparisons in a compact change-control domain. They do not estimate general language-model capability. The deterministic and live agents share model-neutral SQLite environments and hidden graders so their execution paths remain directly auditable.
