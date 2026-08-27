@@ -335,16 +335,19 @@ def summarize_challenge_config(records: Sequence[dict[str, Any]]) -> dict[str, A
         )
         for fault in CHALLENGE_FAULT_SUITE
     }
-    failures = [
-        {
-            "case_id": record["case_id"],
-            "fault_plan": record["fault_plan"],
-            "trial": record["trial"],
-            "failures": record["score"]["failures"],
-        }
-        for record in records
-        if not record["score"]["passed"]
-    ]
+    failures = sorted(
+        [
+            {
+                "case_id": record["case_id"],
+                "fault_plan": record["fault_plan"],
+                "trial": record["trial"],
+                "failures": record["score"]["failures"],
+            }
+            for record in records
+            if not record["score"]["passed"]
+        ],
+        key=lambda item: (item["case_id"], item["fault_plan"], item["trial"]),
+    )
     failure_counts = Counter(
         failure
         for record in records
@@ -388,6 +391,38 @@ def summarize_challenge_config(records: Sequence[dict[str, Any]]) -> dict[str, A
         "failure_counts": dict(sorted(failure_counts.items())),
         "failures": failures,
     }
+
+
+def _run_from_record(record: dict[str, Any]) -> ChallengeRun:
+    run_payload = dict(record.get("run") or {})
+    run_payload["trace"] = tuple(run_payload.get("trace") or [])
+    run_payload["activated_faults"] = tuple(run_payload.get("activated_faults") or [])
+    try:
+        return ChallengeRun(**run_payload)
+    except TypeError as exc:
+        raise ValueError(f"Invalid challenge run for {record.get('episode_id')}") from exc
+
+
+def rescore_challenge_records(
+    records: Sequence[dict[str, Any]],
+) -> list[dict[str, Any]]:
+    """Apply the current hidden grader to checkpointed runs without provider calls."""
+
+    cases_by_id = {case.case_id: case for case in load_challenge_cases()}
+    rescored = []
+    for record in records:
+        case = cases_by_id.get(str(record.get("case_id")))
+        if case is None:
+            raise ValueError(f"Unknown challenge case: {record.get('case_id')}")
+        rescored.append(
+            {
+                **record,
+                "score": challenge_score_to_dict(
+                    score_challenge_run(_run_from_record(record), case)
+                ),
+            }
+        )
+    return rescored
 
 
 def build_challenge_artifact(
@@ -533,15 +568,7 @@ def verify_challenge_artifact(artifact: dict[str, Any]) -> dict[str, int]:
         case = cases_by_id.get(str(record.get("case_id")))
         if case is None:
             raise ValueError(f"Unknown challenge case: {record.get('case_id')}")
-        run_payload = dict(record.get("run") or {})
-        run_payload["trace"] = tuple(run_payload.get("trace") or [])
-        run_payload["activated_faults"] = tuple(
-            run_payload.get("activated_faults") or []
-        )
-        try:
-            run = ChallengeRun(**run_payload)
-        except TypeError as exc:
-            raise ValueError(f"Invalid challenge run for {record['episode_id']}") from exc
+        run = _run_from_record(record)
         score_payload = challenge_score_to_dict(score_challenge_run(run, case))
         if score_payload != record.get("score"):
             raise ValueError(f"Challenge score drift for {record['episode_id']}")

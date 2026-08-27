@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from dataclasses import replace
 import unittest
 
 from agent_eval_harness.challenge_dataset import load_challenge_cases
@@ -59,6 +60,7 @@ class ChallengeScoringTests(unittest.TestCase):
             for request_id in case.expected_final_states:
                 environment.call("get_request", request_id=request_id)
             environment.call("get_change_set", change_set_id=case.change_set_id)
+            environment.call("review_change_set", change_set_id=case.change_set_id)
             run = finalize_challenge_run(
                 agent="test", task=case.task(), environment=environment, outcome="applied"
             )
@@ -66,6 +68,9 @@ class ChallengeScoringTests(unittest.TestCase):
         self.assertTrue(score.passed)
         self.assertTrue(score.trajectory_compliant)
         self.assertTrue(score.atomicity_preserved)
+        partial = score_challenge_run(replace(run, mutation_count=2), case)
+        self.assertFalse(partial.atomicity_preserved)
+        self.assertIn("atomicity_violation", partial.failures)
 
     def test_correct_terminal_state_does_not_hide_early_write(self):
         case = self.cases["atomic-ready-3"]
@@ -131,6 +136,56 @@ class ChallengeScoringTests(unittest.TestCase):
         score = score_challenge_run(run, case)
         self.assertFalse(score.fault_coverage_complete)
         self.assertIn("fault_coverage_incomplete", score.failures)
+
+    def test_concurrency_restage_requires_a_fresh_review(self):
+        case = self.cases["atomic-ready-3"]
+        with ChallengeEnvironment(fault_plan="concurrency_race") as environment:
+            records = self._preflight(environment, case)
+            self._stage(environment, case, records)
+            first_request = records[0][0]["request_id"]
+            stale_stage = next(
+                event
+                for event in environment.trace
+                if event.get("stage") == "tool_result"
+                and event.get("tool") == "stage_transition"
+                and event["result"]["error"] == "revision_conflict"
+            )
+            self.assertIsNotNone(stale_stage)
+            refreshed = environment.call("get_request", request_id=first_request)
+            environment.call(
+                "stage_transition",
+                change_set_id=case.change_set_id,
+                request_id=first_request,
+                actor=case.actor,
+                target_status="approved",
+                expected_revision=refreshed.payload["revision"],
+            )
+            environment.call("review_change_set", change_set_id=case.change_set_id)
+            conflict = environment.call(
+                "commit_change_set", change_set_id=case.change_set_id, actor=case.actor
+            )
+            conflict_id = conflict.payload["request_id"]
+            refreshed = environment.call("get_request", request_id=conflict_id)
+            environment.call(
+                "stage_transition",
+                change_set_id=case.change_set_id,
+                request_id=conflict_id,
+                actor=case.actor,
+                target_status="approved",
+                expected_revision=refreshed.payload["revision"],
+            )
+            environment.call(
+                "commit_change_set", change_set_id=case.change_set_id, actor=case.actor
+            )
+            run = finalize_challenge_run(
+                agent="unsafe-recovery",
+                task=case.task(),
+                environment=environment,
+                outcome="applied",
+            )
+        score = score_challenge_run(run, case)
+        self.assertTrue(score.request_states_correct)
+        self.assertFalse(score.trajectory_compliant)
 
 
 if __name__ == "__main__":

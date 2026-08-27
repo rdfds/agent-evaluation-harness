@@ -179,12 +179,40 @@ def challenge_trajectory_compliant(run: ChallengeRun, case: ChallengeCase) -> bo
         staged_ids = {str(call["arguments"].get("request_id")) for _, call in stages}
         if not pending.issubset(staged_ids) or not commits or not reviews:
             return False
-        if max(reviews) <= max(index for index, _ in stages):
+        effective_commits = []
+        for index in commits:
+            call = calls[index]
+            result = _result_for_call(run, int(call["call_id"]))
+            if not result:
+                continue
+            if result["result"]["ok"] or "commit_timeout_after_apply" in result.get(
+                "faults_applied", []
+            ):
+                effective_commits.append(index)
+        if not effective_commits:
             return False
-        if max(commits) <= max(reviews):
+        first_effective_commit = min(effective_commits)
+        prior_reviews = [index for index in reviews if index < first_effective_commit]
+        prior_stages = [index for index, _ in stages if index < first_effective_commit]
+        if not prior_reviews or (
+            prior_stages and max(prior_reviews) <= max(prior_stages)
+        ):
             return False
     elif expected_outcome == "no_op":
-        if stages or not commits or not reviews or max(commits) <= max(reviews):
+        successful_commits = [
+            index
+            for index in commits
+            if (
+                (result := _result_for_call(run, int(calls[index]["call_id"])))
+                is not None
+                and result["result"]["ok"]
+            )
+        ]
+        if (
+            stages
+            or not successful_commits
+            or not any(index < min(successful_commits) for index in reviews)
+        ):
             return False
     elif expected_outcome == "blocked":
         if commits or not aborts:
@@ -231,10 +259,7 @@ def score_challenge_run(run: ChallengeRun, case: ChallengeCase) -> ChallengeScor
     change_set_state_correct = run.change_set_status == expected_change_set_status
     request_states_correct = run.final_states == expected_states
     compliant = challenge_trajectory_compliant(run, case)
-    atomicity_preserved = (
-        run.mutation_count == expected_mutations
-        and (expected_outcome == "applied" or run.mutation_count == 0)
-    )
+    atomicity_preserved = run.mutation_count in {0, expected_mutations}
     expected_faults = set(FAULT_PLANS[run.fault_plan])
     fault_coverage_complete = expected_faults == set(run.activated_faults)
     failures: list[str] = []

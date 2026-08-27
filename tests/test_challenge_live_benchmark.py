@@ -125,6 +125,14 @@ class ChallengeLiveBenchmarkTests(unittest.TestCase):
         self.assertIn("Repeated atomic-workflow challenge", markdown)
         self.assertIn("all-trials", markdown)
         self.assertIn("Concurrency race", markdown)
+        reversed_artifact = build_challenge_artifact(
+            list(reversed(records)),
+            models=["gpt-5.6-luna"],
+            prompts=["minimal", "principled"],
+            repetitions=3,
+            fault_change_set_ids=["atomic-ready-3"],
+        )
+        self.assertEqual(artifact["configs"], reversed_artifact["configs"])
 
     def test_checkpoint_round_trip_keeps_latest_episode(self):
         with tempfile.TemporaryDirectory() as directory:

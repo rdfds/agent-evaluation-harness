@@ -15,6 +15,7 @@ from .challenge_live_benchmark import (
     build_challenge_specs,
     execute_challenge_specs,
     render_challenge_markdown,
+    rescore_challenge_records,
     verify_challenge_artifact,
     write_challenge_artifacts,
 )
@@ -95,6 +96,7 @@ def main(argv: Sequence[str] | None = None) -> int:
         reasoning_effort=args.reasoning_effort,
         progress=progress,
     )
+    records = rescore_challenge_records(records)
     artifact = build_challenge_artifact(
         records,
         models=args.models,
