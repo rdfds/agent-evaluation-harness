@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "agent-evaluation-harness"
-version = "0.4.0"
+version = "0.5.0"
 description = "Reproducible, failure-aware evaluation for tool-using agents"
 readme = "README.md"
 requires-python = ">=3.10"
