@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import json
 from pathlib import Path
 import tempfile
 import unittest
@@ -11,6 +12,7 @@ from agent_eval_harness.challenge_live_benchmark import (
     build_challenge_specs,
     load_challenge_checkpoint,
     render_challenge_markdown,
+    verify_challenge_artifact,
 )
 
 
@@ -146,6 +148,38 @@ class ChallengeLiveBenchmarkTests(unittest.TestCase):
             loaded = load_challenge_checkpoint(path)
             self.assertEqual(len(loaded), 1)
             self.assertEqual(loaded[first["episode_id"]]["episode_latency_ms"], 300.0)
+
+
+class CommittedChallengeArtifactTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        root = Path(__file__).resolve().parents[1]
+        cls.artifact = json.loads(
+            (root / "results/challenge_model_benchmark.json").read_text(
+                encoding="utf-8"
+            )
+        )
+        cls.markdown = (
+            root / "results/challenge_model_benchmark.md"
+        ).read_text(encoding="utf-8")
+
+    def test_committed_challenge_recomputes_without_provider_access(self):
+        summary = verify_challenge_artifact(self.artifact)
+        self.assertEqual(summary, {"episodes": 360, "passed": 292, "failed": 68})
+        self.assertEqual(render_challenge_markdown(self.artifact), self.markdown)
+
+    def test_recorded_score_tampering_is_detected(self):
+        first = self.artifact["episodes"][0]
+        altered_first = {
+            **first,
+            "score": {**first["score"], "passed": not first["score"]["passed"]},
+        }
+        altered = {
+            **self.artifact,
+            "episodes": [altered_first, *self.artifact["episodes"][1:]],
+        }
+        with self.assertRaisesRegex(ValueError, "Challenge score drift"):
+            verify_challenge_artifact(altered)
 
 
 if __name__ == "__main__":
