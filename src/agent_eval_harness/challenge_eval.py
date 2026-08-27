@@ -95,7 +95,8 @@ def _successful_request_reads(run: ChallengeRun) -> dict[str, tuple[int, dict[st
         if not result or not result["result"]["ok"]:
             continue
         request_id = str(call["arguments"].get("request_id"))
-        reads[request_id] = (index, dict(result["result"]["payload"]))
+        if request_id not in reads:
+            reads[request_id] = (index, dict(result["result"]["payload"]))
     return reads
 
 

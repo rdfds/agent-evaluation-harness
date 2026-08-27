@@ -56,6 +56,9 @@ class ChallengeScoringTests(unittest.TestCase):
             environment.call(
                 "commit_change_set", change_set_id=case.change_set_id, actor=case.actor
             )
+            for request_id in case.expected_final_states:
+                environment.call("get_request", request_id=request_id)
+            environment.call("get_change_set", change_set_id=case.change_set_id)
             run = finalize_challenge_run(
                 agent="test", task=case.task(), environment=environment, outcome="applied"
             )
