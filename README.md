@@ -2,7 +2,7 @@
 
 [![CI](https://github.com/rdfds/agent-evaluation-harness/actions/workflows/ci.yml/badge.svg)](https://github.com/rdfds/agent-evaluation-harness/actions/workflows/ci.yml)
 
-A reproducible testbed for failure-aware evaluation of tool-using agents. It grades terminal database state, required tool trajectories, atomicity, repeated-trial reliability, bounded recovery, and fault activation—not just the final answer.
+A reproducible testbed for failure-aware evaluation of tool-using agents. It grades terminal database state, required tool trajectories, atomicity, repeated-trial reliability, bounded recovery, and fault activation: not just the final answer.
 
 The same hidden-label contract drives deterministic executors and live Responses API models against a fresh SQLite change-control environment for every episode.
 
